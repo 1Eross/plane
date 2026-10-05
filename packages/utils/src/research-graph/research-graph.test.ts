@@ -15,7 +15,7 @@ import type {
 import { findNonDiagnosticEvidence, rankHypotheses } from "./ach";
 import { getResearchBranchName, slugifyBranchDescription } from "./branch-name";
 import { getAllowedResearchRelations, isResearchRelationAllowed, toForwardResearchRelation } from "./grammar";
-import { buildResearchGraph, getFlowEndpoints, wouldCreateResearchCycle } from "./graph";
+import { buildResearchGraph, getFlowEndpoints, groupResearchEvidence, wouldCreateResearchCycle } from "./graph";
 import { computeResearchVisibility } from "./visibility";
 
 const node = (id: string, research_type: TResearchNodeType, research_status: TResearchStatus | null = null) =>
@@ -70,6 +70,30 @@ describe("graph model", () => {
     expect(graph.auxiliaryEdges).toHaveLength(1);
     expect(graph.flowParents.get("h")).toEqual(["q"]);
     expect(graph.flowChildren.get("q")).toEqual(["h"]);
+  });
+});
+
+describe("evidence inside its targets", () => {
+  it("folds evidence into every node it supports, opposes or informs", () => {
+    const graph = buildResearchGraph(
+      [node("q", "question"), node("h1", "hypothesis"), node("h2", "hypothesis"), node("r", "evidence", "valid")],
+      [edge("r", "h1", "supports", 2), edge("r", "h2", "opposes", 1), edge("r", "q", "informs")]
+    );
+    const { embeddedIds, evidenceByTarget } = groupResearchEvidence(graph);
+    expect([...embeddedIds]).toEqual(["r"]);
+    expect(evidenceByTarget.get("h1")).toEqual([{ id: "r", relation: "supports", weight: 2 }]);
+    expect(evidenceByTarget.get("h2")).toEqual([{ id: "r", relation: "opposes", weight: 1 }]);
+    expect(evidenceByTarget.get("q")).toEqual([{ id: "r", relation: "informs", weight: null }]);
+  });
+
+  it("keeps evidence as a card when it raises a question or feeds nothing", () => {
+    const graph = buildResearchGraph(
+      [node("h", "hypothesis"), node("q2", "question"), node("raising", "evidence"), node("loose", "evidence")],
+      [edge("raising", "h", "supports", 1), edge("raising", "q2", "raises")]
+    );
+    const { embeddedIds, evidenceByTarget } = groupResearchEvidence(graph);
+    expect(embeddedIds.size).toBe(0);
+    expect(evidenceByTarget.size).toBe(0);
   });
 });
 

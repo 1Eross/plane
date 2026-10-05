@@ -23,7 +23,14 @@ import type {
   TResearchRelationWeight,
   TWorkItemFilterExpression,
 } from "@plane/types";
-import { buildResearchGraph, cn, computeResearchVisibility, getFlowEndpoints, isResearchRelation } from "@plane/utils";
+import {
+  buildResearchGraph,
+  cn,
+  computeResearchVisibility,
+  getFlowEndpoints,
+  groupResearchEvidence,
+  isResearchRelation,
+} from "@plane/utils";
 // components
 import { AchMatrixDialog } from "@/components/issues/research/ach-matrix-dialog";
 import { useResearchErrorToast } from "@/components/issues/research/use-research";
@@ -36,7 +43,7 @@ import { IssueService, ResearchService } from "@/services/issue";
 // local imports
 import { ResearchActionDialog } from "./action-dialog";
 import type { TActionDialogResult, TRelationChoice } from "./action-dialog";
-import { layoutResearchGraph } from "./auto-layout";
+import { getResearchNodeHeight, layoutResearchGraph } from "./auto-layout";
 import { ResearchEdgePanel } from "./edge-panel";
 import { getConnectionChoices } from "./graph-actions";
 import type { TNodeAction } from "./graph-actions";
@@ -164,7 +171,16 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
       }),
     [model, collapsedIds, hideClosed]
   );
-  const autoPositions = useMemo(() => layoutResearchGraph(model, visibleIds), [model, visibleIds]);
+  // evidence is listed inside the hypotheses / questions it feeds rather than drawn as cards
+  const { embeddedIds, evidenceByTarget } = useMemo(() => groupResearchEvidence(model), [model]);
+  const cardIds = useMemo(
+    () => new Set([...visibleIds].filter((id) => !embeddedIds.has(id))),
+    [embeddedIds, visibleIds]
+  );
+  const autoPositions = useMemo(
+    () => layoutResearchGraph(model, cardIds, (id) => getResearchNodeHeight(evidenceByTarget.get(id)?.length ?? 0)),
+    [cardIds, evidenceByTarget, model]
+  );
   const { getSavedPosition } = layout;
   const getPosition = useCallback(
     (id: string) => dragPositions[id] ?? getSavedPosition(id) ?? autoPositions.get(id),
@@ -195,7 +211,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
       else score.inconsistency += edge.weight ?? 0;
       scores.set(edge.target, score);
     }
-    return [...visibleIds].flatMap((id) => {
+    return [...cardIds].flatMap((id) => {
       const position = getPosition(id);
       const node = model.nodesById.get(id);
       if (!position || !node) return [];
@@ -215,6 +231,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
             hiddenCount: hiddenDescendantCount.get(id) ?? 0,
             support: scores.get(id)?.support ?? 0,
             inconsistency: scores.get(id)?.inconsistency ?? 0,
+            evidence: evidenceByTarget.get(id) ?? [],
             canEdit,
             onToggleCollapse: toggleCollapse,
             onOpen: openPeek,
@@ -226,7 +243,9 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
     });
   }, [
     canEdit,
+    cardIds,
     collapsedIds,
+    evidenceByTarget,
     getPosition,
     hiddenDescendantCount,
     measuredSizes,
@@ -235,11 +254,10 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
     openPeek,
     selectedIds,
     toggleCollapse,
-    visibleIds,
   ]);
 
   const flowEdges: BuiltInEdge[] = useMemo(() => {
-    const isVisible = (edge: TResearchGraphEdge) => visibleIds.has(edge.source) && visibleIds.has(edge.target);
+    const isVisible = (edge: TResearchGraphEdge) => cardIds.has(edge.source) && cardIds.has(edge.target);
     const result: BuiltInEdge[] = [];
     for (const edge of model.flowEdges) {
       const endpoints = getFlowEndpoints(edge);
@@ -291,7 +309,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
       }
     }
     return result;
-  }, [model, showAuxiliary, t, visibleIds]);
+  }, [cardIds, model, showAuxiliary, t]);
 
   // ---------- editing ----------
   const refresh = useCallback(() => void mutate(), [mutate]);

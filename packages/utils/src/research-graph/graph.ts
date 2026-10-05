@@ -57,6 +57,32 @@ export const buildResearchGraph = (nodes: TResearchGraphNode[], edges: TResearch
   return { nodesById, flowParents, flowChildren, flowEdges, feedbackEdges, auxiliaryEdges };
 };
 
+export type TEmbeddedEvidence = {
+  id: string;
+  relation: TResearchRelation;
+  weight: TResearchGraphEdge["weight"];
+};
+
+/**
+ * Evidence shown inside the nodes it supports, opposes or informs instead of as cards of its own.
+ * Evidence that raises a question stays a card (it is a parent in the flow tree), as does evidence that feeds nothing.
+ */
+export const groupResearchEvidence = (
+  model: TResearchGraphModel
+): { embeddedIds: Set<string>; evidenceByTarget: Map<string, TEmbeddedEvidence[]> } => {
+  const embeddedIds = new Set<string>();
+  const evidenceByTarget = new Map<string, TEmbeddedEvidence[]>();
+  for (const edge of model.feedbackEdges) {
+    const source = model.nodesById.get(edge.source);
+    if (source?.research_type !== "evidence" || (model.flowChildren.get(edge.source)?.length ?? 0) > 0) continue;
+    embeddedIds.add(edge.source);
+    const items = evidenceByTarget.get(edge.target) ?? [];
+    items.push({ id: edge.source, relation: edge.relation_type as TResearchRelation, weight: edge.weight });
+    evidenceByTarget.set(edge.target, items);
+  }
+  return { embeddedIds, evidenceByTarget };
+};
+
 /**
  * Whether adding the stored relation source -> target closes a loop.
  * With the research grammar loops can only form through "raises" and "derived_from".

@@ -11,15 +11,22 @@ import type { Node, NodeProps } from "@xyflow/react";
 import { AddOutline, ChevronRightOutline, SubWorkItemsOutline, WarningTriangleOutline } from "@makeplane/propel/icons";
 import { Menu, MenuContent, MenuItem, MenuTrigger } from "@makeplane/propel/components/menu";
 // plane imports
-import { RESEARCH_NODE_TYPE_MAP, RESEARCH_STATUS_MAP } from "@plane/constants";
+import { RESEARCH_NODE_TYPE_MAP, RESEARCH_RELATION_I18N_LABEL, RESEARCH_STATUS_MAP } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
+import type { TResearchRelation } from "@plane/types";
+import type { TEmbeddedEvidence } from "@plane/utils";
 import { cn } from "@plane/utils";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // local imports
-import { RESEARCH_NODE_HEIGHT, RESEARCH_NODE_WIDTH } from "./auto-layout";
+import {
+  RESEARCH_EVIDENCE_MAX_ROWS,
+  RESEARCH_EVIDENCE_ROW_HEIGHT,
+  RESEARCH_NODE_HEIGHT,
+  RESEARCH_NODE_WIDTH,
+} from "./auto-layout";
 import { NODE_ACTIONS } from "./graph-actions";
 import type { TNodeAction } from "./graph-actions";
 
@@ -32,6 +39,8 @@ export type TResearchNodeData = {
   // sum of weights of valid evidence for / against a hypothesis
   support: number;
   inconsistency: number;
+  // evidence feeding this node, listed inside the card instead of drawn as separate cards
+  evidence: TEmbeddedEvidence[];
   canEdit: boolean;
   onToggleCollapse: (issueId: string) => void;
   onOpen: (issueId: string) => void;
@@ -40,6 +49,49 @@ export type TResearchNodeData = {
 };
 
 export type TResearchFlowNode = Node<TResearchNodeData, "research">;
+
+const EVIDENCE_RELATION_MARK: Partial<Record<TResearchRelation, { sign: string; className: string }>> = {
+  supports: { sign: "+", className: "text-success-primary" },
+  opposes: { sign: "−", className: "text-danger-primary" },
+  informs: { sign: "i", className: "text-accent-primary" },
+};
+
+const EvidenceRow = observer(function EvidenceRow(props: {
+  item: TEmbeddedEvidence;
+  onOpen: (issueId: string) => void;
+}) {
+  const { item, onOpen } = props;
+  const { t } = useTranslation();
+  const {
+    issue: { getIssueById },
+  } = useIssueDetail();
+  const evidence = getIssueById(item.id);
+  const mark = EVIDENCE_RELATION_MARK[item.relation];
+  const relationLabel = t(RESEARCH_RELATION_I18N_LABEL[item.relation]);
+  return (
+    <button
+      type="button"
+      className={cn(
+        "nodrag flex w-full items-center gap-1.5 rounded-sm px-1 text-left text-11 hover:bg-layer-1-hover",
+        {
+          "line-through opacity-60": evidence?.research_status === "invalidated",
+        }
+      )}
+      style={{ height: RESEARCH_EVIDENCE_ROW_HEIGHT }}
+      title={item.weight ? `${relationLabel} · ${item.weight}` : relationLabel}
+      onClick={(e) => {
+        e.stopPropagation();
+        onOpen(item.id);
+      }}
+    >
+      <span className={cn("w-5 shrink-0 font-semibold", mark?.className)}>
+        {mark?.sign}
+        {item.weight ?? ""}
+      </span>
+      <span className="truncate text-secondary">{evidence?.name}</span>
+    </button>
+  );
+});
 
 const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: NodeProps<TResearchFlowNode>) {
   const {
@@ -50,6 +102,7 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
     hiddenCount,
     support,
     inconsistency,
+    evidence,
     canEdit,
     onToggleCollapse,
     onOpen,
@@ -177,6 +230,18 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
           </span>
         )}
       </div>
+      {evidence.length > 0 && (
+        <div className="-mx-1 flex flex-col border-t border-subtle pt-1">
+          {evidence.slice(0, RESEARCH_EVIDENCE_MAX_ROWS).map((item) => (
+            <EvidenceRow key={item.id} item={item} onOpen={onOpen} />
+          ))}
+          {evidence.length > RESEARCH_EVIDENCE_MAX_ROWS && (
+            <span className="px-1 text-11 text-tertiary" style={{ height: RESEARCH_EVIDENCE_ROW_HEIGHT }}>
+              +{evidence.length - RESEARCH_EVIDENCE_MAX_ROWS}
+            </span>
+          )}
+        </div>
+      )}
       {hasChildren && (
         <button
           type="button"
