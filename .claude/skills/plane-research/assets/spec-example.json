@@ -1,0 +1,92 @@
+{
+  "source": "github:acme/latency-research",
+  "nodes": [
+    {
+      "key": "q-latency",
+      "type": "question",
+      "name": "Why is p95 latency of the list API above 400 ms?",
+      "description": "Seen since the March release. Source: docs/questions/latency.md",
+      "links": [
+        {
+          "url": "https://github.com/acme/latency-research/blob/main/docs/questions/latency.md",
+          "title": "Original note"
+        }
+      ]
+    },
+    {
+      "key": "h-cold-cache",
+      "type": "hypothesis",
+      "name": "Cold cache after each deploy",
+      "status": "rejected",
+      "statement": "If the cache is cold after deploy, then warming it removes the p95 spike",
+      "success_criteria": "p95 < 250 ms within 10 minutes after deploy",
+      "conclusion": "Warm-up did not change p95 (exp-warmup).",
+      "confidence": 80
+    },
+    {
+      "key": "h-n-plus-one",
+      "type": "hypothesis",
+      "name": "N+1 queries in the list view",
+      "status": "confirmed",
+      "statement": "If the list view issues one query per row, then prefetching cuts p95 by half"
+    },
+    {
+      "key": "h-db-pool",
+      "type": "hypothesis",
+      "name": "DB connection pool too small",
+      "status": "testing"
+    },
+    {
+      "key": "exp-warmup",
+      "type": "experiment",
+      "name": "Warm the cache before taking traffic",
+      "state": "Done",
+      "branch": "exp/warmup",
+      "repo_url": "https://github.com/acme/latency-research"
+    },
+    {
+      "key": "exp-prefetch",
+      "type": "experiment",
+      "name": "Prefetch related rows in the list view",
+      "state": "Done"
+    },
+    {
+      "key": "r-warmup-flat",
+      "type": "evidence",
+      "name": "p95 unchanged after warm-up (412 ms vs 405 ms)",
+      "commit_sha": "a1b2c3d",
+      "artifact_url": "https://github.com/acme/latency-research/blob/main/results/warmup.csv"
+    },
+    {
+      "key": "r-prefetch-drop",
+      "type": "evidence",
+      "name": "p95 down to 190 ms with prefetching",
+      "commit_sha": "d4e5f6a"
+    },
+    {
+      "key": "r-old-benchmark",
+      "type": "evidence",
+      "name": "Early benchmark on a laptop: cache matters",
+      "status": "invalidated",
+      "description": "Measured against SQLite, not representative."
+    },
+    {
+      "key": "q-pool-metrics",
+      "type": "question",
+      "name": "Do we wait for DB connections under load?"
+    }
+  ],
+  "edges": [
+    { "from": "h-cold-cache", "type": "addresses", "to": "q-latency" },
+    { "from": "h-n-plus-one", "type": "addresses", "to": "q-latency" },
+    { "from": "h-db-pool", "type": "addresses", "to": "q-latency" },
+    { "from": "exp-warmup", "type": "tests", "to": "h-cold-cache" },
+    { "from": "exp-prefetch", "type": "tests", "to": "h-n-plus-one" },
+    { "from": "exp-warmup", "type": "produces", "to": "r-warmup-flat" },
+    { "from": "exp-prefetch", "type": "produces", "to": "r-prefetch-drop" },
+    { "from": "r-warmup-flat", "type": "opposes", "to": "h-cold-cache", "weight": 3 },
+    { "from": "r-prefetch-drop", "type": "supports", "to": "h-n-plus-one", "weight": 3 },
+    { "from": "r-old-benchmark", "type": "supports", "to": "h-cold-cache", "weight": 1 },
+    { "from": "r-prefetch-drop", "type": "raises", "to": "q-pool-metrics" }
+  ]
+}
