@@ -81,6 +81,8 @@ from .favorite import UserFavorite
 
 from .issue_type import IssueType
 
+from .research import IssueResearchDetails, ResearchGraphLayout, ResearchNodeType, ResearchStatus
+
 from .recent_visit import UserRecentVisit
 
 from .label import Label

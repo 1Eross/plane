@@ -10,7 +10,7 @@ import re
 # Django imports
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponseRedirect
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.db.models import (
     Case,
     CharField,
@@ -88,7 +88,17 @@ from plane.utils.order_queryset import (
 from plane.bgtasks.storage_metadata_task import get_asset_object_metadata
 from .base import BaseAPIView
 from plane.utils.host import base_host
-from plane.utils.issue_relation_mapper import get_actual_relation
+from plane.utils.issue_relation_mapper import (
+    get_all_relation_types,
+    get_inverse_relation,
+    is_reverse_relation,
+)
+from plane.utils.research_grammar import (
+    WEIGHTED_RELATIONS,
+    ResearchRuleError,
+    apply_relation_side_effects,
+    prepare_relation_pairs,
+)
 from plane.bgtasks.webhook_task import model_activity
 from plane.app.permissions import ROLE
 from plane.utils.openapi import (
@@ -2393,74 +2403,28 @@ class IssueRelationListCreateAPIEndpoint(BaseAPIView):
             "relation_type",
             "issue_id",
             "related_issue_id",
+            "weight",
             issue_project_id=F("issue__project_id"),
             related_issue_project_id=F("related_issue__project_id"),
         )
 
-        response_data = {
-            "blocking": [],
-            "blocked_by": [],
-            "duplicate": [],
-            "relates_to": [],
-            "start_after": [],
-            "start_before": [],
-            "finish_after": [],
-            "finish_before": [],
-        }
-        seen_duplicate = set()
-        seen_relates_to = set()
+        response_data = {relation_type: [] for relation_type in get_all_relation_types()}
+        seen = {relation_type: set() for relation_type in response_data}
 
+        # "A blocked_by B" is listed as "blocked_by" for A and "blocking" for B
         for rel in relations:
-            rt = rel["relation_type"]
-            if rt == "blocked_by":
-                if str(rel["related_issue_id"]) == str(issue_id):
-                    response_data["blocking"].append(
-                        {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
-                    )
-                if str(rel["issue_id"]) == str(issue_id):
-                    response_data["blocked_by"].append(
-                        {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
-                    )
-            elif rt == "duplicate":
-                if str(rel["issue_id"]) == str(issue_id) and rel["related_issue_id"] not in seen_duplicate:
-                    seen_duplicate.add(rel["related_issue_id"])
-                    response_data["duplicate"].append(
-                        {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
-                    )
-                if str(rel["related_issue_id"]) == str(issue_id) and rel["issue_id"] not in seen_duplicate:
-                    seen_duplicate.add(rel["issue_id"])
-                    response_data["duplicate"].append(
-                        {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
-                    )
-            elif rt == "relates_to":
-                if str(rel["issue_id"]) == str(issue_id) and rel["related_issue_id"] not in seen_relates_to:
-                    seen_relates_to.add(rel["related_issue_id"])
-                    response_data["relates_to"].append(
-                        {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
-                    )
-                if str(rel["related_issue_id"]) == str(issue_id) and rel["issue_id"] not in seen_relates_to:
-                    seen_relates_to.add(rel["issue_id"])
-                    response_data["relates_to"].append(
-                        {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
-                    )
-            elif rt == "start_before":
-                if str(rel["related_issue_id"]) == str(issue_id):
-                    response_data["start_after"].append(
-                        {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
-                    )
-                if str(rel["issue_id"]) == str(issue_id):
-                    response_data["start_before"].append(
-                        {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
-                    )
-            elif rt == "finish_before":
-                if str(rel["related_issue_id"]) == str(issue_id):
-                    response_data["finish_after"].append(
-                        {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
-                    )
-                if str(rel["issue_id"]) == str(issue_id):
-                    response_data["finish_before"].append(
-                        {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
-                    )
+            if str(rel["issue_id"]) == str(issue_id):
+                relation_name = rel["relation_type"]
+                other = {"project_id": str(rel["related_issue_project_id"]), "issue_id": str(rel["related_issue_id"])}
+            else:
+                relation_name = get_inverse_relation(rel["relation_type"])
+                other = {"project_id": str(rel["issue_project_id"]), "issue_id": str(rel["issue_id"])}
+            if relation_name not in response_data or other["issue_id"] in seen[relation_name]:
+                continue
+            seen[relation_name].add(other["issue_id"])
+            if rel["relation_type"] in WEIGHTED_RELATIONS:
+                other["weight"] = rel["weight"]
+            response_data[relation_name].append(other)
 
         return Response(response_data, status=status.HTTP_200_OK)
 
@@ -2530,8 +2494,8 @@ class IssueRelationListCreateAPIEndpoint(BaseAPIView):
         issues = serializer.validated_data["issues"]
         project = Project.objects.get(pk=project_id, workspace__slug=slug)
 
-        actual_relation = get_actual_relation(relation_type)
-        is_reverse = relation_type in ["blocking", "start_after", "finish_after"]
+        weight = serializer.validated_data.get("weight")
+        is_reverse = is_reverse_relation(relation_type)
 
         # Scope to workspace to prevent cross-tenant IDOR
         # Relations can cross projects so only workspace scope is enforced
@@ -2542,22 +2506,43 @@ class IssueRelationListCreateAPIEndpoint(BaseAPIView):
             ).values_list("id", flat=True)
         )
 
-        IssueRelation.objects.bulk_create(
-            [
-                IssueRelation(
-                    issue_id=(issue if is_reverse else issue_id),
-                    related_issue_id=(issue_id if is_reverse else issue),
-                    relation_type=actual_relation,
-                    project_id=project_id,
-                    workspace_id=project.workspace_id,
-                    created_by=request.user,
-                    updated_by=request.user,
+        try:
+            actual_relation, pairs, is_research = prepare_relation_pairs(
+                issue_id, relation_type, issues, slug, weight=weight
+            )
+        except ResearchRuleError as e:
+            return Response({"error": e.message}, status=e.status_code)
+
+        relations_to_create = [
+            IssueRelation(
+                issue_id=pair_issue_id,
+                related_issue_id=pair_related_issue_id,
+                relation_type=actual_relation,
+                weight=weight if is_research else None,
+                project_id=project_id,
+                workspace_id=project.workspace_id,
+                created_by=request.user,
+                updated_by=request.user,
+            )
+            for pair_issue_id, pair_related_issue_id in pairs
+        ]
+
+        if is_research:
+            # Research relations are validated above; a conflict here is a concurrent duplicate
+            try:
+                with transaction.atomic():
+                    IssueRelation.objects.bulk_create(relations_to_create, batch_size=10)
+            except IntegrityError:
+                return Response(
+                    {"error": "These work items are already related"},
+                    status=status.HTTP_409_CONFLICT,
                 )
-                for issue in issues
-            ],
-            batch_size=10,
-            ignore_conflicts=True,
-        )
+        else:
+            IssueRelation.objects.bulk_create(
+                relations_to_create,
+                batch_size=10,
+                ignore_conflicts=True,
+            )
 
         issue_activity.delay(
             type="issue_relation.activity.created",
@@ -2570,6 +2555,10 @@ class IssueRelationListCreateAPIEndpoint(BaseAPIView):
             notification=True,
             origin=base_host(request=request, is_app=True),
         )
+
+        if is_research:
+            for pair_issue_id, pair_related_issue_id in pairs:
+                apply_relation_side_effects(actual_relation, pair_issue_id, pair_related_issue_id)
 
         # Re-fetch with select_related to avoid N+1 queries in serializers.
         # bulk_create with ignore_conflicts=True may not return PKs,

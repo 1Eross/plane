@@ -238,6 +238,11 @@ urlpatterns = [
         name="issue-relation",
     ),
     path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/issue-relation/<uuid:related_issue_id>/",
+        IssueRelationViewSet.as_view({"patch": "partial_update"}),
+        name="issue-relation-detail",
+    ),
+    path(
         "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/remove-relation/",
         IssueRelationViewSet.as_view({"post": "remove_relation"}),
         name="issue-relation",

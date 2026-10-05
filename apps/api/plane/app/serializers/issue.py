@@ -9,6 +9,7 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 
 # Third Party imports
+from crum import get_current_user
 from rest_framework import serializers
 
 # Module imports
@@ -42,6 +43,11 @@ from plane.db.models import (
     IssueDescriptionVersion,
     ProjectMember,
     EstimatePoint,
+)
+from plane.utils.research_grammar import (
+    ResearchRuleError,
+    apply_issue_research_side_effects,
+    validate_research_attrs,
 )
 from plane.utils.content_validator import (
     validate_html_content,
@@ -111,6 +117,7 @@ class IssueCreateSerializer(BaseSerializer):
             "created_at",
             "updated_at",
             "completed_at",
+            "needs_review",
         ]
 
     def to_representation(self, instance):
@@ -193,6 +200,11 @@ class IssueCreateSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Estimate point is not valid please pass a valid estimate_point_id")
+
+        try:
+            attrs = validate_research_attrs(self.instance, attrs)
+        except ResearchRuleError as e:
+            raise serializers.ValidationError({"error": e.message})
 
         return attrs
 
@@ -325,9 +337,15 @@ class IssueCreateSerializer(BaseSerializer):
             except IntegrityError:
                 pass
 
+        previous_research = (instance.research_type, instance.research_status)
+
         # Time updation occues even when other related models are updated
         instance.updated_at = timezone.now()
-        return super().update(instance, validated_data)
+        issue = super().update(instance, validated_data)
+
+        current_user = get_current_user()
+        apply_issue_research_side_effects(issue, *previous_research, actor_id=getattr(current_user, "id", None))
+        return issue
 
 
 class IssueActivitySerializer(BaseSerializer):
@@ -420,6 +438,7 @@ class IssueRelationSerializer(BaseSerializer):
             "project_id",
             "sequence_id",
             "relation_type",
+            "weight",
             "name",
             "state_id",
             "priority",
@@ -460,6 +479,7 @@ class RelatedIssueSerializer(BaseSerializer):
             "project_id",
             "sequence_id",
             "relation_type",
+            "weight",
             "name",
             "state_id",
             "priority",
@@ -809,6 +829,9 @@ class IssueSerializer(DynamicBaseSerializer):
             "link_count",
             "is_draft",
             "archived_at",
+            "research_type",
+            "research_status",
+            "needs_review",
         ]
         read_only_fields = fields
 

@@ -198,6 +198,9 @@ class IssueListEndpoint(BaseAPIView):
                 "link_count",
                 "is_draft",
                 "archived_at",
+                "research_type",
+                "research_status",
+                "needs_review",
                 "deleted_at",
             )
             datetime_fields = ["created_at", "updated_at"]
@@ -463,6 +466,9 @@ class IssueViewSet(BaseViewSet):
                     "link_count",
                     "is_draft",
                     "archived_at",
+                    "research_type",
+                    "research_status",
+                    "needs_review",
                     "deleted_at",
                 )
                 .first()
@@ -889,6 +895,9 @@ class IssuePaginatedViewSet(BaseViewSet):
             "updated_by",
             "is_draft",
             "archived_at",
+            "research_type",
+            "research_status",
+            "needs_review",
             "module_ids",
             "label_ids",
             "assignee_ids",

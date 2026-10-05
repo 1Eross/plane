@@ -8,6 +8,7 @@ from lxml import html
 from django.db import IntegrityError
 
 #  Third party imports
+from crum import get_current_user
 from rest_framework import serializers
 
 # Module imports
@@ -26,6 +27,12 @@ from plane.db.models import (
     State,
     User,
     EstimatePoint,
+)
+from plane.utils.issue_relation_mapper import get_all_relation_types
+from plane.utils.research_grammar import (
+    ResearchRuleError,
+    apply_issue_research_side_effects,
+    validate_research_attrs,
 )
 from plane.utils.content_validator import (
     validate_html_content,
@@ -69,7 +76,15 @@ class IssueSerializer(BaseSerializer):
 
     class Meta:
         model = Issue
-        read_only_fields = ["id", "workspace", "project", "updated_by", "updated_at", "completed_at"]
+        read_only_fields = [
+            "id",
+            "workspace",
+            "project",
+            "updated_by",
+            "updated_at",
+            "completed_at",
+            "needs_review",
+        ]
         exclude = ["description_json", "description_stripped"]
 
     def validate(self, data):
@@ -159,6 +174,11 @@ class IssueSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Estimate point is not valid please pass a valid estimate_point_id")
+
+        try:
+            data = validate_research_attrs(self.instance, data)
+        except ResearchRuleError as e:
+            raise serializers.ValidationError({"error": e.message})
 
         return data
 
@@ -297,9 +317,15 @@ class IssueSerializer(BaseSerializer):
             except IntegrityError:
                 pass
 
+        previous_research = (instance.research_type, instance.research_status)
+
         # Time updation occues even when other related models are updated
         instance.updated_at = timezone.now()
-        return super().update(instance, validated_data)
+        issue = super().update(instance, validated_data)
+
+        current_user = get_current_user()
+        apply_issue_research_side_effects(issue, *previous_research, actor_id=getattr(current_user, "id", None))
+        return issue
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -552,14 +578,7 @@ class IssueRelationCreateSerializer(serializers.Serializer):
     """
 
     RELATION_TYPE_CHOICES = [
-        ("blocking", "Blocking"),
-        ("blocked_by", "Blocked By"),
-        ("duplicate", "Duplicate"),
-        ("relates_to", "Relates To"),
-        ("start_before", "Start Before"),
-        ("start_after", "Start After"),
-        ("finish_before", "Finish Before"),
-        ("finish_after", "Finish After"),
+        (relation_type, relation_type.replace("_", " ").title()) for relation_type in get_all_relation_types()
     ]
 
     relation_type = serializers.ChoiceField(
@@ -572,6 +591,13 @@ class IssueRelationCreateSerializer(serializers.Serializer):
         required=True,
         min_length=1,
         help_text="Array of work item IDs to create relations with",
+    )
+    weight = serializers.IntegerField(
+        required=False,
+        allow_null=True,
+        min_value=1,
+        max_value=3,
+        help_text="Strength (1-3) of a supports / opposes research relation",
     )
 
     def validate_issues(self, value):

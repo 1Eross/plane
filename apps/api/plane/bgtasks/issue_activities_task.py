@@ -185,6 +185,60 @@ def track_priority(
         )
 
 
+def track_research_type(
+    requested_data,
+    current_instance,
+    issue_id,
+    project_id,
+    workspace_id,
+    actor_id,
+    issue_activities,
+    epoch,
+):
+    if current_instance.get("research_type") != requested_data.get("research_type"):
+        issue_activities.append(
+            IssueActivity(
+                issue_id=issue_id,
+                actor_id=actor_id,
+                verb="updated",
+                old_value=current_instance.get("research_type") or "",
+                new_value=requested_data.get("research_type") or "",
+                field="research_type",
+                project_id=project_id,
+                workspace_id=workspace_id,
+                comment="updated the research type to",
+                epoch=epoch,
+            )
+        )
+
+
+def track_research_status(
+    requested_data,
+    current_instance,
+    issue_id,
+    project_id,
+    workspace_id,
+    actor_id,
+    issue_activities,
+    epoch,
+):
+    if current_instance.get("research_status") != requested_data.get("research_status"):
+        issue_activities.append(
+            IssueActivity(
+                issue_id=issue_id,
+                actor_id=actor_id,
+                verb="updated",
+                old_value=current_instance.get("research_status") or "",
+                new_value=requested_data.get("research_status") or "",
+                field="research_status",
+                project_id=project_id,
+                workspace_id=workspace_id,
+                comment="updated the research status to",
+                epoch=epoch,
+            )
+        )
+
+
 # Track changes in state of the issue
 def track_state(
     requested_data,
@@ -614,6 +668,8 @@ def update_issue_activity(
         "estimate_point": track_estimate_points,
         "archived_at": track_archive_at,
         "closed_to": track_closed_to,
+        "research_type": track_research_type,
+        "research_status": track_research_status,
         # External endpoint keys
         "parent": track_parent,
         "state": track_state,
@@ -1359,15 +1415,7 @@ def delete_issue_relation_activity(
             verb="deleted",
             old_value=f"{issue.project.identifier}-{issue.sequence_id}",
             new_value="",
-            field=(
-                "blocking"
-                if requested_data.get("relation_type") == "blocked_by"
-                else (
-                    "blocked_by"
-                    if requested_data.get("relation_type") == "blocking"
-                    else requested_data.get("relation_type")
-                )
-            ),
+            field=get_inverse_relation(requested_data.get("relation_type")),
             project_id=project_id,
             workspace_id=workspace_id,
             comment=f"deleted {requested_data.get('relation_type')} relation",

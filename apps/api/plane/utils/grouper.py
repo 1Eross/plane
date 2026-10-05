@@ -126,6 +126,9 @@ def issue_on_results(
         "link_count",
         "is_draft",
         "archived_at",
+        "research_type",
+        "research_status",
+        "needs_review",
         "state__group",
     ]
 

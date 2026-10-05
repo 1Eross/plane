@@ -24,6 +24,7 @@ from .project import ProjectBaseModel
 from plane.utils.uuid import convert_uuid_to_integer
 from .description import Description
 from .state import StateGroup
+from .research import ResearchNodeType, ResearchStatus
 
 
 def get_default_properties():
@@ -168,6 +169,10 @@ class Issue(ChangeTrackerMixin, ProjectBaseModel):
         null=True,
         blank=True,
     )
+    # Research graph: null research_type means a regular work item
+    research_type = models.CharField(max_length=20, choices=ResearchNodeType.choices, null=True, blank=True)
+    research_status = models.CharField(max_length=20, choices=ResearchStatus.choices, null=True, blank=True)
+    needs_review = models.BooleanField(default=False)
 
     issue_objects = IssueManager()
 
@@ -176,6 +181,12 @@ class Issue(ChangeTrackerMixin, ProjectBaseModel):
         verbose_name_plural = "Issues"
         db_table = "issues"
         ordering = ("-created_at",)
+        indexes = [
+            models.Index(
+                fields=["project", "research_type", "research_status"],
+                name="issue_research_type_status_idx",
+            )
+        ]
 
     def save(self, *args, **kwargs):
         self._ensure_default_state()
@@ -276,6 +287,15 @@ class IssueRelationChoices(models.TextChoices):
     START_BEFORE = "start_before", "Start Before"
     FINISH_BEFORE = "finish_before", "Finish Before"
     IMPLEMENTED_BY = "implemented_by", "Implemented By"
+    # Research graph relations (stored as "issue <type> related_issue")
+    ADDRESSES = "addresses", "Addresses"
+    TESTS = "tests", "Tests"
+    PRODUCES = "produces", "Produces"
+    SUPPORTS = "supports", "Supports"
+    OPPOSES = "opposes", "Opposes"
+    INFORMS = "informs", "Informs"
+    RAISES = "raises", "Raises"
+    DERIVED_FROM = "derived_from", "Derived From"
 
 
 # Bidirectional relation pairs: (forward, reverse)
@@ -287,6 +307,14 @@ IssueRelationChoices._RELATION_PAIRS = (
     ("start_before", "start_after"),
     ("finish_before", "finish_after"),
     ("implemented_by", "implements"),
+    ("addresses", "addressed_by"),
+    ("tests", "tested_by"),
+    ("produces", "produced_by"),
+    ("supports", "supported_by"),
+    ("opposes", "opposed_by"),
+    ("informs", "informed_by"),
+    ("raises", "raised_by"),
+    ("derived_from", "derives"),
 )
 
 # Generate reverse mapping from pairs
@@ -300,6 +328,10 @@ class IssueRelation(ProjectBaseModel):
         max_length=20,
         verbose_name="Issue Relation Type",
         default=IssueRelationChoices.BLOCKED_BY,
+    )
+    # Strength (1-3) of supports / opposes research relations
+    weight = models.PositiveSmallIntegerField(
+        null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(3)]
     )
 
     class Meta:

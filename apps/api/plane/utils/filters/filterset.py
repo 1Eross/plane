@@ -197,6 +197,9 @@ class IssueFilterSet(BaseFilterSet):
             "updated_at": ["exact", "range"],
             "is_draft": ["exact"],
             "priority": ["exact", "in"],
+            "research_type": ["exact", "in"],
+            "research_status": ["exact", "in"],
+            "needs_review": ["exact"],
         }
 
     def filter_is_archived(self, queryset, name, value):
