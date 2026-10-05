@@ -109,7 +109,26 @@
       "show_auxiliary": "Ďalšie väzby",
       "truncated": "Zobrazených prvých 2000 položiek. Zúžte filtre, aby ste videli zvyšok.",
       "empty_title": "Zatiaľ tu nie sú žiadne prvky výskumu",
-      "empty_description": "Nastavte pri pracovných položkách typ výskumu alebo zmeňte filtre."
+      "empty_description": "Nastavte pri pracovných položkách typ výskumu alebo zmeňte filtre.",
+      "actions": {
+        "add_hypothesis": "Pridať hypotézu",
+        "add_experiment": "Pridať experiment",
+        "add_result": "Pridať výsledok",
+        "refine_hypothesis": "Spresniť hypotézu",
+        "raise_question": "Vzniesť otázku"
+      },
+      "add_node": "Pridať do grafu",
+      "reset_layout": "Obnoviť rozloženie",
+      "merge": "Zlúčiť hypotézy",
+      "merge_title": "Zlúčiť do novej hypotézy",
+      "name": "Názov",
+      "name_placeholder": "Krátky názov",
+      "connect_title": "Prepojiť prvky",
+      "relation": "Väzba",
+      "remove_link": "Odstrániť väzbu",
+      "link_not_allowed": "Tieto prvky nie je možné prepojiť",
+      "create": "Vytvoriť",
+      "link": "Prepojiť"
     }
   }
 }

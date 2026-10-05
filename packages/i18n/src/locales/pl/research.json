@@ -109,7 +109,26 @@
       "show_auxiliary": "Inne powiązania",
       "truncated": "Wyświetlono pierwsze 2000 elementów. Zawęź filtry, aby zobaczyć resztę.",
       "empty_title": "Brak tu jeszcze elementów badania",
-      "empty_description": "Ustaw typ badania w elementach pracy lub zmień filtry."
+      "empty_description": "Ustaw typ badania w elementach pracy lub zmień filtry.",
+      "actions": {
+        "add_hypothesis": "Dodaj hipotezę",
+        "add_experiment": "Dodaj eksperyment",
+        "add_result": "Dodaj wynik",
+        "refine_hypothesis": "Doprecyzuj hipotezę",
+        "raise_question": "Postaw pytanie"
+      },
+      "add_node": "Dodaj do grafu",
+      "reset_layout": "Resetuj układ",
+      "merge": "Scal hipotezy",
+      "merge_title": "Scal w nową hipotezę",
+      "name": "Nazwa",
+      "name_placeholder": "Krótka nazwa",
+      "connect_title": "Powiąż elementy",
+      "relation": "Powiązanie",
+      "remove_link": "Usuń powiązanie",
+      "link_not_allowed": "Tych elementów nie można powiązać",
+      "create": "Utwórz",
+      "link": "Powiąż"
     }
   }
 }

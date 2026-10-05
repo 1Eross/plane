@@ -109,7 +109,26 @@
       "show_auxiliary": "Altre relazioni",
       "truncated": "Sono mostrati i primi 2000 elementi. Restringa i filtri per vedere il resto.",
       "empty_title": "Qui non ci sono ancora elementi di ricerca",
-      "empty_description": "Imposti un tipo di ricerca sugli elementi di lavoro o modifichi i filtri."
+      "empty_description": "Imposti un tipo di ricerca sugli elementi di lavoro o modifichi i filtri.",
+      "actions": {
+        "add_hypothesis": "Aggiungi ipotesi",
+        "add_experiment": "Aggiungi esperimento",
+        "add_result": "Aggiungi risultato",
+        "refine_hypothesis": "Affina ipotesi",
+        "raise_question": "Solleva una domanda"
+      },
+      "add_node": "Aggiungi al grafo",
+      "reset_layout": "Ripristina layout",
+      "merge": "Unisci ipotesi",
+      "merge_title": "Unisci in una nuova ipotesi",
+      "name": "Nome",
+      "name_placeholder": "Nome breve",
+      "connect_title": "Collega elementi",
+      "relation": "Relazione",
+      "remove_link": "Rimuovi collegamento",
+      "link_not_allowed": "Questi elementi non possono essere collegati",
+      "create": "Crea",
+      "link": "Collega"
     }
   }
 }

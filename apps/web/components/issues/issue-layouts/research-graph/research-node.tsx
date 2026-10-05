@@ -8,7 +8,8 @@ import { memo } from "react";
 import { observer } from "mobx-react";
 import { Handle, Position } from "@xyflow/react";
 import type { Node, NodeProps } from "@xyflow/react";
-import { ChevronRightOutline, SubWorkItemsOutline, WarningTriangleOutline } from "@makeplane/propel/icons";
+import { AddOutline, ChevronRightOutline, SubWorkItemsOutline, WarningTriangleOutline } from "@makeplane/propel/icons";
+import { Menu, MenuContent, MenuItem, MenuTrigger } from "@makeplane/propel/components/menu";
 // plane imports
 import { RESEARCH_NODE_TYPE_MAP, RESEARCH_STATUS_MAP } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
@@ -19,6 +20,8 @@ import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // local imports
 import { RESEARCH_NODE_HEIGHT, RESEARCH_NODE_WIDTH } from "./auto-layout";
+import { NODE_ACTIONS } from "./graph-actions";
+import type { TNodeAction } from "./graph-actions";
 
 export type TResearchNodeData = {
   issueId: string;
@@ -29,15 +32,28 @@ export type TResearchNodeData = {
   // sum of weights of valid evidence for / against a hypothesis
   support: number;
   inconsistency: number;
+  canEdit: boolean;
   onToggleCollapse: (issueId: string) => void;
   onOpen: (issueId: string) => void;
+  onAction: (issueId: string, action: TNodeAction) => void;
 };
 
 export type TResearchFlowNode = Node<TResearchNodeData, "research">;
 
 const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: NodeProps<TResearchFlowNode>) {
-  const { issueId, isGhost, collapsed, hasChildren, hiddenCount, support, inconsistency, onToggleCollapse, onOpen } =
-    data;
+  const {
+    issueId,
+    isGhost,
+    collapsed,
+    hasChildren,
+    hiddenCount,
+    support,
+    inconsistency,
+    canEdit,
+    onToggleCollapse,
+    onOpen,
+    onAction,
+  } = data;
   const { t } = useTranslation();
   const {
     issue: { getIssueById },
@@ -64,7 +80,10 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
       // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
       role="button"
       tabIndex={0}
-      onClick={() => onOpen(issueId)}
+      onClick={(e) => {
+        // Shift / Cmd click extends the selection instead
+        if (!e.shiftKey && !e.metaKey) onOpen(issueId);
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -72,7 +91,12 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
         }
       }}
     >
-      <Handle type="target" position={Position.Left} className="!size-1.5 !border-none !bg-transparent" />
+      <Handle
+        type="target"
+        position={Position.Left}
+        isConnectable={canEdit}
+        className={cn("!size-2 !border-none", canEdit ? "!bg-layer-3" : "!bg-transparent")}
+      />
       <div className="flex items-center gap-2 text-11">
         <span className="font-semibold" style={{ color: nodeType.color }}>
           {t(nodeType.i18n_label)}
@@ -80,12 +104,39 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
         <span className="text-tertiary">
           {identifier}-{issue.sequence_id}
         </span>
-        {issue.needs_review && (
-          <WarningTriangleOutline
-            className="ml-auto size-3.5 text-warning-primary"
-            aria-label={t("research.needs_review")}
-          />
-        )}
+        <span className="ml-auto flex items-center gap-1">
+          {issue.needs_review && (
+            <WarningTriangleOutline className="size-3.5 text-warning-primary" aria-label={t("research.needs_review")} />
+          )}
+          {canEdit && !isGhost && (
+            <Menu>
+              <MenuTrigger
+                aria-label={t("research.graph.add_node")}
+                onClick={(e) => e.stopPropagation()}
+                render={
+                  <button
+                    type="button"
+                    className="nodrag flex size-5 items-center justify-center rounded-sm text-tertiary hover:bg-layer-1-hover hover:text-primary"
+                  >
+                    <AddOutline className="size-3.5" />
+                  </button>
+                }
+              />
+              <MenuContent side="bottom" align="end">
+                {NODE_ACTIONS[issue.research_type].map((action) => (
+                  <MenuItem
+                    key={action.key}
+                    label={t(`research.graph.actions.${action.key}`)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onAction(issueId, action);
+                    }}
+                  />
+                ))}
+              </MenuContent>
+            </Menu>
+          )}
+        </span>
       </div>
       <p className="line-clamp-2 text-13 font-medium text-primary">{issue.name}</p>
       <div className="flex items-center gap-2 text-11 text-secondary">
@@ -127,7 +178,12 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
           {collapsed ? `+${hiddenCount}` : <ChevronRightOutline className="size-3 rotate-180" />}
         </button>
       )}
-      <Handle type="source" position={Position.Right} className="!size-1.5 !border-none !bg-transparent" />
+      <Handle
+        type="source"
+        position={Position.Right}
+        isConnectable={canEdit}
+        className={cn("!size-2 !border-none", canEdit ? "!bg-layer-3" : "!bg-transparent")}
+      />
     </div>
   );
 });

@@ -109,7 +109,26 @@
       "show_auxiliary": "其他關係",
       "truncated": "僅顯示前 2000 項，請縮小篩選範圍以查看其餘項目。",
       "empty_title": "這裡還沒有研究項目",
-      "empty_description": "為工作事項設定研究類型或變更篩選條件。"
+      "empty_description": "為工作事項設定研究類型或變更篩選條件。",
+      "actions": {
+        "add_hypothesis": "新增假設",
+        "add_experiment": "新增實驗",
+        "add_result": "新增結果",
+        "refine_hypothesis": "細化假設",
+        "raise_question": "提出問題"
+      },
+      "add_node": "新增至圖譜",
+      "reset_layout": "重設版面配置",
+      "merge": "合併假設",
+      "merge_title": "合併為新假設",
+      "name": "名稱",
+      "name_placeholder": "簡短名稱",
+      "connect_title": "關聯工作事項",
+      "relation": "關係",
+      "remove_link": "移除關聯",
+      "link_not_allowed": "這些工作事項無法關聯",
+      "create": "建立",
+      "link": "關聯"
     }
   }
 }

@@ -109,7 +109,26 @@
       "show_auxiliary": "Alte legături",
       "truncated": "Sunt afișate primele 2000 de elemente. Restrângeți filtrele pentru a vedea restul.",
       "empty_title": "Încă nu există elemente de cercetare aici",
-      "empty_description": "Setați un tip de cercetare pe activități sau modificați filtrele."
+      "empty_description": "Setați un tip de cercetare pe activități sau modificați filtrele.",
+      "actions": {
+        "add_hypothesis": "Adăugați o ipoteză",
+        "add_experiment": "Adăugați un experiment",
+        "add_result": "Adăugați un rezultat",
+        "refine_hypothesis": "Rafinați ipoteza",
+        "raise_question": "Ridicați o întrebare"
+      },
+      "add_node": "Adăugați în graf",
+      "reset_layout": "Resetați vizualizarea",
+      "merge": "Uniți ipotezele",
+      "merge_title": "Uniți într-o ipoteză nouă",
+      "name": "Nume",
+      "name_placeholder": "Nume scurt",
+      "connect_title": "Legați elementele",
+      "relation": "Legătură",
+      "remove_link": "Eliminați legătura",
+      "link_not_allowed": "Aceste elemente nu pot fi legate",
+      "create": "Creați",
+      "link": "Legați"
     }
   }
 }

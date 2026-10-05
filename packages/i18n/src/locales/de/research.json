@@ -109,7 +109,26 @@
       "show_auxiliary": "Weitere Verknüpfungen",
       "truncated": "Die ersten 2000 Elemente werden angezeigt. Filter eingrenzen, um den Rest zu sehen.",
       "empty_title": "Hier gibt es noch keine Forschungselemente",
-      "empty_description": "Forschungstyp an Arbeitselementen festlegen oder Filter ändern."
+      "empty_description": "Forschungstyp an Arbeitselementen festlegen oder Filter ändern.",
+      "actions": {
+        "add_hypothesis": "Hypothese hinzufügen",
+        "add_experiment": "Experiment hinzufügen",
+        "add_result": "Ergebnis hinzufügen",
+        "refine_hypothesis": "Hypothese verfeinern",
+        "raise_question": "Frage aufwerfen"
+      },
+      "add_node": "Zum Graphen hinzufügen",
+      "reset_layout": "Layout zurücksetzen",
+      "merge": "Hypothesen zusammenführen",
+      "merge_title": "Zu einer neuen Hypothese zusammenführen",
+      "name": "Name",
+      "name_placeholder": "Kurzer Name",
+      "connect_title": "Elemente verknüpfen",
+      "relation": "Beziehung",
+      "remove_link": "Verknüpfung entfernen",
+      "link_not_allowed": "Diese Elemente können nicht verknüpft werden",
+      "create": "Erstellen",
+      "link": "Verknüpfen"
     }
   }
 }

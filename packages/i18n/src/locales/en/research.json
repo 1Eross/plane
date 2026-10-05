@@ -109,7 +109,26 @@
       "show_auxiliary": "Other relations",
       "truncated": "Showing the first 2000 items. Narrow the filters to see the rest.",
       "empty_title": "No research items here yet",
-      "empty_description": "Set a research type on work items or change the filters."
+      "empty_description": "Set a research type on work items or change the filters.",
+      "actions": {
+        "add_hypothesis": "Add hypothesis",
+        "add_experiment": "Add experiment",
+        "add_result": "Add result",
+        "refine_hypothesis": "Refine hypothesis",
+        "raise_question": "Raise question"
+      },
+      "add_node": "Add to the graph",
+      "reset_layout": "Reset layout",
+      "merge": "Merge hypotheses",
+      "merge_title": "Merge into a new hypothesis",
+      "name": "Name",
+      "name_placeholder": "Short name",
+      "connect_title": "Link work items",
+      "relation": "Relation",
+      "remove_link": "Remove link",
+      "link_not_allowed": "These work items cannot be linked",
+      "create": "Create",
+      "link": "Link"
     }
   }
 }

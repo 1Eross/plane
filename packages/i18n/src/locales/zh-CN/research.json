@@ -109,7 +109,26 @@
       "show_auxiliary": "其他关系",
       "truncated": "仅显示前 2000 项，请缩小筛选范围以查看其余项。",
       "empty_title": "这里还没有研究项",
-      "empty_description": "为工作项设置研究类型或更改筛选条件。"
+      "empty_description": "为工作项设置研究类型或更改筛选条件。",
+      "actions": {
+        "add_hypothesis": "添加假设",
+        "add_experiment": "添加实验",
+        "add_result": "添加结果",
+        "refine_hypothesis": "细化假设",
+        "raise_question": "提出问题"
+      },
+      "add_node": "添加到图谱",
+      "reset_layout": "重置布局",
+      "merge": "合并假设",
+      "merge_title": "合并为新假设",
+      "name": "名称",
+      "name_placeholder": "简短名称",
+      "connect_title": "关联工作项",
+      "relation": "关系",
+      "remove_link": "移除关联",
+      "link_not_allowed": "这些工作项无法关联",
+      "create": "创建",
+      "link": "关联"
     }
   }
 }

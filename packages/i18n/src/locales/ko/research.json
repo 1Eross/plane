@@ -109,7 +109,26 @@
       "show_auxiliary": "기타 관계",
       "truncated": "처음 2000개 항목을 표시합니다. 나머지를 보려면 필터를 좁히십시오.",
       "empty_title": "아직 연구 항목이 없습니다",
-      "empty_description": "작업 항목에 연구 유형을 설정하거나 필터를 변경하십시오."
+      "empty_description": "작업 항목에 연구 유형을 설정하거나 필터를 변경하십시오.",
+      "actions": {
+        "add_hypothesis": "가설 추가",
+        "add_experiment": "실험 추가",
+        "add_result": "결과 추가",
+        "refine_hypothesis": "가설 구체화",
+        "raise_question": "질문 제기"
+      },
+      "add_node": "그래프에 추가",
+      "reset_layout": "레이아웃 초기화",
+      "merge": "가설 병합",
+      "merge_title": "새 가설로 병합",
+      "name": "이름",
+      "name_placeholder": "짧은 이름",
+      "connect_title": "항목 연결",
+      "relation": "관계",
+      "remove_link": "링크 제거",
+      "link_not_allowed": "이 항목들은 연결할 수 없습니다",
+      "create": "생성",
+      "link": "연결"
     }
   }
 }

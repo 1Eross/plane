@@ -109,7 +109,26 @@
       "show_auxiliary": "Diğer ilişkiler",
       "truncated": "İlk 2000 öğe gösteriliyor. Kalanını görmek için filtreleri daraltın.",
       "empty_title": "Burada henüz araştırma öğesi yok",
-      "empty_description": "İş öğelerine bir araştırma türü atayın veya filtreleri değiştirin."
+      "empty_description": "İş öğelerine bir araştırma türü atayın veya filtreleri değiştirin.",
+      "actions": {
+        "add_hypothesis": "Hipotez ekle",
+        "add_experiment": "Deney ekle",
+        "add_result": "Sonuç ekle",
+        "refine_hypothesis": "Hipotezi geliştir",
+        "raise_question": "Soru ortaya at"
+      },
+      "add_node": "Grafiğe ekle",
+      "reset_layout": "Düzeni sıfırla",
+      "merge": "Hipotezleri birleştir",
+      "merge_title": "Yeni bir hipotezde birleştir",
+      "name": "Ad",
+      "name_placeholder": "Kısa ad",
+      "connect_title": "Öğeleri bağla",
+      "relation": "İlişki",
+      "remove_link": "Bağlantıyı kaldır",
+      "link_not_allowed": "Bu öğeler bağlanamaz",
+      "create": "Oluştur",
+      "link": "Bağla"
     }
   }
 }

@@ -109,7 +109,26 @@
       "show_auxiliary": "Andere relaties",
       "truncated": "De eerste 2000 items worden getoond. Verfijn de filters om de rest te zien.",
       "empty_title": "Hier zijn nog geen onderzoeksitems",
-      "empty_description": "Stel een onderzoekstype in bij werkitems of wijzig de filters."
+      "empty_description": "Stel een onderzoekstype in bij werkitems of wijzig de filters.",
+      "actions": {
+        "add_hypothesis": "Hypothese toevoegen",
+        "add_experiment": "Experiment toevoegen",
+        "add_result": "Resultaat toevoegen",
+        "refine_hypothesis": "Hypothese verfijnen",
+        "raise_question": "Vraag opwerpen"
+      },
+      "add_node": "Toevoegen aan graaf",
+      "reset_layout": "Weergave herstellen",
+      "merge": "Hypothesen samenvoegen",
+      "merge_title": "Samenvoegen tot een nieuwe hypothese",
+      "name": "Naam",
+      "name_placeholder": "Korte naam",
+      "connect_title": "Items koppelen",
+      "relation": "Relatie",
+      "remove_link": "Koppeling verwijderen",
+      "link_not_allowed": "Deze items kunnen niet worden gekoppeld",
+      "create": "Aanmaken",
+      "link": "Koppelen"
     }
   }
 }

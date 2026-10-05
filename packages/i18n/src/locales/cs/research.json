@@ -109,7 +109,26 @@
       "show_auxiliary": "Další vazby",
       "truncated": "Zobrazeno prvních 2000 položek. Zužte filtry, abyste viděli zbytek.",
       "empty_title": "Zatím tu nejsou žádné prvky výzkumu",
-      "empty_description": "Nastavte u pracovních položek typ výzkumu nebo změňte filtry."
+      "empty_description": "Nastavte u pracovních položek typ výzkumu nebo změňte filtry.",
+      "actions": {
+        "add_hypothesis": "Přidat hypotézu",
+        "add_experiment": "Přidat experiment",
+        "add_result": "Přidat výsledek",
+        "refine_hypothesis": "Upřesnit hypotézu",
+        "raise_question": "Vznést otázku"
+      },
+      "add_node": "Přidat do grafu",
+      "reset_layout": "Obnovit rozložení",
+      "merge": "Sloučit hypotézy",
+      "merge_title": "Sloučit do nové hypotézy",
+      "name": "Název",
+      "name_placeholder": "Krátký název",
+      "connect_title": "Propojit prvky",
+      "relation": "Vazba",
+      "remove_link": "Odebrat vazbu",
+      "link_not_allowed": "Tyto prvky nelze propojit",
+      "create": "Vytvořit",
+      "link": "Propojit"
     }
   }
 }

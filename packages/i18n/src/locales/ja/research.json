@@ -109,7 +109,26 @@
       "show_auxiliary": "その他の関係",
       "truncated": "最初の2000件を表示しています。残りを表示するにはフィルターを絞り込んでください。",
       "empty_title": "ここにはまだリサーチ項目がありません",
-      "empty_description": "作業項目にリサーチタイプを設定するか、フィルターを変更してください。"
+      "empty_description": "作業項目にリサーチタイプを設定するか、フィルターを変更してください。",
+      "actions": {
+        "add_hypothesis": "仮説を追加",
+        "add_experiment": "実験を追加",
+        "add_result": "結果を追加",
+        "refine_hypothesis": "仮説を精緻化",
+        "raise_question": "問いを提起"
+      },
+      "add_node": "グラフに追加",
+      "reset_layout": "レイアウトをリセット",
+      "merge": "仮説を統合",
+      "merge_title": "新しい仮説に統合",
+      "name": "名前",
+      "name_placeholder": "短い名前",
+      "connect_title": "項目をリンク",
+      "relation": "関係",
+      "remove_link": "リンクを削除",
+      "link_not_allowed": "これらの項目はリンクできません",
+      "create": "作成",
+      "link": "リンク"
     }
   }
 }

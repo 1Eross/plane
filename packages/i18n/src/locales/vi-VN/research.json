@@ -109,7 +109,26 @@
       "show_auxiliary": "Liên kết khác",
       "truncated": "Đang hiển thị 2000 mục đầu tiên. Thu hẹp bộ lọc để xem phần còn lại.",
       "empty_title": "Chưa có mục nghiên cứu nào ở đây",
-      "empty_description": "Đặt loại nghiên cứu cho mục công việc hoặc thay đổi bộ lọc."
+      "empty_description": "Đặt loại nghiên cứu cho mục công việc hoặc thay đổi bộ lọc.",
+      "actions": {
+        "add_hypothesis": "Thêm giả thuyết",
+        "add_experiment": "Thêm thí nghiệm",
+        "add_result": "Thêm kết quả",
+        "refine_hypothesis": "Tinh chỉnh giả thuyết",
+        "raise_question": "Đặt câu hỏi"
+      },
+      "add_node": "Thêm vào đồ thị",
+      "reset_layout": "Đặt lại bố cục",
+      "merge": "Hợp nhất giả thuyết",
+      "merge_title": "Hợp nhất thành giả thuyết mới",
+      "name": "Tên",
+      "name_placeholder": "Tên ngắn",
+      "connect_title": "Liên kết các mục",
+      "relation": "Quan hệ",
+      "remove_link": "Xóa liên kết",
+      "link_not_allowed": "Không thể liên kết các mục này",
+      "create": "Tạo",
+      "link": "Liên kết"
     }
   }
 }

@@ -109,7 +109,26 @@
       "show_auxiliary": "Relasi lain",
       "truncated": "Menampilkan 2000 item pertama. Persempit filter untuk melihat sisanya.",
       "empty_title": "Belum ada item riset di sini",
-      "empty_description": "Atur jenis riset pada Item Kerja atau ubah filter."
+      "empty_description": "Atur jenis riset pada Item Kerja atau ubah filter.",
+      "actions": {
+        "add_hypothesis": "Tambah hipotesis",
+        "add_experiment": "Tambah eksperimen",
+        "add_result": "Tambah hasil",
+        "refine_hypothesis": "Perhalus hipotesis",
+        "raise_question": "Ajukan pertanyaan"
+      },
+      "add_node": "Tambahkan ke graf",
+      "reset_layout": "Atur ulang tata letak",
+      "merge": "Gabungkan hipotesis",
+      "merge_title": "Gabungkan menjadi hipotesis baru",
+      "name": "Nama",
+      "name_placeholder": "Nama singkat",
+      "connect_title": "Tautkan item",
+      "relation": "Relasi",
+      "remove_link": "Hapus tautan",
+      "link_not_allowed": "Item ini tidak dapat ditautkan",
+      "create": "Buat",
+      "link": "Tautkan"
     }
   }
 }
