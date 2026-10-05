@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Research graph",
+    "needs_review": "Needs review",
+    "node_types": {
+      "question": "Question",
+      "hypothesis": "Hypothesis",
+      "experiment": "Experiment",
+      "evidence": "Evidence"
+    },
+    "statuses": {
+      "open": "Open",
+      "answered": "Answered",
+      "closed": "Closed",
+      "proposed": "Proposed",
+      "testing": "Testing",
+      "confirmed": "Confirmed",
+      "rejected": "Rejected",
+      "inconclusive": "Inconclusive",
+      "superseded": "Superseded",
+      "valid": "Valid",
+      "invalidated": "Invalidated"
+    },
+    "relations": {
+      "addresses": "Addresses",
+      "addressed_by": "Addressed by",
+      "tests": "Tests",
+      "tested_by": "Tested by",
+      "produces": "Produces",
+      "produced_by": "Produced by",
+      "supports": "Supports",
+      "supported_by": "Supported by",
+      "opposes": "Opposes",
+      "opposed_by": "Opposed by",
+      "informs": "Informs",
+      "informed_by": "Informed by",
+      "raises": "Raises question",
+      "raised_by": "Raised by",
+      "derived_from": "Derived from",
+      "derives": "Derives"
+    },
+    "weights": {
+      "weak": "Weak",
+      "moderate": "Moderate",
+      "strong": "Strong"
+    },
+    "settings": {
+      "short_title": "Research graph",
+      "title": "Research graph",
+      "description": "Map research questions, hypotheses, experiments and evidence, and check every verdict against the evidence.",
+      "toggle_title": "Enable research graph",
+      "toggle_description": "Show the research graph layout and research fields on work items in this project."
+    }
+  }
+}

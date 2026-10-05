@@ -11,6 +11,7 @@ import type { TIssueAttachment } from "./issue_attachment";
 import type { TIssueLink } from "./issue_link";
 import type { TIssueReaction, IIssuePublicReaction, IPublicVote } from "./issue_reaction";
 import type { TIssueRelationTypes } from "./issue_relation";
+import type { TResearchNodeType, TResearchStatus } from "../research";
 
 export enum EIssueLayoutTypes {
   LIST = "list",
@@ -77,6 +78,11 @@ export type TBaseIssue = {
   is_draft: boolean;
   is_epic?: boolean;
   is_intake?: boolean;
+
+  // research graph; null research_type means a regular work item
+  research_type?: TResearchNodeType | null;
+  research_status?: TResearchStatus | null;
+  needs_review?: boolean;
 };
 
 type IssueRelation = {

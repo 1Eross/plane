@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Graf de cercetare",
+    "needs_review": "Necesită reevaluare",
+    "node_types": {
+      "question": "Întrebare",
+      "hypothesis": "Ipoteză",
+      "experiment": "Experiment",
+      "evidence": "Dovadă"
+    },
+    "statuses": {
+      "open": "Deschisă",
+      "answered": "Răspunsă",
+      "closed": "Închisă",
+      "proposed": "Propusă",
+      "testing": "În testare",
+      "confirmed": "Confirmată",
+      "rejected": "Respinsă",
+      "inconclusive": "Neconcludentă",
+      "superseded": "Înlocuită",
+      "valid": "Validă",
+      "invalidated": "Invalidată"
+    },
+    "relations": {
+      "addresses": "Răspunde la",
+      "addressed_by": "Primește răspuns de la",
+      "tests": "Testează",
+      "tested_by": "Testată de",
+      "produces": "Produce",
+      "produced_by": "Produsă de",
+      "supports": "Susține",
+      "supported_by": "Susținută de",
+      "opposes": "Contrazice",
+      "opposed_by": "Contrazisă de",
+      "informs": "Informează",
+      "informed_by": "Informată de",
+      "raises": "Ridică o întrebare",
+      "raised_by": "Ridicată de",
+      "derived_from": "Derivată din",
+      "derives": "Generează"
+    },
+    "weights": {
+      "weak": "Slabă",
+      "moderate": "Moderată",
+      "strong": "Puternică"
+    },
+    "settings": {
+      "short_title": "Graf de cercetare",
+      "title": "Graf de cercetare",
+      "description": "Conectați întrebările de cercetare, ipotezele, experimentele și dovezile și verificați fiecare verdict pe baza dovezilor.",
+      "toggle_title": "Activați graful de cercetare",
+      "toggle_description": "Afișează vizualizarea graf de cercetare și câmpurile de cercetare pe activitățile din acest proiect."
+    }
+  }
+}

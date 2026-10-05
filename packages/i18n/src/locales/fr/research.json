@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Graphe de recherche",
+    "needs_review": "À réexaminer",
+    "node_types": {
+      "question": "Question",
+      "hypothesis": "Hypothèse",
+      "experiment": "Expérience",
+      "evidence": "Preuve"
+    },
+    "statuses": {
+      "open": "Ouverte",
+      "answered": "Résolue",
+      "closed": "Fermée",
+      "proposed": "Proposée",
+      "testing": "En test",
+      "confirmed": "Confirmée",
+      "rejected": "Rejetée",
+      "inconclusive": "Non concluante",
+      "superseded": "Remplacée",
+      "valid": "Valide",
+      "invalidated": "Invalidée"
+    },
+    "relations": {
+      "addresses": "Répond à",
+      "addressed_by": "Reçoit une réponse de",
+      "tests": "Teste",
+      "tested_by": "Testée par",
+      "produces": "Produit",
+      "produced_by": "Produite par",
+      "supports": "Soutient",
+      "supported_by": "Soutenue par",
+      "opposes": "Contredit",
+      "opposed_by": "Contredite par",
+      "informs": "Informe",
+      "informed_by": "Informée par",
+      "raises": "Soulève une question",
+      "raised_by": "Soulevée par",
+      "derived_from": "Dérivée de",
+      "derives": "Engendre"
+    },
+    "weights": {
+      "weak": "Faible",
+      "moderate": "Modéré",
+      "strong": "Fort"
+    },
+    "settings": {
+      "short_title": "Graphe de recherche",
+      "title": "Graphe de recherche",
+      "description": "Reliez questions de recherche, hypothèses, expériences et preuves, et vérifiez chaque verdict à l’aune des preuves.",
+      "toggle_title": "Activer le graphe de recherche",
+      "toggle_description": "Afficher la disposition en graphe de recherche et les champs de recherche sur les éléments de travail de ce projet."
+    }
+  }
+}

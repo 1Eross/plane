@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Araştırma grafiği",
+    "needs_review": "Yeniden değerlendirilmeli",
+    "node_types": {
+      "question": "Soru",
+      "hypothesis": "Hipotez",
+      "experiment": "Deney",
+      "evidence": "Kanıt"
+    },
+    "statuses": {
+      "open": "Açık",
+      "answered": "Yanıtlandı",
+      "closed": "Kapalı",
+      "proposed": "Önerildi",
+      "testing": "Test ediliyor",
+      "confirmed": "Doğrulandı",
+      "rejected": "Reddedildi",
+      "inconclusive": "Sonuçsuz",
+      "superseded": "Yerini aldı",
+      "valid": "Geçerli",
+      "invalidated": "Geçersiz kılındı"
+    },
+    "relations": {
+      "addresses": "Yanıtlar",
+      "addressed_by": "Yanıtlayan",
+      "tests": "Test eder",
+      "tested_by": "Test eden",
+      "produces": "Üretir",
+      "produced_by": "Üreten",
+      "supports": "Destekler",
+      "supported_by": "Destekleyen",
+      "opposes": "Çürütür",
+      "opposed_by": "Çürüten",
+      "informs": "Bilgi sağlar",
+      "informed_by": "Bilgi sağlayan",
+      "raises": "Soru doğurur",
+      "raised_by": "Doğuran",
+      "derived_from": "Türetildiği",
+      "derives": "Türetir"
+    },
+    "weights": {
+      "weak": "Zayıf",
+      "moderate": "Orta",
+      "strong": "Güçlü"
+    },
+    "settings": {
+      "short_title": "Araştırma grafiği",
+      "title": "Araştırma grafiği",
+      "description": "Araştırma sorularını, hipotezleri, deneyleri ve kanıtları ilişkilendirin ve her kararı kanıtlara göre doğrulayın.",
+      "toggle_title": "Araştırma grafiğini etkinleştir",
+      "toggle_description": "Bu projedeki iş öğelerinde araştırma grafiği düzenini ve araştırma alanlarını gösterin."
+    }
+  }
+}

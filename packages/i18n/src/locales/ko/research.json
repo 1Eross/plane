@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "연구 그래프",
+    "needs_review": "재검토 필요",
+    "node_types": {
+      "question": "질문",
+      "hypothesis": "가설",
+      "experiment": "실험",
+      "evidence": "증거"
+    },
+    "statuses": {
+      "open": "열림",
+      "answered": "답변됨",
+      "closed": "닫힘",
+      "proposed": "제안됨",
+      "testing": "검증 중",
+      "confirmed": "확인됨",
+      "rejected": "기각됨",
+      "inconclusive": "결론 없음",
+      "superseded": "대체됨",
+      "valid": "유효",
+      "invalidated": "무효화됨"
+    },
+    "relations": {
+      "addresses": "답변 대상",
+      "addressed_by": "답변 제공",
+      "tests": "검증 대상",
+      "tested_by": "검증 실험",
+      "produces": "결과 생성",
+      "produced_by": "생성한 실험",
+      "supports": "지지",
+      "supported_by": "지지하는 증거",
+      "opposes": "반박",
+      "opposed_by": "반박하는 증거",
+      "informs": "정보 제공",
+      "informed_by": "정보 출처",
+      "raises": "질문 제기",
+      "raised_by": "제기한 항목",
+      "derived_from": "파생 원본",
+      "derives": "파생 가설"
+    },
+    "weights": {
+      "weak": "약함",
+      "moderate": "보통",
+      "strong": "강함"
+    },
+    "settings": {
+      "short_title": "연구 그래프",
+      "title": "연구 그래프",
+      "description": "연구 질문, 가설, 실험, 증거를 연결하고 모든 판정을 증거에 비추어 확인합니다.",
+      "toggle_title": "연구 그래프 사용",
+      "toggle_description": "이 프로젝트의 작업 항목에 연구 그래프 레이아웃과 연구 필드를 표시합니다."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "研究图谱",
+    "needs_review": "需重新评估",
+    "node_types": {
+      "question": "问题",
+      "hypothesis": "假设",
+      "experiment": "实验",
+      "evidence": "证据"
+    },
+    "statuses": {
+      "open": "未解决",
+      "answered": "已解答",
+      "closed": "已关闭",
+      "proposed": "已提出",
+      "testing": "验证中",
+      "confirmed": "已证实",
+      "rejected": "已否定",
+      "inconclusive": "无定论",
+      "superseded": "已取代",
+      "valid": "有效",
+      "invalidated": "已失效"
+    },
+    "relations": {
+      "addresses": "回答",
+      "addressed_by": "被回答",
+      "tests": "验证",
+      "tested_by": "被验证",
+      "produces": "产出",
+      "produced_by": "产出自",
+      "supports": "支持",
+      "supported_by": "被支持",
+      "opposes": "反驳",
+      "opposed_by": "被反驳",
+      "informs": "提供信息",
+      "informed_by": "信息来源",
+      "raises": "提出问题",
+      "raised_by": "提出自",
+      "derived_from": "派生自",
+      "derives": "派生出"
+    },
+    "weights": {
+      "weak": "弱",
+      "moderate": "中",
+      "strong": "强"
+    },
+    "settings": {
+      "short_title": "研究图谱",
+      "title": "研究图谱",
+      "description": "关联研究问题、假设、实验和证据，并依据证据核查每一项结论。",
+      "toggle_title": "启用研究图谱",
+      "toggle_description": "在此项目的工作项上显示研究图谱布局和研究字段。"
+    }
+  }
+}

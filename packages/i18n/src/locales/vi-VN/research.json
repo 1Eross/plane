@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Đồ thị nghiên cứu",
+    "needs_review": "Cần xem xét lại",
+    "node_types": {
+      "question": "Câu hỏi",
+      "hypothesis": "Giả thuyết",
+      "experiment": "Thí nghiệm",
+      "evidence": "Bằng chứng"
+    },
+    "statuses": {
+      "open": "Đang mở",
+      "answered": "Đã trả lời",
+      "closed": "Đã đóng",
+      "proposed": "Đề xuất",
+      "testing": "Đang kiểm chứng",
+      "confirmed": "Đã xác nhận",
+      "rejected": "Bị bác bỏ",
+      "inconclusive": "Chưa kết luận",
+      "superseded": "Đã thay thế",
+      "valid": "Hợp lệ",
+      "invalidated": "Mất hiệu lực"
+    },
+    "relations": {
+      "addresses": "Trả lời cho",
+      "addressed_by": "Được trả lời bởi",
+      "tests": "Kiểm chứng",
+      "tested_by": "Được kiểm chứng bởi",
+      "produces": "Tạo ra",
+      "produced_by": "Được tạo ra bởi",
+      "supports": "Ủng hộ",
+      "supported_by": "Được ủng hộ bởi",
+      "opposes": "Phản bác",
+      "opposed_by": "Bị phản bác bởi",
+      "informs": "Cung cấp dữ liệu cho",
+      "informed_by": "Nhận dữ liệu từ",
+      "raises": "Đặt ra câu hỏi",
+      "raised_by": "Được đặt ra bởi",
+      "derived_from": "Bắt nguồn từ",
+      "derives": "Dẫn xuất"
+    },
+    "weights": {
+      "weak": "Yếu",
+      "moderate": "Trung bình",
+      "strong": "Mạnh"
+    },
+    "settings": {
+      "short_title": "Đồ thị nghiên cứu",
+      "title": "Đồ thị nghiên cứu",
+      "description": "Liên kết câu hỏi nghiên cứu, giả thuyết, thí nghiệm và bằng chứng, đồng thời đối chiếu mọi kết luận với bằng chứng.",
+      "toggle_title": "Bật đồ thị nghiên cứu",
+      "toggle_description": "Hiển thị bố cục đồ thị nghiên cứu và các trường nghiên cứu trên mục công việc trong dự án này."
+    }
+  }
+}

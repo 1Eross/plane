@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Grafo della ricerca",
+    "needs_review": "Da riesaminare",
+    "node_types": {
+      "question": "Domanda",
+      "hypothesis": "Ipotesi",
+      "experiment": "Esperimento",
+      "evidence": "Evidenza"
+    },
+    "statuses": {
+      "open": "Aperta",
+      "answered": "Risposta",
+      "closed": "Chiusa",
+      "proposed": "Proposta",
+      "testing": "In verifica",
+      "confirmed": "Confermata",
+      "rejected": "Respinta",
+      "inconclusive": "Non conclusiva",
+      "superseded": "Sostituita",
+      "valid": "Valida",
+      "invalidated": "Invalidata"
+    },
+    "relations": {
+      "addresses": "Risponde a",
+      "addressed_by": "Ha risposta da",
+      "tests": "Verifica",
+      "tested_by": "Verificata da",
+      "produces": "Produce",
+      "produced_by": "Prodotta da",
+      "supports": "Supporta",
+      "supported_by": "Supportata da",
+      "opposes": "Contraddice",
+      "opposed_by": "Contraddetta da",
+      "informs": "Informa",
+      "informed_by": "Informata da",
+      "raises": "Solleva una domanda",
+      "raised_by": "Sollevata da",
+      "derived_from": "Derivata da",
+      "derives": "Origina"
+    },
+    "weights": {
+      "weak": "Debole",
+      "moderate": "Moderata",
+      "strong": "Forte"
+    },
+    "settings": {
+      "short_title": "Grafo della ricerca",
+      "title": "Grafo della ricerca",
+      "description": "Colleghi domande di ricerca, ipotesi, esperimenti ed evidenze e verifichi ogni verdetto alla luce delle evidenze.",
+      "toggle_title": "Attiva il grafo della ricerca",
+      "toggle_description": "Mostra il layout a grafo della ricerca e i campi di ricerca negli elementi di lavoro di questo progetto."
+    }
+  }
+}

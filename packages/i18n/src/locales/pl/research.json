@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Graf badań",
+    "needs_review": "Wymaga ponownej oceny",
+    "node_types": {
+      "question": "Pytanie",
+      "hypothesis": "Hipoteza",
+      "experiment": "Eksperyment",
+      "evidence": "Dowód"
+    },
+    "statuses": {
+      "open": "Otwarte",
+      "answered": "Rozstrzygnięte",
+      "closed": "Zamknięte",
+      "proposed": "Zaproponowana",
+      "testing": "W weryfikacji",
+      "confirmed": "Potwierdzona",
+      "rejected": "Odrzucona",
+      "inconclusive": "Nierozstrzygnięta",
+      "superseded": "Zastąpiona",
+      "valid": "Ważny",
+      "invalidated": "Unieważniony"
+    },
+    "relations": {
+      "addresses": "Odpowiada na",
+      "addressed_by": "Otrzymuje odpowiedź od",
+      "tests": "Weryfikuje",
+      "tested_by": "Weryfikowana przez",
+      "produces": "Daje wynik",
+      "produced_by": "Uzyskany w",
+      "supports": "Potwierdza",
+      "supported_by": "Potwierdzana przez",
+      "opposes": "Podważa",
+      "opposed_by": "Podważana przez",
+      "informs": "Dostarcza danych dla",
+      "informed_by": "Otrzymuje dane od",
+      "raises": "Stawia pytanie",
+      "raised_by": "Postawione przez",
+      "derived_from": "Wyprowadzona z",
+      "derives": "Daje początek"
+    },
+    "weights": {
+      "weak": "Słaby",
+      "moderate": "Umiarkowany",
+      "strong": "Silny"
+    },
+    "settings": {
+      "short_title": "Graf badań",
+      "title": "Graf badań",
+      "description": "Łącz pytania badawcze, hipotezy, eksperymenty i dowody oraz sprawdzaj każdy werdykt na podstawie dowodów.",
+      "toggle_title": "Włącz graf badań",
+      "toggle_description": "Pokazuj układ grafu badań i pola badawcze w elementach pracy tego projektu."
+    }
+  }
+}

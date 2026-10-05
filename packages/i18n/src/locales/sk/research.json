@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Graf výskumu",
+    "needs_review": "Vyžaduje prehodnotenie",
+    "node_types": {
+      "question": "Otázka",
+      "hypothesis": "Hypotéza",
+      "experiment": "Experiment",
+      "evidence": "Dôkaz"
+    },
+    "statuses": {
+      "open": "Otvorená",
+      "answered": "Zodpovedaná",
+      "closed": "Uzavretá",
+      "proposed": "Navrhnutá",
+      "testing": "Overuje sa",
+      "confirmed": "Potvrdená",
+      "rejected": "Zamietnutá",
+      "inconclusive": "Nepreukazná",
+      "superseded": "Nahradená",
+      "valid": "Platný",
+      "invalidated": "Zneplatnený"
+    },
+    "relations": {
+      "addresses": "Odpovedá na",
+      "addressed_by": "Odpoveď od",
+      "tests": "Overuje",
+      "tested_by": "Overované v",
+      "produces": "Prináša výsledok",
+      "produced_by": "Získaný v",
+      "supports": "Podporuje",
+      "supported_by": "Podporované",
+      "opposes": "Vyvracia",
+      "opposed_by": "Vyvracané",
+      "informs": "Poskytuje dáta pre",
+      "informed_by": "Získava dáta od",
+      "raises": "Vyvoláva otázku",
+      "raised_by": "Vyvolané v",
+      "derived_from": "Odvodená z",
+      "derives": "Dáva vznik"
+    },
+    "weights": {
+      "weak": "Slabá",
+      "moderate": "Stredná",
+      "strong": "Silná"
+    },
+    "settings": {
+      "short_title": "Graf výskumu",
+      "title": "Graf výskumu",
+      "description": "Prepájajte výskumné otázky, hypotézy, experimenty a dôkazy a overujte každý verdikt podľa dôkazov.",
+      "toggle_title": "Zapnúť graf výskumu",
+      "toggle_description": "Zobrazovať rozloženie grafu výskumu a výskumné polia pri pracovných položkách v tomto projekte."
+    }
+  }
+}

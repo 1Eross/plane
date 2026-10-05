@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "リサーチグラフ",
+    "needs_review": "要再確認",
+    "node_types": {
+      "question": "問い",
+      "hypothesis": "仮説",
+      "experiment": "実験",
+      "evidence": "エビデンス"
+    },
+    "statuses": {
+      "open": "未解決",
+      "answered": "回答済み",
+      "closed": "クローズ",
+      "proposed": "提案中",
+      "testing": "検証中",
+      "confirmed": "支持",
+      "rejected": "棄却",
+      "inconclusive": "結論なし",
+      "superseded": "置き換え済み",
+      "valid": "有効",
+      "invalidated": "無効"
+    },
+    "relations": {
+      "addresses": "回答対象",
+      "addressed_by": "回答元",
+      "tests": "検証対象",
+      "tested_by": "検証元",
+      "produces": "成果",
+      "produced_by": "成果元",
+      "supports": "支持する",
+      "supported_by": "支持元",
+      "opposes": "反証する",
+      "opposed_by": "反証元",
+      "informs": "情報提供先",
+      "informed_by": "情報提供元",
+      "raises": "問いを提起",
+      "raised_by": "提起元",
+      "derived_from": "派生元",
+      "derives": "派生先"
+    },
+    "weights": {
+      "weak": "弱",
+      "moderate": "中",
+      "strong": "強"
+    },
+    "settings": {
+      "short_title": "リサーチグラフ",
+      "title": "リサーチグラフ",
+      "description": "研究上の問い、仮説、実験、エビデンスを関連付け、すべての判定をエビデンスに照らして確認します。",
+      "toggle_title": "リサーチグラフを有効にする",
+      "toggle_description": "このプロジェクトの作業項目にリサーチグラフのレイアウトと研究用フィールドを表示します。"
+    }
+  }
+}

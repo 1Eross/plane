@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Graf riset",
+    "needs_review": "Perlu ditinjau ulang",
+    "node_types": {
+      "question": "Pertanyaan",
+      "hypothesis": "Hipotesis",
+      "experiment": "Eksperimen",
+      "evidence": "Bukti"
+    },
+    "statuses": {
+      "open": "Terbuka",
+      "answered": "Terjawab",
+      "closed": "Ditutup",
+      "proposed": "Diusulkan",
+      "testing": "Sedang diuji",
+      "confirmed": "Terkonfirmasi",
+      "rejected": "Ditolak",
+      "inconclusive": "Tidak meyakinkan",
+      "superseded": "Digantikan",
+      "valid": "Valid",
+      "invalidated": "Tidak berlaku"
+    },
+    "relations": {
+      "addresses": "Menjawab",
+      "addressed_by": "Dijawab oleh",
+      "tests": "Menguji",
+      "tested_by": "Diuji oleh",
+      "produces": "Menghasilkan",
+      "produced_by": "Dihasilkan oleh",
+      "supports": "Mendukung",
+      "supported_by": "Didukung oleh",
+      "opposes": "Membantah",
+      "opposed_by": "Dibantah oleh",
+      "informs": "Memberi informasi untuk",
+      "informed_by": "Mendapat informasi dari",
+      "raises": "Memunculkan pertanyaan",
+      "raised_by": "Dimunculkan oleh",
+      "derived_from": "Diturunkan dari",
+      "derives": "Menurunkan"
+    },
+    "weights": {
+      "weak": "Lemah",
+      "moderate": "Sedang",
+      "strong": "Kuat"
+    },
+    "settings": {
+      "short_title": "Graf riset",
+      "title": "Graf riset",
+      "description": "Hubungkan pertanyaan riset, hipotesis, eksperimen, dan bukti, lalu periksa setiap keputusan berdasarkan bukti.",
+      "toggle_title": "Aktifkan graf riset",
+      "toggle_description": "Tampilkan tata letak graf riset dan kolom riset pada Item Kerja di proyek ini."
+    }
+  }
+}

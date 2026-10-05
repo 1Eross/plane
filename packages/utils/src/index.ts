@@ -28,6 +28,7 @@ export * from "./page";
 export * from "./permission";
 export * from "./project-views";
 export * from "./project";
+export * from "./research-graph";
 export * from "./rich-filters";
 export * from "./router";
 export * from "./string";

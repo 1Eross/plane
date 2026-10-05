@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Forschungsgraph",
+    "needs_review": "Überprüfung erforderlich",
+    "node_types": {
+      "question": "Frage",
+      "hypothesis": "Hypothese",
+      "experiment": "Experiment",
+      "evidence": "Evidenz"
+    },
+    "statuses": {
+      "open": "Offen",
+      "answered": "Beantwortet",
+      "closed": "Geschlossen",
+      "proposed": "Vorgeschlagen",
+      "testing": "In Prüfung",
+      "confirmed": "Bestätigt",
+      "rejected": "Verworfen",
+      "inconclusive": "Ergebnislos",
+      "superseded": "Ersetzt",
+      "valid": "Gültig",
+      "invalidated": "Ungültig"
+    },
+    "relations": {
+      "addresses": "Beantwortet",
+      "addressed_by": "Beantwortet durch",
+      "tests": "Prüft",
+      "tested_by": "Geprüft durch",
+      "produces": "Liefert",
+      "produced_by": "Geliefert von",
+      "supports": "Stützt",
+      "supported_by": "Gestützt durch",
+      "opposes": "Widerlegt",
+      "opposed_by": "Widerlegt durch",
+      "informs": "Informiert",
+      "informed_by": "Informiert durch",
+      "raises": "Wirft Frage auf",
+      "raised_by": "Aufgeworfen durch",
+      "derived_from": "Abgeleitet von",
+      "derives": "Leitet ab"
+    },
+    "weights": {
+      "weak": "Schwach",
+      "moderate": "Mittel",
+      "strong": "Stark"
+    },
+    "settings": {
+      "short_title": "Forschungsgraph",
+      "title": "Forschungsgraph",
+      "description": "Forschungsfragen, Hypothesen, Experimente und Evidenz verknüpfen und jedes Urteil anhand der Evidenz prüfen.",
+      "toggle_title": "Forschungsgraph aktivieren",
+      "toggle_description": "Das Forschungsgraph-Layout und Forschungsfelder an Arbeitselementen in diesem Projekt anzeigen."
+    }
+  }
+}

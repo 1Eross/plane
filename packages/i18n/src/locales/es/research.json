@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Grafo de investigación",
+    "needs_review": "Requiere revisión",
+    "node_types": {
+      "question": "Pregunta",
+      "hypothesis": "Hipótesis",
+      "experiment": "Experimento",
+      "evidence": "Evidencia"
+    },
+    "statuses": {
+      "open": "Abierta",
+      "answered": "Respondida",
+      "closed": "Cerrada",
+      "proposed": "Propuesta",
+      "testing": "En prueba",
+      "confirmed": "Confirmada",
+      "rejected": "Rechazada",
+      "inconclusive": "No concluyente",
+      "superseded": "Reemplazada",
+      "valid": "Válida",
+      "invalidated": "Invalidada"
+    },
+    "relations": {
+      "addresses": "Responde a",
+      "addressed_by": "Respondida por",
+      "tests": "Prueba",
+      "tested_by": "Probada por",
+      "produces": "Produce",
+      "produced_by": "Producida por",
+      "supports": "Respalda",
+      "supported_by": "Respaldada por",
+      "opposes": "Refuta",
+      "opposed_by": "Refutada por",
+      "informs": "Informa",
+      "informed_by": "Informada por",
+      "raises": "Plantea una pregunta",
+      "raised_by": "Planteada por",
+      "derived_from": "Derivada de",
+      "derives": "Deriva en"
+    },
+    "weights": {
+      "weak": "Débil",
+      "moderate": "Moderada",
+      "strong": "Fuerte"
+    },
+    "settings": {
+      "short_title": "Grafo de investigación",
+      "title": "Grafo de investigación",
+      "description": "Relacione preguntas de investigación, hipótesis, experimentos y evidencias, y verifique cada veredicto con la evidencia.",
+      "toggle_title": "Activar el grafo de investigación",
+      "toggle_description": "Mostrar el diseño de grafo de investigación y los campos de investigación en los elementos de trabajo de este proyecto."
+    }
+  }
+}

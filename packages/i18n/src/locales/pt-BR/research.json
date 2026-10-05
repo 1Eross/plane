@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Grafo de pesquisa",
+    "needs_review": "Precisa de revisão",
+    "node_types": {
+      "question": "Pergunta",
+      "hypothesis": "Hipótese",
+      "experiment": "Experimento",
+      "evidence": "Evidência"
+    },
+    "statuses": {
+      "open": "Aberta",
+      "answered": "Respondida",
+      "closed": "Fechada",
+      "proposed": "Proposta",
+      "testing": "Em teste",
+      "confirmed": "Confirmada",
+      "rejected": "Rejeitada",
+      "inconclusive": "Inconclusiva",
+      "superseded": "Substituída",
+      "valid": "Válida",
+      "invalidated": "Invalidada"
+    },
+    "relations": {
+      "addresses": "Responde a",
+      "addressed_by": "Respondida por",
+      "tests": "Testa",
+      "tested_by": "Testada por",
+      "produces": "Produz",
+      "produced_by": "Produzida por",
+      "supports": "Apoia",
+      "supported_by": "Apoiada por",
+      "opposes": "Refuta",
+      "opposed_by": "Refutada por",
+      "informs": "Informa",
+      "informed_by": "Informada por",
+      "raises": "Levanta uma pergunta",
+      "raised_by": "Levantada por",
+      "derived_from": "Derivada de",
+      "derives": "Origina"
+    },
+    "weights": {
+      "weak": "Fraca",
+      "moderate": "Moderada",
+      "strong": "Forte"
+    },
+    "settings": {
+      "short_title": "Grafo de pesquisa",
+      "title": "Grafo de pesquisa",
+      "description": "Relacione perguntas de pesquisa, hipóteses, experimentos e evidências, e confira cada veredito com as evidências.",
+      "toggle_title": "Ativar grafo de pesquisa",
+      "toggle_description": "Mostrar o layout de grafo de pesquisa e os campos de pesquisa nos itens de trabalho deste projeto."
+    }
+  }
+}

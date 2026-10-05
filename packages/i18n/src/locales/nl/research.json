@@ -1,0 +1,55 @@
+{
+  "research": {
+    "label": "Onderzoeksgraaf",
+    "needs_review": "Herbeoordeling nodig",
+    "node_types": {
+      "question": "Vraag",
+      "hypothesis": "Hypothese",
+      "experiment": "Experiment",
+      "evidence": "Bewijs"
+    },
+    "statuses": {
+      "open": "Open",
+      "answered": "Beantwoord",
+      "closed": "Gesloten",
+      "proposed": "Voorgesteld",
+      "testing": "Wordt getest",
+      "confirmed": "Bevestigd",
+      "rejected": "Verworpen",
+      "inconclusive": "Onbeslist",
+      "superseded": "Vervangen",
+      "valid": "Geldig",
+      "invalidated": "Ongeldig"
+    },
+    "relations": {
+      "addresses": "Beantwoordt",
+      "addressed_by": "Beantwoord door",
+      "tests": "Test",
+      "tested_by": "Getest door",
+      "produces": "Levert op",
+      "produced_by": "Opgeleverd door",
+      "supports": "Ondersteunt",
+      "supported_by": "Ondersteund door",
+      "opposes": "Weerlegt",
+      "opposed_by": "Weerlegd door",
+      "informs": "Informeert",
+      "informed_by": "Geïnformeerd door",
+      "raises": "Roept vraag op",
+      "raised_by": "Opgeroepen door",
+      "derived_from": "Afgeleid van",
+      "derives": "Leidt af"
+    },
+    "weights": {
+      "weak": "Zwak",
+      "moderate": "Gemiddeld",
+      "strong": "Sterk"
+    },
+    "settings": {
+      "short_title": "Onderzoeksgraaf",
+      "title": "Onderzoeksgraaf",
+      "description": "Koppel onderzoeksvragen, hypothesen, experimenten en bewijs, en toets elk oordeel aan het bewijs.",
+      "toggle_title": "Onderzoeksgraaf inschakelen",
+      "toggle_description": "Toon de onderzoeksgraafweergave en onderzoeksvelden bij werkitems in dit project."
+    }
+  }
+}
