@@ -94,6 +94,7 @@ from plane.utils.issue_relation_mapper import (
     is_reverse_relation,
 )
 from plane.utils.research_grammar import (
+    refresh_research_neighbours,
     WEIGHTED_RELATIONS,
     ResearchRuleError,
     apply_relation_side_effects,
@@ -877,6 +878,7 @@ class IssueDetailAPIEndpoint(BaseAPIView):
             )
         current_instance = json.dumps(IssueSerializer(issue).data, cls=DjangoJSONEncoder)
         issue.delete()
+        refresh_research_neighbours([issue.id])
         issue_activity.delay(
             type="issue.activity.deleted",
             requested_data=json.dumps({"issue_id": str(pk)}),

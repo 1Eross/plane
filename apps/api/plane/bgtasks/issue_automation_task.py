@@ -17,6 +17,7 @@ from django.utils import timezone
 from plane.bgtasks.issue_activities_task import issue_activity
 from plane.db.models import Issue, Project, State
 from plane.utils.exception_logger import log_exception
+from plane.utils.research_grammar import refresh_research_neighbours
 
 
 @shared_task
@@ -66,6 +67,7 @@ def archive_old_issues():
                 # Bulk Update the issues and log the activity
                 if issues_to_update:
                     Issue.objects.bulk_update(issues_to_update, ["archived_at"], batch_size=100)
+                    refresh_research_neighbours([issue.id for issue in issues_to_update])
                     _ = [
                         issue_activity.delay(
                             type="issue.activity.updated",

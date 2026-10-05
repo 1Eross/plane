@@ -349,3 +349,20 @@ def _record_verdict(issue, actor_id):
         details.verdict_at = None
         details.verdict_by_id = None
     details.save(update_fields=["verdict_at", "verdict_by", "updated_at"])
+
+
+def refresh_research_neighbours(issue_ids):
+    """
+    Run after issues are deleted, archived or restored: their evidence and
+    hypotheses may have been the basis of a verdict or of an answered question.
+    Deleted relations are included because deleting an issue soft-deletes its
+    relations asynchronously.
+    """
+    issue_ids = list(issue_ids)
+    if not issue_ids:
+        return
+    relations = IssueRelation.all_objects.filter(issue_id__in=issue_ids)
+    recheck_verdict_basis(
+        relations.filter(relation_type__in=WEIGHTED_RELATIONS).values_list("related_issue_id", flat=True)
+    )
+    recompute_question_status(relations.filter(relation_type="addresses").values_list("related_issue_id", flat=True))

@@ -43,6 +43,7 @@ from plane.utils.paginator import GroupedOffsetPaginator, SubGroupedOffsetPagina
 from plane.app.permissions import allow_permission, ROLE
 from plane.utils.error_codes import ERROR_CODES
 from plane.utils.host import base_host
+from plane.utils.research_grammar import refresh_research_neighbours
 
 # Module imports
 from .. import BaseViewSet, BaseAPIView
@@ -274,6 +275,7 @@ class IssueArchiveViewSet(BaseViewSet):
         )
         issue.archived_at = timezone.now().date()
         issue.save()
+        refresh_research_neighbours([issue.id])
 
         return Response({"archived_at": str(issue.archived_at)}, status=status.HTTP_200_OK)
 
@@ -298,6 +300,7 @@ class IssueArchiveViewSet(BaseViewSet):
         )
         issue.archived_at = None
         issue.save()
+        refresh_research_neighbours([issue.id])
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -339,5 +342,6 @@ class BulkArchiveIssuesEndpoint(BaseAPIView):
             issue.archived_at = timezone.now().date()
             bulk_archive_issues.append(issue)
         Issue.objects.bulk_update(bulk_archive_issues, ["archived_at"])
+        refresh_research_neighbours([issue.id for issue in bulk_archive_issues])
 
         return Response({"archived_at": str(timezone.now().date())}, status=status.HTTP_200_OK)

@@ -17,6 +17,11 @@ from plane.app.views import (
     IssueListEndpoint,
     IssueReactionViewSet,
     IssueRelationViewSet,
+    IssueResearchEndpoint,
+    ResearchGraphEndpoint,
+    ResearchGraphLayoutEndpoint,
+    ResearchMatrixEndpoint,
+    ResearchMergeEndpoint,
     IssueSubscriberViewSet,
     ProjectUserDisplayPropertyEndpoint,
     IssueViewSet,
@@ -248,6 +253,33 @@ urlpatterns = [
         name="issue-relation",
     ),
     ## End Issue Relation
+    ## Research Graph
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/research/",
+        IssueResearchEndpoint.as_view(),
+        name="issue-research",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/research-matrix/",
+        ResearchMatrixEndpoint.as_view(),
+        name="issue-research-matrix",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/research/merge/",
+        ResearchMergeEndpoint.as_view(),
+        name="research-merge",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/research-graph/",
+        ResearchGraphEndpoint.as_view(),
+        name="research-graph",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/research-graph/layouts/<str:scope_type>/<uuid:scope_id>/",
+        ResearchGraphLayoutEndpoint.as_view(),
+        name="research-graph-layout",
+    ),
+    ## End Research Graph
     path(
         "workspaces/<str:slug>/projects/<uuid:project_id>/deleted-issues/",
         DeletedIssuesListViewSet.as_view(),

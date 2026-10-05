@@ -69,6 +69,7 @@ from plane.utils.grouper import (
     issue_queryset_grouper,
 )
 from plane.utils.host import base_host
+from plane.utils.research_grammar import refresh_research_neighbours
 from plane.utils.issue_filters import issue_filters
 from plane.utils.order_queryset import order_issue_queryset
 from plane.utils.paginator import GroupedOffsetPaginator, SubGroupedOffsetPaginator
@@ -724,6 +725,7 @@ class IssueViewSet(BaseViewSet):
         issue = Issue.objects.get(workspace__slug=slug, project_id=project_id, pk=pk)
 
         issue.delete()
+        refresh_research_neighbours([issue.id])
         # delete the issue from recent visits
         UserRecentVisit.objects.filter(
             project_id=project_id,
@@ -795,7 +797,9 @@ class BulkDeleteIssuesEndpoint(BaseAPIView):
         ModuleIssue.objects.filter(issue__in=issues).delete()
 
         # Finally, delete the issues themselves
+        deleted_issue_ids = list(issues.values_list("id", flat=True))
         issues.delete()
+        refresh_research_neighbours(deleted_issue_ids)
 
         return Response(
             {"message": f"{total_issues} issues were deleted"},

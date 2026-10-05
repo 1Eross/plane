@@ -145,6 +145,13 @@ from .issue.label import LabelViewSet, BulkCreateIssueLabelsEndpoint
 from .issue.link import IssueLinkViewSet
 
 from .issue.relation import IssueRelationViewSet
+from .issue.research import (
+    IssueResearchEndpoint,
+    ResearchGraphEndpoint,
+    ResearchGraphLayoutEndpoint,
+    ResearchMatrixEndpoint,
+    ResearchMergeEndpoint,
+)
 
 from .issue.reaction import IssueReactionViewSet
 
