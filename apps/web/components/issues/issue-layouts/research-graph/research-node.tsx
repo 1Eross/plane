@@ -72,26 +72,16 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
   return (
     <div
       className={cn(
-        "flex cursor-pointer flex-col gap-1.5 rounded-lg border border-subtle bg-surface-1 px-3 py-2 shadow-raised-100 transition-colors hover:border-strong",
+        "relative flex cursor-pointer flex-col gap-1.5 rounded-lg border border-subtle bg-surface-1 px-3 py-2 shadow-raised-100 transition-colors hover:border-strong",
         { "opacity-50": isGhost, "border-warning-strong": issue.needs_review }
       )}
       style={{ width: RESEARCH_NODE_WIDTH, minHeight: RESEARCH_NODE_HEIGHT, borderLeft: `3px solid ${nodeType.color}` }}
-      // the node holds its own collapse button, and buttons cannot nest
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
-      role="button"
-      tabIndex={0}
-      onClick={(e) => {
-        // Shift / Cmd click extends the selection instead
-        if (!e.shiftKey && !e.metaKey) onOpen(issueId);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onOpen(issueId);
-        }
-      }}
     >
+      {/* feedback links (supports / opposes / informs) arc above the tree through these */}
+      <Handle id="feedback-in" type="target" position={Position.Top} isConnectable={false} className="!opacity-0" />
+      <Handle id="feedback-out" type="source" position={Position.Top} isConnectable={false} className="!opacity-0" />
       <Handle
+        id="flow-in"
         type="target"
         position={Position.Left}
         isConnectable={canEdit}
@@ -138,7 +128,17 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
           )}
         </span>
       </div>
-      <p className="line-clamp-2 text-13 font-medium text-primary">{issue.name}</p>
+      {/* the card itself opens on click through React Flow's onNodeClick; this button is the keyboard path */}
+      <button
+        type="button"
+        className="line-clamp-2 text-left text-13 font-medium text-primary hover:underline"
+        onClick={(e) => {
+          e.stopPropagation();
+          onOpen(issueId);
+        }}
+      >
+        {issue.name}
+      </button>
       <div className="flex items-center gap-2 text-11 text-secondary">
         {status && (
           <span className="flex items-center gap-1">
@@ -168,7 +168,7 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
       {hasChildren && (
         <button
           type="button"
-          className="absolute top-1/2 -right-3 flex h-5 min-w-5 -translate-y-1/2 items-center justify-center gap-0.5 rounded-full border border-subtle bg-surface-1 px-1 text-10 text-secondary hover:bg-layer-1-hover"
+          className="nodrag absolute right-3 -bottom-2.5 flex h-5 min-w-5 items-center justify-center gap-0.5 rounded-full border border-subtle bg-surface-1 px-1 text-10 text-secondary hover:bg-layer-1-hover"
           aria-label={collapsed ? t("research.graph.expand") : t("research.graph.collapse")}
           onClick={(e) => {
             e.stopPropagation();
@@ -179,6 +179,7 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
         </button>
       )}
       <Handle
+        id="flow-out"
         type="source"
         position={Position.Right}
         isConnectable={canEdit}

@@ -168,6 +168,23 @@ class TestResearchMerge:
         }
 
     @pytest.mark.django_db
+    def test_merge_hypotheses_of_the_same_question(self, session_client, base_url, make_node, link):
+        question = make_node("question", "open")
+        h1, h2 = make_node("hypothesis", "testing"), make_node("hypothesis", "proposed")
+        link(h1, question, "addresses")
+        link(h2, question, "addresses")
+
+        response = session_client.post(
+            f"{base_url}/research/merge/",
+            {"hypothesis_ids": [str(h1.id), str(h2.id)], "name": "Combined"},
+            format="json",
+        )
+        assert response.status_code == status.HTTP_201_CREATED, response.data
+        assert response.data["addresses"] == [str(question.id)]
+        merged = Issue.objects.get(pk=response.data["issue"]["id"])
+        assert IssueRelation.objects.filter(issue=merged, relation_type="addresses").count() == 1
+
+    @pytest.mark.django_db
     def test_merging_confirmed_hypothesis_reopens_question(self, session_client, base_url, make_node, link):
         question = make_node("question", "answered")
         confirmed = make_node("hypothesis", "confirmed")

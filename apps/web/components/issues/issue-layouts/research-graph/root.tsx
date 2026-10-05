@@ -9,7 +9,7 @@ import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
 import { Background, Controls, MarkerType, Panel, ReactFlow } from "@xyflow/react";
-import type { Connection, Edge, EdgeMouseHandler, NodeChange } from "@xyflow/react";
+import type { BuiltInEdge, Connection, Edge, EdgeMouseHandler, NodeChange } from "@xyflow/react";
 // plane imports
 import { Spinner } from "@plane/blocks/spinner";
 import { setToast } from "@plane/blocks/toast";
@@ -229,9 +229,9 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
     visibleIds,
   ]);
 
-  const flowEdges: Edge[] = useMemo(() => {
+  const flowEdges: BuiltInEdge[] = useMemo(() => {
     const isVisible = (edge: TResearchGraphEdge) => visibleIds.has(edge.source) && visibleIds.has(edge.target);
-    const result: Edge[] = [];
+    const result: BuiltInEdge[] = [];
     for (const edge of model.flowEdges) {
       const endpoints = getFlowEndpoints(edge);
       if (!endpoints || !isVisible(edge)) continue;
@@ -239,6 +239,8 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
         id: edge.id,
         source: endpoints.parent,
         target: endpoints.child,
+        sourceHandle: "flow-out",
+        targetHandle: "flow-in",
         style: { stroke: FLOW_EDGE_COLOR, strokeWidth: 1.5 },
         markerEnd: { type: MarkerType.ArrowClosed, color: FLOW_EDGE_COLOR },
       });
@@ -252,11 +254,16 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
         id: edge.id,
         source: edge.source,
         target: edge.target,
+        sourceHandle: "feedback-out",
+        targetHandle: "feedback-in",
+        // rise above the row of nodes instead of running along it
+        type: "smoothstep",
+        pathOptions: { offset: 28, borderRadius: 10 },
         label: edge.weight
           ? `${t(RESEARCH_RELATION_I18N_LABEL[relation])} · ${edge.weight}`
           : t(RESEARCH_RELATION_I18N_LABEL[relation]),
         labelStyle: { fill: color, fontSize: 11 },
-        labelBgStyle: { fillOpacity: 0.85 },
+        labelBgStyle: { fill: "var(--bg-surface-1)", fillOpacity: 0.9 },
         style: { stroke: color, strokeWidth: 1 + weight * 0.75 },
         markerEnd: { type: MarkerType.ArrowClosed, color },
       });
@@ -268,6 +275,8 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
           id: edge.id,
           source: edge.source,
           target: edge.target,
+          sourceHandle: "feedback-out",
+          targetHandle: "feedback-in",
           style: { stroke: FLOW_EDGE_COLOR, strokeDasharray: "4 4" },
         });
       }
@@ -464,6 +473,10 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
           onConnect={onConnect}
           isValidConnection={isValidConnection}
           onEdgeClick={onEdgeClick}
+          onNodeClick={(event, clickedNode) => {
+            // Shift / Cmd click extends the selection instead
+            if (!event.shiftKey && !event.metaKey) openPeek(clickedNode.id);
+          }}
           onPaneClick={() => setSelectedEdgeId(null)}
           fitView
           minZoom={0.2}

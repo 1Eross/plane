@@ -185,6 +185,8 @@ class ResearchMergeEndpoint(BaseAPIView):
                 related_issue__research_type=QUESTION,
                 related_issue__deleted_at__isnull=True,
             )
+            # the model's default ordering would otherwise leak into SELECT DISTINCT and keep duplicates
+            .order_by()
             .values_list("related_issue_id", flat=True)
             .distinct()
         )
