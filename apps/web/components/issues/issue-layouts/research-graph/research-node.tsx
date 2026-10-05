@@ -103,7 +103,8 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
           {!isGhost && (canEdit || issue.research_type === "question") && (
             <Menu>
               <MenuTrigger
-                aria-label={t("research.graph.add_node")}
+                // read-only viewers only get "Compare hypotheses" in this menu
+                aria-label={canEdit ? t("research.graph.add_node") : t("research.matrix.open")}
                 onClick={(e) => e.stopPropagation()}
                 render={
                   <button
