@@ -81,6 +81,10 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
   const [matrixQuestionId, setMatrixQuestionId] = useState<string | null>(null);
   // positions of nodes being dragged, until the drop is saved to the layout
   const [dragPositions, setDragPositions] = useState<Record<string, { x: number; y: number }>>({});
+  // Measured node sizes. React Flow rebuilds a node from the passed object whenever that object changes,
+  // and a node without `measured` is rendered hidden until it is measured again: without this,
+  // every drag tick hid the whole graph.
+  const [measuredSizes, setMeasuredSizes] = useState<Record<string, { width: number; height: number }>>({});
   const [showAuxiliary, setShowAuxiliary] = useState(true);
   // store hooks
   const {
@@ -200,6 +204,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
           id,
           type: "research" as const,
           position,
+          measured: measuredSizes[id],
           selected: selectedIds.has(id),
           draggable: canEdit,
           data: {
@@ -224,6 +229,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
     collapsedIds,
     getPosition,
     hiddenDescendantCount,
+    measuredSizes,
     model,
     openAction,
     openPeek,
@@ -305,6 +311,14 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
           const position = change.position ?? dragPositionsRef.current[change.id];
           if (change.position) setDragPositions((current) => ({ ...current, [change.id]: change.position! }));
           if (change.dragging === false && position) setPosition(change.id, position);
+        } else if (change.type === "dimensions") {
+          const size = change.dimensions;
+          if (!size) continue;
+          setMeasuredSizes((current) =>
+            current[change.id]?.width === size.width && current[change.id]?.height === size.height
+              ? current
+              : { ...current, [change.id]: size }
+          );
         } else if (change.type === "select") {
           setSelectedIds((current) => {
             const next = new Set(current);
