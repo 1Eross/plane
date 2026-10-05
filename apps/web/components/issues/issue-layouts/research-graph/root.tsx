@@ -311,6 +311,23 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
     return result;
   }, [cardIds, model, showAuxiliary, t]);
 
+  // links of the selected cards stand out, the rest fade
+  const displayedEdges: BuiltInEdge[] = useMemo(() => {
+    if (selectedIds.size === 0) return flowEdges;
+    return flowEdges.map((edge) => {
+      const connected = selectedIds.has(edge.source) || selectedIds.has(edge.target);
+      const strokeWidth = Number(edge.style?.strokeWidth ?? 1);
+      return {
+        ...edge,
+        animated: connected,
+        zIndex: connected ? 1 : 0,
+        style: { ...edge.style, opacity: connected ? 1 : 0.15, strokeWidth: connected ? strokeWidth + 1 : strokeWidth },
+        labelStyle: edge.labelStyle && { ...edge.labelStyle, opacity: connected ? 1 : 0.15 },
+        labelBgStyle: edge.labelBgStyle && { ...edge.labelBgStyle, fillOpacity: connected ? 0.9 : 0.15 },
+      };
+    });
+  }, [flowEdges, selectedIds]);
+
   // ---------- editing ----------
   const refresh = useCallback(() => void mutate(), [mutate]);
   const issueLabel = (issueId: string) => {
@@ -497,7 +514,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
       ) : (
         <ReactFlow
           nodes={flowNodes}
-          edges={flowEdges}
+          edges={displayedEdges}
           nodeTypes={nodeTypes}
           nodesDraggable={canEdit}
           nodesConnectable={canEdit}
