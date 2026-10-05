@@ -5,6 +5,7 @@
  */
 
 import { observer } from "mobx-react";
+import { Spinner } from "@plane/blocks/spinner";
 // plane imports
 import { EIssueLayoutTypes } from "@plane/types";
 // components
@@ -33,6 +34,8 @@ function ActiveLoader(props: { layout: EIssueLayoutTypes }) {
       return <CalendarLayoutLoader />;
     case EIssueLayoutTypes.GANTT:
       return <GanttLayoutLoader />;
+    case EIssueLayoutTypes.RESEARCH_GRAPH:
+      return <Spinner />;
     default:
       return null;
   }

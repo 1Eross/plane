@@ -2,6 +2,7 @@
 @import "@plane/editor/styles";
 @import "./power-k.css";
 @import "./emoji.css";
+@import "@xyflow/react/dist/base.css";
 @plugin "@tailwindcss/typography";
 
 /* stickies and editor colors

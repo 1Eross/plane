@@ -34,6 +34,7 @@ import { WorkItemFiltersToggle } from "@/components/work-item-filters/filters-to
 import { useCommandPalette } from "@/hooks/store/use-command-palette";
 import { useIssues } from "@/hooks/store/use-issues";
 import { useProject } from "@/hooks/store/use-project";
+import { withResearchGraphLayout } from "@/components/issues/research/layouts";
 import { useProjectView } from "@/hooks/store/use-project-view";
 import { useUserPermissions } from "@/hooks/store/user";
 import { useAppRouter } from "@/hooks/use-app-router";
@@ -178,13 +179,16 @@ export const ProjectViewIssuesHeader = observer(function ProjectViewIssuesHeader
         <>
           {!viewDetails.is_locked && (
             <LayoutSelection
-              layouts={[
-                EIssueLayoutTypes.LIST,
-                EIssueLayoutTypes.KANBAN,
-                EIssueLayoutTypes.CALENDAR,
-                EIssueLayoutTypes.SPREADSHEET,
-                EIssueLayoutTypes.GANTT,
-              ]}
+              layouts={withResearchGraphLayout(
+                [
+                  EIssueLayoutTypes.LIST,
+                  EIssueLayoutTypes.KANBAN,
+                  EIssueLayoutTypes.CALENDAR,
+                  EIssueLayoutTypes.SPREADSHEET,
+                  EIssueLayoutTypes.GANTT,
+                ],
+                currentProjectDetails
+              )}
               onChange={(layout) => handleLayoutChange(layout)}
               selectedLayout={activeLayout}
             />

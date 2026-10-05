@@ -12,6 +12,7 @@ import { EIssueFilterType, ISSUE_STORE_TO_FILTERS_MAP } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { Button } from "@makeplane/propel/elements/button";
 import type { IIssueDisplayFilterOptions, IIssueDisplayProperties } from "@plane/types";
+import { withResearchGraphLayout } from "@/components/issues/research/layouts";
 import { EIssueLayoutTypes, EIssuesStoreType } from "@plane/types";
 // hooks
 import { useIssues } from "@/hooks/store/use-issues";
@@ -52,6 +53,9 @@ export const HeaderFilters = observer(function HeaderFilters(props: Props) {
   } = props;
   // i18n
   const { t } = useTranslation();
+  // epics have no research graph
+  const layouts =
+    storeType === EIssuesStoreType.PROJECT ? withResearchGraphLayout(LAYOUTS, currentProjectDetails) : LAYOUTS;
   // states
   const [analyticsModal, setAnalyticsModal] = useState(false);
   // store hooks
@@ -96,14 +100,14 @@ export const HeaderFilters = observer(function HeaderFilters(props: Props) {
       />
       <div className="hidden @4xl:flex">
         <LayoutSelection
-          layouts={LAYOUTS}
+          layouts={layouts}
           onChange={(layout) => handleLayoutChange(layout)}
           selectedLayout={activeLayout}
         />
       </div>
       <div className="flex @4xl:hidden">
         <MobileLayoutSelection
-          layouts={LAYOUTS}
+          layouts={layouts}
           onChange={(layout) => handleLayoutChange(layout)}
           activeLayout={activeLayout}
         />

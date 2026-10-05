@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Skopiowano nazwę gałęzi",
       "update_failed": "Nie udało się zaktualizować elementu badania"
+    },
+    "layout": {
+      "title": "Układ grafu badań",
+      "label": "Graf badań"
+    },
+    "graph": {
+      "expand": "Rozwiń",
+      "collapse": "Zwiń",
+      "expand_all": "Rozwiń wszystko",
+      "collapse_all": "Zwiń wszystko",
+      "hide_closed": "Ukryj odrzucone i zastąpione",
+      "show_auxiliary": "Inne powiązania",
+      "truncated": "Wyświetlono pierwsze 2000 elementów. Zawęź filtry, aby zobaczyć resztę.",
+      "empty_title": "Brak tu jeszcze elementów badania",
+      "empty_description": "Ustaw typ badania w elementach pracy lub zmień filtry."
     }
   }
 }

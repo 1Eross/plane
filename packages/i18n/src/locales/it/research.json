@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Nome del branch copiato",
       "update_failed": "Impossibile aggiornare l’elemento di ricerca"
+    },
+    "layout": {
+      "title": "Layout a grafo della ricerca",
+      "label": "Grafo della ricerca"
+    },
+    "graph": {
+      "expand": "Espandi",
+      "collapse": "Comprimi",
+      "expand_all": "Espandi tutto",
+      "collapse_all": "Comprimi tutto",
+      "hide_closed": "Nascondi respinte e sostituite",
+      "show_auxiliary": "Altre relazioni",
+      "truncated": "Sono mostrati i primi 2000 elementi. Restringa i filtri per vedere il resto.",
+      "empty_title": "Qui non ci sono ancora elementi di ricerca",
+      "empty_description": "Imposti un tipo di ricerca sugli elementi di lavoro o modifichi i filtri."
     }
   }
 }

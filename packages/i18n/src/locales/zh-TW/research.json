@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "已複製分支名稱",
       "update_failed": "無法更新研究項目"
+    },
+    "layout": {
+      "title": "研究圖譜版面配置",
+      "label": "研究圖譜"
+    },
+    "graph": {
+      "expand": "展開",
+      "collapse": "收合",
+      "expand_all": "全部展開",
+      "collapse_all": "全部收合",
+      "hide_closed": "隱藏已否定與已取代",
+      "show_auxiliary": "其他關係",
+      "truncated": "僅顯示前 2000 項，請縮小篩選範圍以查看其餘項目。",
+      "empty_title": "這裡還沒有研究項目",
+      "empty_description": "為工作事項設定研究類型或變更篩選條件。"
     }
   }
 }

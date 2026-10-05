@@ -10,6 +10,7 @@ import useSWR from "swr";
 // plane constants
 import { ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { EIssueLayoutTypes, EIssuesStoreType } from "@plane/types";
+import type { TWorkItemFilterExpression } from "@plane/types";
 import { Spinner } from "@plane/blocks/spinner";
 // components
 import { ProjectLevelWorkItemFiltersHOC } from "@/components/work-item-filters/filters-hoc/project-level";
@@ -21,11 +22,16 @@ import { IssuesStoreContext } from "@/hooks/use-issue-layout-store";
 import { IssuePeekOverview } from "../../peek-overview";
 import { CalendarLayout } from "../calendar/roots/project-root";
 import { BaseGanttRoot } from "../gantt";
+import { ResearchGraphRoot } from "../research-graph";
 import { KanBanLayout } from "../kanban/roots/project-root";
 import { ListLayout } from "../list/roots/project-root";
 import { ProjectSpreadsheetLayout } from "../spreadsheet/roots/project-root";
 
-function ProjectIssueLayout(props: { activeLayout: EIssueLayoutTypes | undefined }) {
+function ProjectIssueLayout(props: {
+  activeLayout: EIssueLayoutTypes | undefined;
+  projectId: string;
+  filters?: TWorkItemFilterExpression;
+}) {
   switch (props.activeLayout) {
     case EIssueLayoutTypes.LIST:
       return <ListLayout />;
@@ -37,6 +43,8 @@ function ProjectIssueLayout(props: { activeLayout: EIssueLayoutTypes | undefined
       return <BaseGanttRoot />;
     case EIssueLayoutTypes.SPREADSHEET:
       return <ProjectSpreadsheetLayout />;
+    case EIssueLayoutTypes.RESEARCH_GRAPH:
+      return <ResearchGraphRoot scopeType="project" scopeId={props.projectId} filters={props.filters} />;
     default:
       return null;
   }
@@ -86,7 +94,11 @@ export const ProjectLayoutRoot = observer(function ProjectLayoutRoot() {
                   <Spinner className="h-4 w-4" />
                 </div>
               )}
-              <ProjectIssueLayout activeLayout={activeLayout} />
+              <ProjectIssueLayout
+                activeLayout={activeLayout}
+                projectId={projectId}
+                filters={workItemFilters?.richFilters}
+              />
             </div>
             {/* peek overview */}
             <IssuePeekOverview />

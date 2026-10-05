@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "ブランチ名をコピーしました",
       "update_failed": "リサーチ項目を更新できませんでした"
+    },
+    "layout": {
+      "title": "リサーチグラフレイアウト",
+      "label": "リサーチグラフ"
+    },
+    "graph": {
+      "expand": "展開",
+      "collapse": "折りたたむ",
+      "expand_all": "すべて展開",
+      "collapse_all": "すべて折りたたむ",
+      "hide_closed": "棄却・置き換え済みを非表示",
+      "show_auxiliary": "その他の関係",
+      "truncated": "最初の2000件を表示しています。残りを表示するにはフィルターを絞り込んでください。",
+      "empty_title": "ここにはまだリサーチ項目がありません",
+      "empty_description": "作業項目にリサーチタイプを設定するか、フィルターを変更してください。"
     }
   }
 }

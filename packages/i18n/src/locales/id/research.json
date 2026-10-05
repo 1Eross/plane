@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Nama branch disalin",
       "update_failed": "Tidak dapat memperbarui item riset"
+    },
+    "layout": {
+      "title": "Tata letak graf riset",
+      "label": "Graf riset"
+    },
+    "graph": {
+      "expand": "Bentangkan",
+      "collapse": "Ciutkan",
+      "expand_all": "Bentangkan semua",
+      "collapse_all": "Ciutkan semua",
+      "hide_closed": "Sembunyikan yang ditolak dan digantikan",
+      "show_auxiliary": "Relasi lain",
+      "truncated": "Menampilkan 2000 item pertama. Persempit filter untuk melihat sisanya.",
+      "empty_title": "Belum ada item riset di sini",
+      "empty_description": "Atur jenis riset pada Item Kerja atau ubah filter."
     }
   }
 }

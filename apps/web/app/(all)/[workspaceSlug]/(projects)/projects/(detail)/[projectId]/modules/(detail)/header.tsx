@@ -41,6 +41,7 @@ import { useCommandPalette } from "@/hooks/store/use-command-palette";
 import { useIssues } from "@/hooks/store/use-issues";
 import { useModule } from "@/hooks/store/use-module";
 import { useProject } from "@/hooks/store/use-project";
+import { withResearchGraphLayout } from "@/components/issues/research/layouts";
 import { useUserPermissions } from "@/hooks/store/user";
 import { useAppRouter } from "@/hooks/use-app-router";
 import { useIssuesActions } from "@/hooks/use-issues-actions";
@@ -173,26 +174,32 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
           <div className="hidden gap-2 md:flex">
             <div className="hidden @4xl:flex">
               <LayoutSelection
-                layouts={[
-                  EIssueLayoutTypes.LIST,
-                  EIssueLayoutTypes.KANBAN,
-                  EIssueLayoutTypes.CALENDAR,
-                  EIssueLayoutTypes.SPREADSHEET,
-                  EIssueLayoutTypes.GANTT,
-                ]}
+                layouts={withResearchGraphLayout(
+                  [
+                    EIssueLayoutTypes.LIST,
+                    EIssueLayoutTypes.KANBAN,
+                    EIssueLayoutTypes.CALENDAR,
+                    EIssueLayoutTypes.SPREADSHEET,
+                    EIssueLayoutTypes.GANTT,
+                  ],
+                  currentProjectDetails
+                )}
                 onChange={(layout) => handleLayoutChange(layout)}
                 selectedLayout={activeLayout}
               />
             </div>
             <div className="flex @4xl:hidden">
               <MobileLayoutSelection
-                layouts={[
-                  EIssueLayoutTypes.LIST,
-                  EIssueLayoutTypes.KANBAN,
-                  EIssueLayoutTypes.CALENDAR,
-                  EIssueLayoutTypes.SPREADSHEET,
-                  EIssueLayoutTypes.GANTT,
-                ]}
+                layouts={withResearchGraphLayout(
+                  [
+                    EIssueLayoutTypes.LIST,
+                    EIssueLayoutTypes.KANBAN,
+                    EIssueLayoutTypes.CALENDAR,
+                    EIssueLayoutTypes.SPREADSHEET,
+                    EIssueLayoutTypes.GANTT,
+                  ],
+                  currentProjectDetails
+                )}
                 onChange={(layout) => handleLayoutChange(layout)}
                 activeLayout={activeLayout}
               />

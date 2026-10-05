@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Název větve zkopírován",
       "update_failed": "Prvek výzkumu se nepodařilo aktualizovat"
+    },
+    "layout": {
+      "title": "Rozložení grafu výzkumu",
+      "label": "Graf výzkumu"
+    },
+    "graph": {
+      "expand": "Rozbalit",
+      "collapse": "Sbalit",
+      "expand_all": "Rozbalit vše",
+      "collapse_all": "Sbalit vše",
+      "hide_closed": "Skrýt zamítnuté a nahrazené",
+      "show_auxiliary": "Další vazby",
+      "truncated": "Zobrazeno prvních 2000 položek. Zužte filtry, abyste viděli zbytek.",
+      "empty_title": "Zatím tu nejsou žádné prvky výzkumu",
+      "empty_description": "Nastavte u pracovních položek typ výzkumu nebo změňte filtry."
     }
   }
 }

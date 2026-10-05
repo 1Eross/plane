@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Branch-Name kopiert",
       "update_failed": "Forschungselement konnte nicht aktualisiert werden"
+    },
+    "layout": {
+      "title": "Forschungsgraph-Layout",
+      "label": "Forschungsgraph"
+    },
+    "graph": {
+      "expand": "Erweitern",
+      "collapse": "Einklappen",
+      "expand_all": "Alle erweitern",
+      "collapse_all": "Alle einklappen",
+      "hide_closed": "Verworfene und ersetzte ausblenden",
+      "show_auxiliary": "Weitere Verknüpfungen",
+      "truncated": "Die ersten 2000 Elemente werden angezeigt. Filter eingrenzen, um den Rest zu sehen.",
+      "empty_title": "Hier gibt es noch keine Forschungselemente",
+      "empty_description": "Forschungstyp an Arbeitselementen festlegen oder Filter ändern."
     }
   }
 }

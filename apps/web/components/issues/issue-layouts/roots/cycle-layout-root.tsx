@@ -12,6 +12,7 @@ import useSWR from "swr";
 // plane constants
 import { ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { EIssuesStoreType, EIssueLayoutTypes } from "@plane/types";
+import type { TWorkItemFilterExpression } from "@plane/types";
 // components
 import { TransferIssues } from "@/components/cycles/transfer-issues";
 import { TransferIssuesModal } from "@/components/cycles/transfer-issues-modal";
@@ -25,6 +26,7 @@ import { IssuesStoreContext } from "@/hooks/use-issue-layout-store";
 import { IssuePeekOverview } from "../../peek-overview";
 import { CycleCalendarLayout } from "../calendar/roots/cycle-root";
 import { BaseGanttRoot } from "../gantt";
+import { ResearchGraphRoot } from "../research-graph";
 import { CycleKanBanLayout } from "../kanban/roots/cycle-root";
 import { CycleListLayout } from "../list/roots/cycle-root";
 import { CycleSpreadsheetLayout } from "../spreadsheet/roots/cycle-root";
@@ -33,6 +35,7 @@ function CycleIssueLayout(props: {
   activeLayout: EIssueLayoutTypes | undefined;
   cycleId: string;
   isCompletedCycle: boolean;
+  filters?: TWorkItemFilterExpression;
 }) {
   switch (props.activeLayout) {
     case EIssueLayoutTypes.LIST:
@@ -45,6 +48,8 @@ function CycleIssueLayout(props: {
       return <BaseGanttRoot viewId={props.cycleId} isCompletedCycle={props.isCompletedCycle} />;
     case EIssueLayoutTypes.SPREADSHEET:
       return <CycleSpreadsheetLayout />;
+    case EIssueLayoutTypes.RESEARCH_GRAPH:
+      return <ResearchGraphRoot scopeType="cycle" scopeId={props.cycleId} filters={props.filters} />;
     default:
       return null;
   }
@@ -113,7 +118,12 @@ export const CycleLayoutRoot = observer(function CycleLayoutRoot() {
               )}
               {cycleWorkItemsFilter && <WorkItemFiltersRow filter={cycleWorkItemsFilter} />}
               <div className="h-full w-full overflow-auto">
-                <CycleIssueLayout activeLayout={activeLayout} cycleId={cycleId} isCompletedCycle={isCompletedCycle} />
+                <CycleIssueLayout
+                  activeLayout={activeLayout}
+                  cycleId={cycleId}
+                  isCompletedCycle={isCompletedCycle}
+                  filters={workItemFilters?.richFilters}
+                />
               </div>
               {/* peek overview */}
               <IssuePeekOverview />

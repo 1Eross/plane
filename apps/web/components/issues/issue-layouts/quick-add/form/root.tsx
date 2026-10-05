@@ -64,6 +64,8 @@ export const QuickAddIssueFormRoot = observer(function QuickAddIssueFormRoot(pro
     [EIssueLayoutTypes.CALENDAR]: CalendarQuickAddIssueForm,
     [EIssueLayoutTypes.GANTT]: GanttQuickAddIssueForm,
     [EIssueLayoutTypes.SPREADSHEET]: SpreadsheetQuickAddIssueForm,
+    // the research graph has no quick add row; creation happens from nodes
+    [EIssueLayoutTypes.RESEARCH_GRAPH]: ListQuickAddIssueForm,
   };
 
   const CurrentLayoutQuickAddIssueForm = QUICK_ADD_ISSUE_FORMS[layout] ?? null;

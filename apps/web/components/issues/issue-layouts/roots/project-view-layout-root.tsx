@@ -11,6 +11,7 @@ import useSWR from "swr";
 // plane constants
 import { ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { EIssuesStoreType, EIssueLayoutTypes } from "@plane/types";
+import type { TWorkItemFilterExpression } from "@plane/types";
 // hooks
 import { ProjectLevelWorkItemFiltersHOC } from "@/components/work-item-filters/filters-hoc/project-level";
 import { WorkItemFiltersRow } from "@/components/work-item-filters/filters-row";
@@ -21,11 +22,16 @@ import { IssuesStoreContext } from "@/hooks/use-issue-layout-store";
 import { IssuePeekOverview } from "../../peek-overview";
 import { ProjectViewCalendarLayout } from "../calendar/roots/project-view-root";
 import { BaseGanttRoot } from "../gantt";
+import { ResearchGraphRoot } from "../research-graph";
 import { ProjectViewKanBanLayout } from "../kanban/roots/project-view-root";
 import { ProjectViewListLayout } from "../list/roots/project-view-root";
 import { ProjectViewSpreadsheetLayout } from "../spreadsheet/roots/project-view-root";
 
-function ProjectViewIssueLayout(props: { activeLayout: EIssueLayoutTypes | undefined; viewId: string }) {
+function ProjectViewIssueLayout(props: {
+  activeLayout: EIssueLayoutTypes | undefined;
+  viewId: string;
+  filters?: TWorkItemFilterExpression;
+}) {
   switch (props.activeLayout) {
     case EIssueLayoutTypes.LIST:
       return <ProjectViewListLayout />;
@@ -37,6 +43,8 @@ function ProjectViewIssueLayout(props: { activeLayout: EIssueLayoutTypes | undef
       return <BaseGanttRoot viewId={props.viewId} />;
     case EIssueLayoutTypes.SPREADSHEET:
       return <ProjectViewSpreadsheetLayout />;
+    case EIssueLayoutTypes.RESEARCH_GRAPH:
+      return <ResearchGraphRoot scopeType="view" scopeId={props.viewId} filters={props.filters} />;
     default:
       return null;
   }
@@ -103,7 +111,11 @@ export const ProjectViewLayoutRoot = observer(function ProjectViewLayoutRoot() {
           <div className="relative flex h-full w-full flex-col overflow-hidden">
             {projectViewWorkItemsFilter && <WorkItemFiltersRow filter={projectViewWorkItemsFilter} />}
             <div className="relative h-full w-full overflow-auto">
-              <ProjectViewIssueLayout activeLayout={activeLayout} viewId={viewId.toString()} />
+              <ProjectViewIssueLayout
+                activeLayout={activeLayout}
+                viewId={viewId.toString()}
+                filters={workItemFilters?.richFilters}
+              />
             </div>
             {/* peek overview */}
             <IssuePeekOverview />

@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Názov vetvy skopírovaný",
       "update_failed": "Prvok výskumu sa nepodarilo aktualizovať"
+    },
+    "layout": {
+      "title": "Rozloženie grafu výskumu",
+      "label": "Graf výskumu"
+    },
+    "graph": {
+      "expand": "Rozbaliť",
+      "collapse": "Zbaliť",
+      "expand_all": "Rozbaliť všetko",
+      "collapse_all": "Zbaliť všetko",
+      "hide_closed": "Skryť zamietnuté a nahradené",
+      "show_auxiliary": "Ďalšie väzby",
+      "truncated": "Zobrazených prvých 2000 položiek. Zúžte filtre, aby ste videli zvyšok.",
+      "empty_title": "Zatiaľ tu nie sú žiadne prvky výskumu",
+      "empty_description": "Nastavte pri pracovných položkách typ výskumu alebo zmeňte filtre."
     }
   }
 }

@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Dal adı kopyalandı",
       "update_failed": "Araştırma öğesi güncellenemedi"
+    },
+    "layout": {
+      "title": "Araştırma grafiği düzeni",
+      "label": "Araştırma grafiği"
+    },
+    "graph": {
+      "expand": "Genişlet",
+      "collapse": "Daralt",
+      "expand_all": "Tümünü genişlet",
+      "collapse_all": "Tümünü daralt",
+      "hide_closed": "Reddedilen ve yerini alanları gizle",
+      "show_auxiliary": "Diğer ilişkiler",
+      "truncated": "İlk 2000 öğe gösteriliyor. Kalanını görmek için filtreleri daraltın.",
+      "empty_title": "Burada henüz araştırma öğesi yok",
+      "empty_description": "İş öğelerine bir araştırma türü atayın veya filtreleri değiştirin."
     }
   }
 }

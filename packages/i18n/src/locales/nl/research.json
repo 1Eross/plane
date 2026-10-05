@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Branchnaam gekopieerd",
       "update_failed": "Onderzoeksitem kon niet worden bijgewerkt"
+    },
+    "layout": {
+      "title": "Onderzoeksgraafweergave",
+      "label": "Onderzoeksgraaf"
+    },
+    "graph": {
+      "expand": "Uitvouwen",
+      "collapse": "Samenvouwen",
+      "expand_all": "Alles uitvouwen",
+      "collapse_all": "Alles samenvouwen",
+      "hide_closed": "Verworpen en vervangen verbergen",
+      "show_auxiliary": "Andere relaties",
+      "truncated": "De eerste 2000 items worden getoond. Verfijn de filters om de rest te zien.",
+      "empty_title": "Hier zijn nog geen onderzoeksitems",
+      "empty_description": "Stel een onderzoekstype in bij werkitems of wijzig de filters."
     }
   }
 }

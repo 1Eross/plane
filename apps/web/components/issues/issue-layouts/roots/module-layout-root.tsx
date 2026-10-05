@@ -11,6 +11,7 @@ import useSWR from "swr";
 // plane imports
 import { ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { EIssuesStoreType, EIssueLayoutTypes } from "@plane/types";
+import type { TWorkItemFilterExpression } from "@plane/types";
 import { Row, ERowVariant } from "@plane/blocks/layout";
 // hooks
 import { ProjectLevelWorkItemFiltersHOC } from "@/components/work-item-filters/filters-hoc/project-level";
@@ -21,11 +22,16 @@ import { IssuesStoreContext } from "@/hooks/use-issue-layout-store";
 import { IssuePeekOverview } from "../../peek-overview";
 import { ModuleCalendarLayout } from "../calendar/roots/module-root";
 import { BaseGanttRoot } from "../gantt";
+import { ResearchGraphRoot } from "../research-graph";
 import { ModuleKanBanLayout } from "../kanban/roots/module-root";
 import { ModuleListLayout } from "../list/roots/module-root";
 import { ModuleSpreadsheetLayout } from "../spreadsheet/roots/module-root";
 
-function ModuleIssueLayout(props: { activeLayout: EIssueLayoutTypes | undefined; moduleId: string }) {
+function ModuleIssueLayout(props: {
+  activeLayout: EIssueLayoutTypes | undefined;
+  moduleId: string;
+  filters?: TWorkItemFilterExpression;
+}) {
   switch (props.activeLayout) {
     case EIssueLayoutTypes.LIST:
       return <ModuleListLayout />;
@@ -37,6 +43,8 @@ function ModuleIssueLayout(props: { activeLayout: EIssueLayoutTypes | undefined;
       return <BaseGanttRoot viewId={props.moduleId} />;
     case EIssueLayoutTypes.SPREADSHEET:
       return <ModuleSpreadsheetLayout />;
+    case EIssueLayoutTypes.RESEARCH_GRAPH:
+      return <ResearchGraphRoot scopeType="module" scopeId={props.moduleId} filters={props.filters} />;
     default:
       return null;
   }
@@ -83,7 +91,11 @@ export const ModuleLayoutRoot = observer(function ModuleLayoutRoot() {
           <div className="relative flex h-full w-full flex-col overflow-hidden">
             {moduleWorkItemsFilter && <WorkItemFiltersRow filter={moduleWorkItemsFilter} />}
             <Row variant={ERowVariant.HUGGING} className="h-full w-full overflow-auto">
-              <ModuleIssueLayout activeLayout={activeLayout} moduleId={moduleId} />
+              <ModuleIssueLayout
+                activeLayout={activeLayout}
+                moduleId={moduleId}
+                filters={workItemFilters?.richFilters}
+              />
             </Row>
             {/* peek overview */}
             <IssuePeekOverview />

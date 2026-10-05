@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Branch name copied",
       "update_failed": "Could not update the research item"
+    },
+    "layout": {
+      "title": "Research graph layout",
+      "label": "Research graph"
+    },
+    "graph": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "expand_all": "Expand all",
+      "collapse_all": "Collapse all",
+      "hide_closed": "Hide rejected and superseded",
+      "show_auxiliary": "Other relations",
+      "truncated": "Showing the first 2000 items. Narrow the filters to see the rest.",
+      "empty_title": "No research items here yet",
+      "empty_description": "Set a research type on work items or change the filters."
     }
   }
 }

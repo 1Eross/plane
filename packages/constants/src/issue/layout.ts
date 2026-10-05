@@ -60,6 +60,11 @@ export const ISSUE_LAYOUT_MAP: TIssueLayoutMap = {
     i18n_title: "issue.layouts.title.gantt",
     i18n_label: "issue.layouts.gantt",
   },
+  [EIssueLayoutTypes.RESEARCH_GRAPH]: {
+    key: EIssueLayoutTypes.RESEARCH_GRAPH,
+    i18n_title: "research.layout.title",
+    i18n_label: "research.layout.label",
+  },
 };
 
 export const ISSUE_LAYOUTS: {

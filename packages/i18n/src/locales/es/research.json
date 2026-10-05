@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Nombre de rama copiado",
       "update_failed": "No se pudo actualizar el elemento de investigación"
+    },
+    "layout": {
+      "title": "Diseño de grafo de investigación",
+      "label": "Grafo de investigación"
+    },
+    "graph": {
+      "expand": "Expandir",
+      "collapse": "Contraer",
+      "expand_all": "Expandir todo",
+      "collapse_all": "Contraer todo",
+      "hide_closed": "Ocultar rechazadas y reemplazadas",
+      "show_auxiliary": "Otras relaciones",
+      "truncated": "Se muestran los primeros 2000 elementos. Ajuste los filtros para ver el resto.",
+      "empty_title": "Aún no hay elementos de investigación aquí",
+      "empty_description": "Asigne un tipo de investigación a los elementos de trabajo o cambie los filtros."
     }
   }
 }

@@ -278,6 +278,15 @@ export const ISSUE_DISPLAY_FILTERS_BY_PAGE: TIssueFiltersToDisplayByPageType = {
           values: ["sub_issue"],
         },
       },
+      // the research graph lays nodes out itself: no grouping or ordering
+      research_graph: {
+        display_properties: ["key"],
+        display_filters: {},
+        extra_options: {
+          access: false,
+          values: [],
+        },
+      },
     },
   },
   sub_work_items: {

@@ -95,7 +95,13 @@ export const ProfileIssuesMobileHeader = observer(function ProfileIssuesMobileHe
         </MenuTrigger>
         <MenuContent side="bottom" align="start">
           {ISSUE_LAYOUTS.map((layout) => {
-            if (layout.key === "spreadsheet" || layout.key === "gantt_chart" || layout.key === "calendar") return null;
+            if (
+              layout.key === "spreadsheet" ||
+              layout.key === "gantt_chart" ||
+              layout.key === "calendar" ||
+              layout.key === "research_graph"
+            )
+              return null;
             return (
               <MenuItem
                 key={layout.key}

@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Numele ramurii a fost copiat",
       "update_failed": "Elementul de cercetare nu a putut fi actualizat"
+    },
+    "layout": {
+      "title": "Vizualizare graf de cercetare",
+      "label": "Graf de cercetare"
+    },
+    "graph": {
+      "expand": "Extindeți",
+      "collapse": "Restrângeți",
+      "expand_all": "Extindeți tot",
+      "collapse_all": "Restrângeți tot",
+      "hide_closed": "Ascundeți respinsele și înlocuitele",
+      "show_auxiliary": "Alte legături",
+      "truncated": "Sunt afișate primele 2000 de elemente. Restrângeți filtrele pentru a vedea restul.",
+      "empty_title": "Încă nu există elemente de cercetare aici",
+      "empty_description": "Setați un tip de cercetare pe activități sau modificați filtrele."
     }
   }
 }

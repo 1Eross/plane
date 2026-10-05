@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "已复制分支名称",
       "update_failed": "无法更新研究项"
+    },
+    "layout": {
+      "title": "研究图谱布局",
+      "label": "研究图谱"
+    },
+    "graph": {
+      "expand": "展开",
+      "collapse": "折叠",
+      "expand_all": "全部展开",
+      "collapse_all": "全部折叠",
+      "hide_closed": "隐藏已否定和已取代",
+      "show_auxiliary": "其他关系",
+      "truncated": "仅显示前 2000 项，请缩小筛选范围以查看其余项。",
+      "empty_title": "这里还没有研究项",
+      "empty_description": "为工作项设置研究类型或更改筛选条件。"
     }
   }
 }

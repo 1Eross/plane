@@ -95,6 +95,21 @@
     "toasts": {
       "branch_copied": "Đã sao chép tên nhánh",
       "update_failed": "Không thể cập nhật mục nghiên cứu"
+    },
+    "layout": {
+      "title": "Bố cục đồ thị nghiên cứu",
+      "label": "Đồ thị nghiên cứu"
+    },
+    "graph": {
+      "expand": "Mở rộng",
+      "collapse": "Thu gọn",
+      "expand_all": "Mở rộng tất cả",
+      "collapse_all": "Thu gọn tất cả",
+      "hide_closed": "Ẩn giả thuyết bị bác bỏ và đã thay thế",
+      "show_auxiliary": "Liên kết khác",
+      "truncated": "Đang hiển thị 2000 mục đầu tiên. Thu hẹp bộ lọc để xem phần còn lại.",
+      "empty_title": "Chưa có mục nghiên cứu nào ở đây",
+      "empty_description": "Đặt loại nghiên cứu cho mục công việc hoặc thay đổi bộ lọc."
     }
   }
 }
