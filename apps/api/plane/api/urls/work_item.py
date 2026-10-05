@@ -18,6 +18,11 @@ from plane.api.views import (
     WorkspaceIssueAPIEndpoint,
     IssueSearchEndpoint,
     IssueRelationListCreateAPIEndpoint,
+    ResearchGraphAPIEndpoint,
+    ResearchMatrixAPIEndpoint,
+    ResearchMergeAPIEndpoint,
+    WorkItemRelationDetailAPIEndpoint,
+    WorkItemResearchAPIEndpoint,
 )
 
 # Deprecated url patterns
@@ -150,6 +155,32 @@ new_url_patterns = [
         "workspaces/<str:slug>/projects/<uuid:project_id>/work-items/<uuid:issue_id>/relations/",
         IssueRelationListCreateAPIEndpoint.as_view(http_method_names=["get", "post"]),
         name="work-item-relation-list",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/work-items/<uuid:issue_id>/relations/<uuid:related_issue_id>/",
+        WorkItemRelationDetailAPIEndpoint.as_view(http_method_names=["patch", "delete"]),
+        name="work-item-relation-detail",
+    ),
+    # research graph
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/work-items/<uuid:issue_id>/research/",
+        WorkItemResearchAPIEndpoint.as_view(http_method_names=["get", "patch"]),
+        name="work-item-research",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/work-items/<uuid:issue_id>/research-matrix/",
+        ResearchMatrixAPIEndpoint.as_view(http_method_names=["get"]),
+        name="work-item-research-matrix",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/research-graph/",
+        ResearchGraphAPIEndpoint.as_view(http_method_names=["get"]),
+        name="research-graph",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/research/merge/",
+        ResearchMergeAPIEndpoint.as_view(http_method_names=["post"]),
+        name="research-merge",
     ),
 ]
 
