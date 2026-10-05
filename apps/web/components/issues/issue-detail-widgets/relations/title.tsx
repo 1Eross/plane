@@ -12,7 +12,7 @@ import { EIssueServiceType } from "@plane/types";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 // components
-import { useTimeLineRelationOptions } from "@/components/relations";
+import { GENERIC_ISSUE_RELATION_OPTIONS_MAP } from "@/components/relations";
 
 type Props = {
   issueId: string;
@@ -27,7 +27,8 @@ export const RelationsCollapsibleTitle = observer(function RelationsCollapsibleT
     relation: { getRelationCountByIssueId },
   } = useIssueDetail(issueServiceType);
 
-  const ISSUE_RELATION_OPTIONS = useTimeLineRelationOptions();
+  // research relations are listed in the research widget
+  const ISSUE_RELATION_OPTIONS = GENERIC_ISSUE_RELATION_OPTIONS_MAP;
   // derived values
   const relationsCount = getRelationCountByIssueId(issueId, ISSUE_RELATION_OPTIONS);
 

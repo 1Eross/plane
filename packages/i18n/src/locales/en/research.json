@@ -50,6 +50,51 @@
       "description": "Map research questions, hypotheses, experiments and evidence, and check every verdict against the evidence.",
       "toggle_title": "Enable research graph",
       "toggle_description": "Show the research graph layout and research fields on work items in this project."
+    },
+    "fields": {
+      "type": "Research type",
+      "status": "Research status",
+      "none": "Not a research item",
+      "statement": "Statement",
+      "success_criteria": "Success criteria",
+      "conclusion": "Conclusion",
+      "confidence": "Confidence, %",
+      "repo_url": "Repository",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artifact"
+    },
+    "placeholders": {
+      "statement": "If …, then …",
+      "success_criteria": "Which result would confirm or refute it?",
+      "conclusion": "What did we learn?"
+    },
+    "verdict": {
+      "requires_supporting": "needs valid supporting evidence",
+      "requires_opposing": "needs valid opposing evidence",
+      "computed": "set automatically",
+      "needs_review_hint": "The evidence behind this verdict has changed. Review the verdict.",
+      "recorded": "Verdict recorded on {date}"
+    },
+    "widget": {
+      "title": "Research"
+    },
+    "links": {
+      "title": "Research links",
+      "add": "Add link",
+      "empty": "No research links yet",
+      "weight": "Weight"
+    },
+    "reproducibility": {
+      "title": "Reproducibility",
+      "missing_commit": "No commit is linked to this result yet"
+    },
+    "actions": {
+      "copy_branch_name": "Copy branch name"
+    },
+    "toasts": {
+      "branch_copied": "Branch name copied",
+      "update_failed": "Could not update the research item"
     }
   }
 }

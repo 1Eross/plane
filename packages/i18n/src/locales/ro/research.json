@@ -50,6 +50,51 @@
       "description": "Conectați întrebările de cercetare, ipotezele, experimentele și dovezile și verificați fiecare verdict pe baza dovezilor.",
       "toggle_title": "Activați graful de cercetare",
       "toggle_description": "Afișează vizualizarea graf de cercetare și câmpurile de cercetare pe activitățile din acest proiect."
+    },
+    "fields": {
+      "type": "Tip de cercetare",
+      "status": "Stare cercetare",
+      "none": "Nu este un element de cercetare",
+      "statement": "Enunț",
+      "success_criteria": "Criterii de succes",
+      "conclusion": "Concluzie",
+      "confidence": "Încredere, %",
+      "repo_url": "Depozit",
+      "branch": "Ramură",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefact"
+    },
+    "placeholders": {
+      "statement": "Dacă …, atunci …",
+      "success_criteria": "Ce rezultat ar confirma-o sau ar infirma-o?",
+      "conclusion": "Ce am aflat?"
+    },
+    "verdict": {
+      "requires_supporting": "necesită o dovadă validă care o susține",
+      "requires_opposing": "necesită o dovadă validă care o contrazice",
+      "computed": "setat automat",
+      "needs_review_hint": "Dovezile pe care se bazează acest verdict s-au schimbat. Reevaluați verdictul.",
+      "recorded": "Verdict emis la {date}"
+    },
+    "widget": {
+      "title": "Cercetare"
+    },
+    "links": {
+      "title": "Legături de cercetare",
+      "add": "Adăugați o legătură",
+      "empty": "Încă nu există legături de cercetare",
+      "weight": "Pondere"
+    },
+    "reproducibility": {
+      "title": "Reproductibilitate",
+      "missing_commit": "Încă nu este legat niciun commit de acest rezultat"
+    },
+    "actions": {
+      "copy_branch_name": "Copiați numele ramurii"
+    },
+    "toasts": {
+      "branch_copied": "Numele ramurii a fost copiat",
+      "update_failed": "Elementul de cercetare nu a putut fi actualizat"
     }
   }
 }

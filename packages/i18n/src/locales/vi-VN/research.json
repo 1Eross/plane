@@ -50,6 +50,51 @@
       "description": "Liên kết câu hỏi nghiên cứu, giả thuyết, thí nghiệm và bằng chứng, đồng thời đối chiếu mọi kết luận với bằng chứng.",
       "toggle_title": "Bật đồ thị nghiên cứu",
       "toggle_description": "Hiển thị bố cục đồ thị nghiên cứu và các trường nghiên cứu trên mục công việc trong dự án này."
+    },
+    "fields": {
+      "type": "Loại nghiên cứu",
+      "status": "Trạng thái nghiên cứu",
+      "none": "Không phải mục nghiên cứu",
+      "statement": "Phát biểu",
+      "success_criteria": "Tiêu chí thành công",
+      "conclusion": "Kết luận",
+      "confidence": "Độ tin cậy, %",
+      "repo_url": "Kho mã",
+      "branch": "Nhánh",
+      "commit_sha": "Commit",
+      "artifact_url": "Sản phẩm"
+    },
+    "placeholders": {
+      "statement": "Nếu …, thì …",
+      "success_criteria": "Kết quả nào sẽ xác nhận hoặc bác bỏ nó?",
+      "conclusion": "Chúng ta học được gì?"
+    },
+    "verdict": {
+      "requires_supporting": "cần bằng chứng ủng hộ hợp lệ",
+      "requires_opposing": "cần bằng chứng phản bác hợp lệ",
+      "computed": "được đặt tự động",
+      "needs_review_hint": "Bằng chứng làm cơ sở cho kết luận này đã thay đổi. Hãy xem xét lại kết luận.",
+      "recorded": "Kết luận được đưa ra vào {date}"
+    },
+    "widget": {
+      "title": "Nghiên cứu"
+    },
+    "links": {
+      "title": "Liên kết nghiên cứu",
+      "add": "Thêm liên kết",
+      "empty": "Chưa có liên kết nghiên cứu",
+      "weight": "Trọng số"
+    },
+    "reproducibility": {
+      "title": "Khả năng tái lập",
+      "missing_commit": "Chưa có commit nào được liên kết với kết quả này"
+    },
+    "actions": {
+      "copy_branch_name": "Sao chép tên nhánh"
+    },
+    "toasts": {
+      "branch_copied": "Đã sao chép tên nhánh",
+      "update_failed": "Không thể cập nhật mục nghiên cứu"
     }
   }
 }

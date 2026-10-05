@@ -35,6 +35,8 @@ import { IssueReactionStore } from "./reaction.store";
 import type { IIssueReactionStore, IIssueReactionStoreActions } from "./reaction.store";
 import { IssueRelationStore } from "./relation.store";
 import type { IIssueRelationStore, IIssueRelationStoreActions } from "./relation.store";
+import { IssueResearchStore } from "./research.store";
+import type { IIssueResearchStore } from "./research.store";
 import { IssueSubIssuesStore } from "./sub_issues.store";
 import type { IIssueSubIssuesStore, IIssueSubIssuesStoreActions } from "./sub_issues.store";
 import { IssueSubscriptionStore } from "./subscription.store";
@@ -120,6 +122,7 @@ export interface IIssueDetail
   link: IIssueLinkStore;
   subscription: IIssueSubscriptionStore;
   relation: IIssueRelationStore;
+  research: IIssueResearchStore;
 }
 
 export class IssueDetail implements IIssueDetail {
@@ -139,7 +142,7 @@ export class IssueDetail implements IIssueDetail {
       issue: undefined,
     },
   };
-  openWidgets: TWorkItemWidgets[] = ["sub-work-items", "links", "attachments"];
+  openWidgets: TWorkItemWidgets[] = ["sub-work-items", "links", "attachments", "research"];
   lastWidgetAction: TWorkItemWidgets | null = null;
   isCreateIssueModalOpen: boolean = false;
   isIssueLinkModalOpen: boolean = false;
@@ -160,6 +163,7 @@ export class IssueDetail implements IIssueDetail {
   link: IIssueLinkStore;
   subscription: IIssueSubscriptionStore;
   relation: IIssueRelationStore;
+  research: IIssueResearchStore;
   activity: IIssueActivityStore;
   comment: IIssueCommentStore;
   commentReaction: IIssueCommentReactionStore;
@@ -215,6 +219,7 @@ export class IssueDetail implements IIssueDetail {
     this.link = new IssueLinkStore(this, serviceType);
     this.subscription = new IssueSubscriptionStore(this, serviceType);
     this.relation = new IssueRelationStore(this);
+    this.research = new IssueResearchStore(this);
   }
 
   // computed
@@ -255,8 +260,8 @@ export class IssueDetail implements IIssueDetail {
     this.openWidgets = state;
     if (this.lastWidgetAction) this.lastWidgetAction = null;
   };
-  setLastWidgetAction = (action: TWorkItemWidgets) => {
-    this.openWidgets = [action];
+  setLastWidgetAction = (widget: TWorkItemWidgets) => {
+    this.openWidgets = [widget];
   };
   toggleOpenWidget = (state: TWorkItemWidgets) => {
     if (this.openWidgets && this.openWidgets.includes(state))

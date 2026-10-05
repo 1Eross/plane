@@ -27,6 +27,7 @@ Create branch names that follow the convention `<type>/<work-item-id>-<short-des
    - `refactor` — restructuring without behavior change
    - `docs` — documentation only
    - `perf` — performance improvement
+   - `exp` — research experiment / spike: work on an `experiment` node of the research graph; usually not merged into the main branch, kept for reproducibility
 
 2. **Determine the work item ID**:
    - If the user gives one, use it
@@ -55,6 +56,7 @@ chore/web-2201-bump-eslint
 refactor/silo-980-extract-auth-middleware
 docs/web-1500-pr-template-update
 perf/silo-1310-cache-workspace-lookup
+exp/rnd-57-cache-warmup
 ```
 
 ## Common Mistakes
@@ -65,3 +67,4 @@ perf/silo-1310-cache-workspace-lookup
 - Writing a long, narrative description — keep it scannable
 - Omitting the work item ID when one exists in Plane
 - Using a type that won't match the eventual PR type (pick the type you'd use in the PR title)
+- Using the hypothesis ID for an experiment branch — the branch belongs to the experiment work item (or its sub-work item), since one hypothesis is tested by several experiments

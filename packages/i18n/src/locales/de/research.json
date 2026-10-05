@@ -50,6 +50,51 @@
       "description": "Forschungsfragen, Hypothesen, Experimente und Evidenz verknüpfen und jedes Urteil anhand der Evidenz prüfen.",
       "toggle_title": "Forschungsgraph aktivieren",
       "toggle_description": "Das Forschungsgraph-Layout und Forschungsfelder an Arbeitselementen in diesem Projekt anzeigen."
+    },
+    "fields": {
+      "type": "Forschungstyp",
+      "status": "Forschungsstatus",
+      "none": "Kein Forschungselement",
+      "statement": "Aussage",
+      "success_criteria": "Erfolgskriterien",
+      "conclusion": "Schlussfolgerung",
+      "confidence": "Konfidenz, %",
+      "repo_url": "Repository",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefakt"
+    },
+    "placeholders": {
+      "statement": "Wenn …, dann …",
+      "success_criteria": "Welches Ergebnis würde sie bestätigen oder widerlegen?",
+      "conclusion": "Was haben wir gelernt?"
+    },
+    "verdict": {
+      "requires_supporting": "erfordert gültige stützende Evidenz",
+      "requires_opposing": "erfordert gültige widerlegende Evidenz",
+      "computed": "wird automatisch gesetzt",
+      "needs_review_hint": "Die Evidenz hinter diesem Urteil hat sich geändert. Urteil überprüfen.",
+      "recorded": "Urteil gefällt am {date}"
+    },
+    "widget": {
+      "title": "Forschung"
+    },
+    "links": {
+      "title": "Forschungsverknüpfungen",
+      "add": "Verknüpfung hinzufügen",
+      "empty": "Noch keine Forschungsverknüpfungen",
+      "weight": "Gewicht"
+    },
+    "reproducibility": {
+      "title": "Reproduzierbarkeit",
+      "missing_commit": "Mit diesem Ergebnis ist noch kein Commit verknüpft"
+    },
+    "actions": {
+      "copy_branch_name": "Branch-Namen kopieren"
+    },
+    "toasts": {
+      "branch_copied": "Branch-Name kopiert",
+      "update_failed": "Forschungselement konnte nicht aktualisiert werden"
     }
   }
 }

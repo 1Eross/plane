@@ -50,6 +50,51 @@
       "description": "Relacione perguntas de pesquisa, hipóteses, experimentos e evidências, e confira cada veredito com as evidências.",
       "toggle_title": "Ativar grafo de pesquisa",
       "toggle_description": "Mostrar o layout de grafo de pesquisa e os campos de pesquisa nos itens de trabalho deste projeto."
+    },
+    "fields": {
+      "type": "Tipo de pesquisa",
+      "status": "Status da pesquisa",
+      "none": "Não é um item de pesquisa",
+      "statement": "Enunciado",
+      "success_criteria": "Critérios de sucesso",
+      "conclusion": "Conclusão",
+      "confidence": "Confiança, %",
+      "repo_url": "Repositório",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefato"
+    },
+    "placeholders": {
+      "statement": "Se …, então …",
+      "success_criteria": "Qual resultado a confirmaria ou refutaria?",
+      "conclusion": "O que aprendemos?"
+    },
+    "verdict": {
+      "requires_supporting": "precisa de evidência válida que a apoie",
+      "requires_opposing": "precisa de evidência válida que a refute",
+      "computed": "definido automaticamente",
+      "needs_review_hint": "A evidência por trás deste veredito mudou. Revise o veredito.",
+      "recorded": "Veredito registrado em {date}"
+    },
+    "widget": {
+      "title": "Pesquisa"
+    },
+    "links": {
+      "title": "Vínculos de pesquisa",
+      "add": "Adicionar vínculo",
+      "empty": "Ainda não há vínculos de pesquisa",
+      "weight": "Peso"
+    },
+    "reproducibility": {
+      "title": "Reprodutibilidade",
+      "missing_commit": "Ainda não há commit vinculado a este resultado"
+    },
+    "actions": {
+      "copy_branch_name": "Copiar nome da branch"
+    },
+    "toasts": {
+      "branch_copied": "Nome da branch copiado",
+      "update_failed": "Não foi possível atualizar o item de pesquisa"
     }
   }
 }

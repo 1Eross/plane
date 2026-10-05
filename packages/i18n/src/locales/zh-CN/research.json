@@ -50,6 +50,51 @@
       "description": "关联研究问题、假设、实验和证据，并依据证据核查每一项结论。",
       "toggle_title": "启用研究图谱",
       "toggle_description": "在此项目的工作项上显示研究图谱布局和研究字段。"
+    },
+    "fields": {
+      "type": "研究类型",
+      "status": "研究状态",
+      "none": "非研究项",
+      "statement": "陈述",
+      "success_criteria": "成功标准",
+      "conclusion": "结论",
+      "confidence": "置信度（%）",
+      "repo_url": "代码仓库",
+      "branch": "分支",
+      "commit_sha": "提交",
+      "artifact_url": "产物"
+    },
+    "placeholders": {
+      "statement": "如果……那么……",
+      "success_criteria": "什么结果会证实或推翻它？",
+      "conclusion": "我们学到了什么？"
+    },
+    "verdict": {
+      "requires_supporting": "需要有效的支持证据",
+      "requires_opposing": "需要有效的反驳证据",
+      "computed": "自动设置",
+      "needs_review_hint": "此结论所依据的证据已更改，请重新评估结论。",
+      "recorded": "结论记录于 {date}"
+    },
+    "widget": {
+      "title": "研究"
+    },
+    "links": {
+      "title": "研究关联",
+      "add": "添加关联",
+      "empty": "暂无研究关联",
+      "weight": "权重"
+    },
+    "reproducibility": {
+      "title": "可复现性",
+      "missing_commit": "此结果尚未关联任何提交"
+    },
+    "actions": {
+      "copy_branch_name": "复制分支名称"
+    },
+    "toasts": {
+      "branch_copied": "已复制分支名称",
+      "update_failed": "无法更新研究项"
     }
   }
 }

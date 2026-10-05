@@ -14,7 +14,7 @@ import { EIssueServiceType } from "@plane/types";
 import { cn } from "@plane/utils";
 // components
 import { CreateUpdateIssueModal } from "@/components/issues/issue-modal/modal";
-import { useTimeLineRelationOptions } from "@/components/relations";
+import { GENERIC_ISSUE_RELATION_OPTIONS_MAP } from "@/components/relations";
 import { CreateUpdateEpicModal } from "@/components/epic-modal";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -82,7 +82,8 @@ export const RelationsCollapsibleContent = observer(function RelationsCollapsibl
 
   // derived values
   const relations = getRelationsByIssueId(issueId);
-  const ISSUE_RELATION_OPTIONS = useTimeLineRelationOptions();
+  // research relations are listed in the research widget
+  const ISSUE_RELATION_OPTIONS = GENERIC_ISSUE_RELATION_OPTIONS_MAP;
 
   const handleIssueCrudState = (
     key: "update" | "delete" | "removeRelation",

@@ -24,6 +24,7 @@ import { useAppRouter } from "@/hooks/use-app-router";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
 import { WorkItemDetailQuickActions } from "../issue-layouts/quick-action-dropdowns";
+import { CopyBranchNameButton } from "../research/copy-branch-name-button";
 import { IssueSubscription } from "./subscription";
 
 type Props = {
@@ -148,6 +149,7 @@ export const IssueDetailQuickActions = observer(function IssueDetailQuickActions
             <IssueSubscription workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
           )}
           <div className="flex flex-wrap items-center gap-2 text-tertiary">
+            <CopyBranchNameButton issueId={issueId} />
             <Tooltip label={t("common.actions.copy_link")} disabled={isMobile}>
               <IconButton
                 variant="secondary"

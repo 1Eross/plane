@@ -31,6 +31,7 @@ import { useUser } from "@/hooks/store/user";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
 import { IssueSubscription } from "../issue-detail/subscription";
+import { CopyBranchNameButton } from "../research/copy-branch-name-button";
 import { WorkItemDetailQuickActions } from "../issue-layouts/quick-action-dropdowns";
 import { NameDescriptionUpdateStatus } from "../issue-update-status";
 import { IconButton } from "@makeplane/propel/components/icon-button";
@@ -134,6 +135,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
         title: t("common.link_copied"),
         message: t("common.link_copied_to_clipboard"),
       });
+      return;
     });
   };
 
@@ -143,6 +145,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
 
       return deleteIssue(workspaceSlug, projectId, issueId).then(() => {
         setPeekIssue(undefined);
+        return;
       });
     } catch (_error) {
       setToast({
@@ -206,6 +209,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
           {currentUser && !isArchived && (
             <IssueSubscription workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
           )}
+          <CopyBranchNameButton issueId={issueId} />
           <Tooltip label={t("common.actions.copy_link")} disabled={isMobile}>
             <IconButton
               variant="secondary"

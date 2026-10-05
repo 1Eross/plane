@@ -16,7 +16,7 @@ import type { TIssueServiceType } from "@plane/types";
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 // components
 import { handleTriggerClick, handleTriggerKeyDown } from "@/components/common/trigger-guard";
-import { useTimeLineRelationOptions } from "@/components/relations";
+import { GENERIC_ISSUE_RELATION_OPTIONS } from "@/components/relations";
 // types
 import type { TIssueRelationTypes } from "@plane/types";
 
@@ -33,8 +33,6 @@ export const RelationActionButton = observer(function RelationActionButton(props
   const { t } = useTranslation();
   // store hooks
   const { toggleRelationModal, setRelationKey } = useIssueDetail(issueServiceType);
-
-  const ISSUE_RELATION_OPTIONS = useTimeLineRelationOptions();
 
   // handlers
   const handleOnClick = (relationKey: TIssueRelationTypes) => {
@@ -62,7 +60,7 @@ export const RelationActionButton = observer(function RelationActionButton(props
         </MenuTrigger>
       )}
       <MenuContent side="bottom" align="start">
-        {Object.values(ISSUE_RELATION_OPTIONS).map((item) => {
+        {GENERIC_ISSUE_RELATION_OPTIONS.map((item) => {
           if (!item) return null;
 
           return (

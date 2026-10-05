@@ -50,6 +50,51 @@
       "description": "Colleghi domande di ricerca, ipotesi, esperimenti ed evidenze e verifichi ogni verdetto alla luce delle evidenze.",
       "toggle_title": "Attiva il grafo della ricerca",
       "toggle_description": "Mostra il layout a grafo della ricerca e i campi di ricerca negli elementi di lavoro di questo progetto."
+    },
+    "fields": {
+      "type": "Tipo di ricerca",
+      "status": "Stato della ricerca",
+      "none": "Non è un elemento di ricerca",
+      "statement": "Enunciato",
+      "success_criteria": "Criteri di successo",
+      "conclusion": "Conclusione",
+      "confidence": "Confidenza, %",
+      "repo_url": "Repository",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefatto"
+    },
+    "placeholders": {
+      "statement": "Se …, allora …",
+      "success_criteria": "Quale risultato la confermerebbe o la smentirebbe?",
+      "conclusion": "Che cosa abbiamo imparato?"
+    },
+    "verdict": {
+      "requires_supporting": "richiede un’evidenza valida a supporto",
+      "requires_opposing": "richiede un’evidenza valida contraria",
+      "computed": "impostato automaticamente",
+      "needs_review_hint": "Le evidenze alla base di questo verdetto sono cambiate. Riesamini il verdetto.",
+      "recorded": "Verdetto emesso il {date}"
+    },
+    "widget": {
+      "title": "Ricerca"
+    },
+    "links": {
+      "title": "Collegamenti di ricerca",
+      "add": "Aggiungi collegamento",
+      "empty": "Ancora nessun collegamento di ricerca",
+      "weight": "Peso"
+    },
+    "reproducibility": {
+      "title": "Riproducibilità",
+      "missing_commit": "A questo risultato non è ancora collegato alcun commit"
+    },
+    "actions": {
+      "copy_branch_name": "Copia nome del branch"
+    },
+    "toasts": {
+      "branch_copied": "Nome del branch copiato",
+      "update_failed": "Impossibile aggiornare l’elemento di ricerca"
     }
   }
 }

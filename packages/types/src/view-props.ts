@@ -109,6 +109,9 @@ export const WORK_ITEM_FILTER_PROPERTY_KEYS = [
   "project_id",
   "created_at",
   "updated_at",
+  "research_type",
+  "research_status",
+  "needs_review",
 ] as const;
 export type TWorkItemFilterProperty = (typeof WORK_ITEM_FILTER_PROPERTY_KEYS)[number];
 

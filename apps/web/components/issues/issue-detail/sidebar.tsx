@@ -39,6 +39,7 @@ import { useUserProfile } from "@/hooks/store/user";
 // components
 import { IssueParentSelectRoot } from "@/components/issues/parent-select-root";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
+import { ResearchPropertyRows } from "@/components/issues/research/research-property-rows";
 import { IssueCycleSelect } from "./cycle-select";
 import { IssueLabel } from "./label";
 import { IssueModuleSelect } from "./module-select";
@@ -122,6 +123,13 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
                 tooltip
               />
             </SidebarPropertyListItem>
+
+            <ResearchPropertyRows
+              workspaceSlug={workspaceSlug}
+              projectId={projectId}
+              issueId={issueId}
+              disabled={!isEditable}
+            />
 
             {createdByDetails && (
               <SidebarPropertyListItem icon={UserOutline} label={t("common.created_by")}>

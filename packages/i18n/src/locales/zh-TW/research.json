@@ -50,6 +50,51 @@
       "description": "關聯研究問題、假設、實驗與證據，並依據證據核對每一項結論。",
       "toggle_title": "啟用研究圖譜",
       "toggle_description": "在此專案的工作事項上顯示研究圖譜版面配置與研究欄位。"
+    },
+    "fields": {
+      "type": "研究類型",
+      "status": "研究狀態",
+      "none": "非研究項目",
+      "statement": "陳述",
+      "success_criteria": "成功標準",
+      "conclusion": "結論",
+      "confidence": "信心度（%）",
+      "repo_url": "程式碼儲存庫",
+      "branch": "分支",
+      "commit_sha": "提交",
+      "artifact_url": "產出物"
+    },
+    "placeholders": {
+      "statement": "如果……那麼……",
+      "success_criteria": "什麼結果會證實或推翻它？",
+      "conclusion": "我們學到了什麼？"
+    },
+    "verdict": {
+      "requires_supporting": "需要有效的支持證據",
+      "requires_opposing": "需要有效的反駁證據",
+      "computed": "自動設定",
+      "needs_review_hint": "此結論所依據的證據已變更，請重新評估結論。",
+      "recorded": "結論記錄於 {date}"
+    },
+    "widget": {
+      "title": "研究"
+    },
+    "links": {
+      "title": "研究關聯",
+      "add": "新增關聯",
+      "empty": "尚無研究關聯",
+      "weight": "權重"
+    },
+    "reproducibility": {
+      "title": "可重現性",
+      "missing_commit": "此結果尚未關聯任何提交"
+    },
+    "actions": {
+      "copy_branch_name": "複製分支名稱"
+    },
+    "toasts": {
+      "branch_copied": "已複製分支名稱",
+      "update_failed": "無法更新研究項目"
     }
   }
 }

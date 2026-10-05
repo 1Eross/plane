@@ -10,11 +10,12 @@ import { observer } from "mobx-react";
 import type { TIssueServiceType, TWorkItemWidgets } from "@plane/types";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
-import { useTimeLineRelationOptions } from "@/components/relations";
+import { GENERIC_ISSUE_RELATION_OPTIONS_MAP } from "@/components/relations";
 // local imports
 import { AttachmentsCollapsible } from "./attachments";
 import { LinksCollapsible } from "./links";
 import { RelationsCollapsible } from "./relations";
+import { ResearchCollapsible } from "./research";
 import { SubIssuesCollapsible } from "./sub-issues";
 
 type Props = {
@@ -38,11 +39,12 @@ export const IssueDetailWidgetCollapsibles = observer(function IssueDetailWidget
   // derived values
   const issue = getIssueById(issueId);
   const subIssues = subIssuesByIssueId(issueId);
-  const ISSUE_RELATION_OPTIONS = useTimeLineRelationOptions();
-  const issueRelationsCount = getRelationCountByIssueId(issueId, ISSUE_RELATION_OPTIONS);
+  // research relations are listed in the research widget
+  const issueRelationsCount = getRelationCountByIssueId(issueId, GENERIC_ISSUE_RELATION_OPTIONS_MAP);
   // render conditions
   const shouldRenderSubIssues = !!subIssues && subIssues.length > 0 && !hideWidgets?.includes("sub-work-items");
   const shouldRenderRelations = issueRelationsCount > 0 && !hideWidgets?.includes("relations");
+  const shouldRenderResearch = !!issue?.research_type && !hideWidgets?.includes("research");
   const shouldRenderLinks = !!issue?.link_count && issue?.link_count > 0 && !hideWidgets?.includes("links");
   const attachmentUploads = getAttachmentsUploadStatusByIssueId(issueId);
   const attachmentsCount = getAttachmentsCountByIssueId(issueId);
@@ -52,6 +54,15 @@ export const IssueDetailWidgetCollapsibles = observer(function IssueDetailWidget
 
   return (
     <div className="flex flex-col">
+      {shouldRenderResearch && (
+        <ResearchCollapsible
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          issueId={issueId}
+          disabled={disabled}
+          issueServiceType={issueServiceType}
+        />
+      )}
       {shouldRenderSubIssues && (
         <SubIssuesCollapsible
           workspaceSlug={workspaceSlug}

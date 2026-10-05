@@ -50,6 +50,51 @@
       "description": "Koppel onderzoeksvragen, hypothesen, experimenten en bewijs, en toets elk oordeel aan het bewijs.",
       "toggle_title": "Onderzoeksgraaf inschakelen",
       "toggle_description": "Toon de onderzoeksgraafweergave en onderzoeksvelden bij werkitems in dit project."
+    },
+    "fields": {
+      "type": "Onderzoekstype",
+      "status": "Onderzoeksstatus",
+      "none": "Geen onderzoeksitem",
+      "statement": "Stelling",
+      "success_criteria": "Succescriteria",
+      "conclusion": "Conclusie",
+      "confidence": "Zekerheid, %",
+      "repo_url": "Repository",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefact"
+    },
+    "placeholders": {
+      "statement": "Als …, dan …",
+      "success_criteria": "Welk resultaat zou haar bevestigen of weerleggen?",
+      "conclusion": "Wat hebben we geleerd?"
+    },
+    "verdict": {
+      "requires_supporting": "vereist geldig ondersteunend bewijs",
+      "requires_opposing": "vereist geldig weerleggend bewijs",
+      "computed": "wordt automatisch ingesteld",
+      "needs_review_hint": "Het bewijs achter dit oordeel is gewijzigd. Beoordeel het oordeel opnieuw.",
+      "recorded": "Oordeel vastgelegd op {date}"
+    },
+    "widget": {
+      "title": "Onderzoek"
+    },
+    "links": {
+      "title": "Onderzoekskoppelingen",
+      "add": "Koppeling toevoegen",
+      "empty": "Nog geen onderzoekskoppelingen",
+      "weight": "Gewicht"
+    },
+    "reproducibility": {
+      "title": "Reproduceerbaarheid",
+      "missing_commit": "Aan dit resultaat is nog geen commit gekoppeld"
+    },
+    "actions": {
+      "copy_branch_name": "Branchnaam kopiëren"
+    },
+    "toasts": {
+      "branch_copied": "Branchnaam gekopieerd",
+      "update_failed": "Onderzoeksitem kon niet worden bijgewerkt"
     }
   }
 }

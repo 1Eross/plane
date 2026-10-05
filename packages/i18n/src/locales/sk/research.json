@@ -50,6 +50,51 @@
       "description": "Prepájajte výskumné otázky, hypotézy, experimenty a dôkazy a overujte každý verdikt podľa dôkazov.",
       "toggle_title": "Zapnúť graf výskumu",
       "toggle_description": "Zobrazovať rozloženie grafu výskumu a výskumné polia pri pracovných položkách v tomto projekte."
+    },
+    "fields": {
+      "type": "Typ výskumu",
+      "status": "Stav výskumu",
+      "none": "Nie je prvkom výskumu",
+      "statement": "Formulácia",
+      "success_criteria": "Kritériá úspechu",
+      "conclusion": "Záver",
+      "confidence": "Istota, %",
+      "repo_url": "Repozitár",
+      "branch": "Vetva",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefakt"
+    },
+    "placeholders": {
+      "statement": "Ak …, potom …",
+      "success_criteria": "Aký výsledok ju potvrdí alebo vyvráti?",
+      "conclusion": "Čo sme zistili?"
+    },
+    "verdict": {
+      "requires_supporting": "vyžaduje platný podporný dôkaz",
+      "requires_opposing": "vyžaduje platný vyvracajúci dôkaz",
+      "computed": "nastavuje sa automaticky",
+      "needs_review_hint": "Dôkazy, na ktorých verdikt stojí, sa zmenili. Verdikt prehodnoťte.",
+      "recorded": "Verdikt vynesený {date}"
+    },
+    "widget": {
+      "title": "Výskum"
+    },
+    "links": {
+      "title": "Výskumné väzby",
+      "add": "Pridať väzbu",
+      "empty": "Zatiaľ žiadne výskumné väzby",
+      "weight": "Váha"
+    },
+    "reproducibility": {
+      "title": "Reprodukovateľnosť",
+      "missing_commit": "K tomuto výsledku zatiaľ nie je pripojený žiadny commit"
+    },
+    "actions": {
+      "copy_branch_name": "Kopírovať názov vetvy"
+    },
+    "toasts": {
+      "branch_copied": "Názov vetvy skopírovaný",
+      "update_failed": "Prvok výskumu sa nepodarilo aktualizovať"
     }
   }
 }

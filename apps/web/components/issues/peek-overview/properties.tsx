@@ -30,6 +30,7 @@ import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
+import { ResearchPropertyRows } from "@/components/issues/research/research-property-rows";
 // helpers
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 import { useMember } from "@/hooks/store/use-member";
@@ -117,6 +118,13 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
             tooltip
           />
         </SidebarPropertyListItem>
+
+        <ResearchPropertyRows
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          issueId={issueId}
+          disabled={disabled}
+        />
 
         {createdByDetails && (
           <SidebarPropertyListItem icon={UserOutline} label={t("common.created_by")} childrenClassName="px-2">

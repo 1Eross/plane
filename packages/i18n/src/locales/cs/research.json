@@ -50,6 +50,51 @@
       "description": "Propojujte výzkumné otázky, hypotézy, experimenty a důkazy a ověřujte každý verdikt podle důkazů.",
       "toggle_title": "Zapnout graf výzkumu",
       "toggle_description": "Zobrazovat rozložení grafu výzkumu a výzkumná pole u pracovních položek v tomto projektu."
+    },
+    "fields": {
+      "type": "Typ výzkumu",
+      "status": "Stav výzkumu",
+      "none": "Není prvkem výzkumu",
+      "statement": "Formulace",
+      "success_criteria": "Kritéria úspěchu",
+      "conclusion": "Závěr",
+      "confidence": "Jistota, %",
+      "repo_url": "Repozitář",
+      "branch": "Větev",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefakt"
+    },
+    "placeholders": {
+      "statement": "Pokud …, pak …",
+      "success_criteria": "Jaký výsledek ji potvrdí nebo vyvrátí?",
+      "conclusion": "Co jsme zjistili?"
+    },
+    "verdict": {
+      "requires_supporting": "vyžaduje platný podpůrný důkaz",
+      "requires_opposing": "vyžaduje platný vyvracející důkaz",
+      "computed": "nastavuje se automaticky",
+      "needs_review_hint": "Důkazy, na nichž verdikt stojí, se změnily. Verdikt přezkoumejte.",
+      "recorded": "Verdikt vynesen {date}"
+    },
+    "widget": {
+      "title": "Výzkum"
+    },
+    "links": {
+      "title": "Výzkumné vazby",
+      "add": "Přidat vazbu",
+      "empty": "Zatím žádné výzkumné vazby",
+      "weight": "Váha"
+    },
+    "reproducibility": {
+      "title": "Reprodukovatelnost",
+      "missing_commit": "K tomuto výsledku zatím není připojen žádný commit"
+    },
+    "actions": {
+      "copy_branch_name": "Kopírovat název větve"
+    },
+    "toasts": {
+      "branch_copied": "Název větve zkopírován",
+      "update_failed": "Prvek výzkumu se nepodařilo aktualizovat"
     }
   }
 }

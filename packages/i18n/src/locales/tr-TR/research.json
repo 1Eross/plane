@@ -50,6 +50,51 @@
       "description": "Araştırma sorularını, hipotezleri, deneyleri ve kanıtları ilişkilendirin ve her kararı kanıtlara göre doğrulayın.",
       "toggle_title": "Araştırma grafiğini etkinleştir",
       "toggle_description": "Bu projedeki iş öğelerinde araştırma grafiği düzenini ve araştırma alanlarını gösterin."
+    },
+    "fields": {
+      "type": "Araştırma türü",
+      "status": "Araştırma durumu",
+      "none": "Araştırma öğesi değil",
+      "statement": "İfade",
+      "success_criteria": "Başarı ölçütleri",
+      "conclusion": "Sonuç",
+      "confidence": "Güven, %",
+      "repo_url": "Depo",
+      "branch": "Dal",
+      "commit_sha": "Commit",
+      "artifact_url": "Yapıt"
+    },
+    "placeholders": {
+      "statement": "Eğer …, o halde …",
+      "success_criteria": "Hangi sonuç onu doğrular ya da çürütür?",
+      "conclusion": "Ne öğrendik?"
+    },
+    "verdict": {
+      "requires_supporting": "geçerli destekleyici kanıt gerekir",
+      "requires_opposing": "geçerli çürütücü kanıt gerekir",
+      "computed": "otomatik olarak ayarlanır",
+      "needs_review_hint": "Bu kararın dayandığı kanıtlar değişti. Kararı yeniden değerlendirin.",
+      "recorded": "Karar verildi: {date}"
+    },
+    "widget": {
+      "title": "Araştırma"
+    },
+    "links": {
+      "title": "Araştırma bağlantıları",
+      "add": "Bağlantı ekle",
+      "empty": "Henüz araştırma bağlantısı yok",
+      "weight": "Ağırlık"
+    },
+    "reproducibility": {
+      "title": "Tekrarlanabilirlik",
+      "missing_commit": "Bu sonuca henüz bir commit bağlanmadı"
+    },
+    "actions": {
+      "copy_branch_name": "Dal adını kopyala"
+    },
+    "toasts": {
+      "branch_copied": "Dal adı kopyalandı",
+      "update_failed": "Araştırma öğesi güncellenemedi"
     }
   }
 }

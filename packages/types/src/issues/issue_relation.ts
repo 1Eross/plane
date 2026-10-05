@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import type { TResearchRelationTypes } from "../research";
 import type { TIssue } from "./issue";
 
 export type TIssueRelation = Record<TIssueRelationTypes, TIssue[]>;
@@ -14,4 +15,6 @@ export type TIssueRelationMap = {
 
 export type TIssueRelationIdMap = Record<TIssueRelationTypes, string[]>;
 
-export type TIssueRelationTypes = "blocking" | "blocked_by" | "duplicate" | "relates_to";
+export type TLegacyIssueRelationTypes = "blocking" | "blocked_by" | "duplicate" | "relates_to";
+
+export type TIssueRelationTypes = TLegacyIssueRelationTypes | TResearchRelationTypes;

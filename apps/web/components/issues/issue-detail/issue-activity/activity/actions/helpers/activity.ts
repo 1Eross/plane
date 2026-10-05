@@ -5,6 +5,7 @@
  */
 
 import type { TIssueActivity } from "@plane/types";
+import { isResearchRelation } from "@plane/utils";
 
 export const getRelationActivityContent = (activity: TIssueActivity | undefined): string | undefined => {
   if (!activity) return;
@@ -24,6 +25,13 @@ export const getRelationActivityContent = (activity: TIssueActivity | undefined)
         : `removed this work item as a duplicate of `;
     case "relates_to":
       return activity.old_value === "" ? `marked that this work item relates to ` : `removed the relation from `;
+  }
+
+  if (activity.field && isResearchRelation(activity.field)) {
+    const relationLabel = activity.field.replace(/_/g, " ");
+    return activity.old_value === ""
+      ? `added a "${relationLabel}" research link to `
+      : `removed the "${relationLabel}" research link to `;
   }
 
   return;

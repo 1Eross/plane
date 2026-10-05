@@ -50,6 +50,51 @@
       "description": "Łącz pytania badawcze, hipotezy, eksperymenty i dowody oraz sprawdzaj każdy werdykt na podstawie dowodów.",
       "toggle_title": "Włącz graf badań",
       "toggle_description": "Pokazuj układ grafu badań i pola badawcze w elementach pracy tego projektu."
+    },
+    "fields": {
+      "type": "Typ badania",
+      "status": "Status badania",
+      "none": "To nie jest element badania",
+      "statement": "Sformułowanie",
+      "success_criteria": "Kryteria sukcesu",
+      "conclusion": "Wniosek",
+      "confidence": "Pewność, %",
+      "repo_url": "Repozytorium",
+      "branch": "Gałąź",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefakt"
+    },
+    "placeholders": {
+      "statement": "Jeśli …, to …",
+      "success_criteria": "Jaki wynik ją potwierdzi lub obali?",
+      "conclusion": "Czego się dowiedzieliśmy?"
+    },
+    "verdict": {
+      "requires_supporting": "wymaga ważnego dowodu potwierdzającego",
+      "requires_opposing": "wymaga ważnego dowodu podważającego",
+      "computed": "ustawiane automatycznie",
+      "needs_review_hint": "Dowody, na których opiera się werdykt, zmieniły się. Oceń werdykt ponownie.",
+      "recorded": "Werdykt wydany {date}"
+    },
+    "widget": {
+      "title": "Badanie"
+    },
+    "links": {
+      "title": "Powiązania badawcze",
+      "add": "Dodaj powiązanie",
+      "empty": "Brak powiązań badawczych",
+      "weight": "Waga"
+    },
+    "reproducibility": {
+      "title": "Odtwarzalność",
+      "missing_commit": "Do tego wyniku nie przypisano jeszcze commita"
+    },
+    "actions": {
+      "copy_branch_name": "Kopiuj nazwę gałęzi"
+    },
+    "toasts": {
+      "branch_copied": "Skopiowano nazwę gałęzi",
+      "update_failed": "Nie udało się zaktualizować elementu badania"
     }
   }
 }

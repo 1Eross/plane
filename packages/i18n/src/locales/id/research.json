@@ -50,6 +50,51 @@
       "description": "Hubungkan pertanyaan riset, hipotesis, eksperimen, dan bukti, lalu periksa setiap keputusan berdasarkan bukti.",
       "toggle_title": "Aktifkan graf riset",
       "toggle_description": "Tampilkan tata letak graf riset dan kolom riset pada Item Kerja di proyek ini."
+    },
+    "fields": {
+      "type": "Jenis riset",
+      "status": "Status riset",
+      "none": "Bukan item riset",
+      "statement": "Pernyataan",
+      "success_criteria": "Kriteria keberhasilan",
+      "conclusion": "Kesimpulan",
+      "confidence": "Keyakinan, %",
+      "repo_url": "Repositori",
+      "branch": "Branch",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefak"
+    },
+    "placeholders": {
+      "statement": "Jika …, maka …",
+      "success_criteria": "Hasil apa yang akan mengonfirmasi atau membantahnya?",
+      "conclusion": "Apa yang kita pelajari?"
+    },
+    "verdict": {
+      "requires_supporting": "memerlukan bukti pendukung yang valid",
+      "requires_opposing": "memerlukan bukti bantahan yang valid",
+      "computed": "diatur secara otomatis",
+      "needs_review_hint": "Bukti yang mendasari keputusan ini telah berubah. Tinjau ulang keputusan.",
+      "recorded": "Keputusan dibuat pada {date}"
+    },
+    "widget": {
+      "title": "Riset"
+    },
+    "links": {
+      "title": "Tautan riset",
+      "add": "Tambah tautan",
+      "empty": "Belum ada tautan riset",
+      "weight": "Bobot"
+    },
+    "reproducibility": {
+      "title": "Reprodusibilitas",
+      "missing_commit": "Belum ada commit yang ditautkan ke hasil ini"
+    },
+    "actions": {
+      "copy_branch_name": "Salin nama branch"
+    },
+    "toasts": {
+      "branch_copied": "Nama branch disalin",
+      "update_failed": "Tidak dapat memperbarui item riset"
     }
   }
 }

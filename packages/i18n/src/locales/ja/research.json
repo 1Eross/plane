@@ -50,6 +50,51 @@
       "description": "研究上の問い、仮説、実験、エビデンスを関連付け、すべての判定をエビデンスに照らして確認します。",
       "toggle_title": "リサーチグラフを有効にする",
       "toggle_description": "このプロジェクトの作業項目にリサーチグラフのレイアウトと研究用フィールドを表示します。"
+    },
+    "fields": {
+      "type": "リサーチタイプ",
+      "status": "リサーチステータス",
+      "none": "リサーチ項目ではありません",
+      "statement": "記述",
+      "success_criteria": "成功基準",
+      "conclusion": "結論",
+      "confidence": "確信度（%）",
+      "repo_url": "リポジトリ",
+      "branch": "ブランチ",
+      "commit_sha": "コミット",
+      "artifact_url": "成果物"
+    },
+    "placeholders": {
+      "statement": "もし…ならば…",
+      "success_criteria": "どの結果が支持または反証になりますか？",
+      "conclusion": "何がわかりましたか？"
+    },
+    "verdict": {
+      "requires_supporting": "有効な支持エビデンスが必要です",
+      "requires_opposing": "有効な反証エビデンスが必要です",
+      "computed": "自動で設定されます",
+      "needs_review_hint": "この判定の根拠となるエビデンスが変更されました。判定を見直してください。",
+      "recorded": "{date} に判定済み"
+    },
+    "widget": {
+      "title": "リサーチ"
+    },
+    "links": {
+      "title": "リサーチリンク",
+      "add": "リンクを追加",
+      "empty": "リサーチリンクはまだありません",
+      "weight": "重み"
+    },
+    "reproducibility": {
+      "title": "再現性",
+      "missing_commit": "この結果にはまだコミットが紐付けられていません"
+    },
+    "actions": {
+      "copy_branch_name": "ブランチ名をコピー"
+    },
+    "toasts": {
+      "branch_copied": "ブランチ名をコピーしました",
+      "update_failed": "リサーチ項目を更新できませんでした"
     }
   }
 }

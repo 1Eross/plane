@@ -50,6 +50,51 @@
       "description": "Reliez questions de recherche, hypothèses, expériences et preuves, et vérifiez chaque verdict à l’aune des preuves.",
       "toggle_title": "Activer le graphe de recherche",
       "toggle_description": "Afficher la disposition en graphe de recherche et les champs de recherche sur les éléments de travail de ce projet."
+    },
+    "fields": {
+      "type": "Type de recherche",
+      "status": "Statut de recherche",
+      "none": "Pas un élément de recherche",
+      "statement": "Énoncé",
+      "success_criteria": "Critères de réussite",
+      "conclusion": "Conclusion",
+      "confidence": "Confiance, %",
+      "repo_url": "Dépôt",
+      "branch": "Branche",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefact"
+    },
+    "placeholders": {
+      "statement": "Si …, alors …",
+      "success_criteria": "Quel résultat la confirmerait ou la réfuterait ?",
+      "conclusion": "Qu’avons-nous appris ?"
+    },
+    "verdict": {
+      "requires_supporting": "nécessite une preuve valide qui la soutient",
+      "requires_opposing": "nécessite une preuve valide qui la contredit",
+      "computed": "défini automatiquement",
+      "needs_review_hint": "Les preuves sur lesquelles repose ce verdict ont changé. Réexaminez le verdict.",
+      "recorded": "Verdict rendu le {date}"
+    },
+    "widget": {
+      "title": "Recherche"
+    },
+    "links": {
+      "title": "Liens de recherche",
+      "add": "Ajouter un lien",
+      "empty": "Aucun lien de recherche pour l’instant",
+      "weight": "Poids"
+    },
+    "reproducibility": {
+      "title": "Reproductibilité",
+      "missing_commit": "Aucun commit n’est encore lié à ce résultat"
+    },
+    "actions": {
+      "copy_branch_name": "Copier le nom de branche"
+    },
+    "toasts": {
+      "branch_copied": "Nom de branche copié",
+      "update_failed": "Impossible de mettre à jour l’élément de recherche"
     }
   }
 }

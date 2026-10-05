@@ -18,8 +18,11 @@ import {
   StartDateOutline,
   StateOutline,
   UserOutline,
+  WarningTriangleOutline,
+  WorkgraphOutline,
 } from "@makeplane/propel/icons";
 // plane imports
+import { RESEARCH_NODE_TYPE_MAP, RESEARCH_STATUS_MAP } from "@plane/constants";
 import { Avatar } from "@makeplane/propel/components/avatar";
 import { Logo } from "@plane/blocks/emoji-icon-picker";
 import { CycleGroupIcon, PriorityIcon, StateGroupIcon } from "@plane/blocks/icons";
@@ -44,6 +47,9 @@ import {
   getMentionFilterConfig,
   getModuleFilterConfig,
   getPriorityFilterConfig,
+  getNeedsReviewFilterConfig,
+  getResearchStatusFilterConfig,
+  getResearchTypeFilterConfig,
   getProjectFilterConfig,
   getStartDateFilterConfig,
   getStateFilterConfig,
@@ -62,6 +68,7 @@ import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // plane web imports
 import { useFiltersOperatorConfigs } from "@/hooks/rich-filters/use-filters-operator-configs";
+import { ColorDot as ResearchColorDot } from "@/components/issues/research/research-select";
 
 export type TWorkItemFiltersEntityProps = {
   workspaceSlug: string;
@@ -131,10 +138,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
     [moduleIds, getModuleById]
   );
   const projects = useMemo(
-    () =>
-      projectIds
-        ? (projectIds.map((projectId) => getProjectById(projectId)).filter((project) => project) as IProject[])
-        : [],
+    () => (projectIds ? (projectIds.map((id) => getProjectById(id)).filter((item) => item) as IProject[]) : []),
     [projectIds, getProjectById]
   );
   const areAllConfigsInitialized = useMemo(() => isLoaderReady(projectLoader), [projectLoader]);
@@ -305,6 +309,40 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
     [isFilterEnabled, operatorConfigs]
   );
 
+  // research filter configs, available when the project uses the research graph
+  const isResearchEnabled = !!project?.research_graph_view;
+  const researchTypeFilterConfig = useMemo(
+    () =>
+      getResearchTypeFilterConfig<TWorkItemFilterProperty>("research_type")({
+        isEnabled: isFilterEnabled("research_type") && isResearchEnabled,
+        filterIcon: WorkgraphOutline,
+        getOptionIcon: (researchType) => <ResearchColorDot color={RESEARCH_NODE_TYPE_MAP[researchType]?.color} />,
+        ...operatorConfigs,
+      }),
+    [isFilterEnabled, isResearchEnabled, operatorConfigs]
+  );
+
+  const researchStatusFilterConfig = useMemo(
+    () =>
+      getResearchStatusFilterConfig<TWorkItemFilterProperty>("research_status")({
+        isEnabled: isFilterEnabled("research_status") && isResearchEnabled,
+        filterIcon: StateOutline,
+        getOptionIcon: (status) => <ResearchColorDot color={RESEARCH_STATUS_MAP[status]?.color} />,
+        ...operatorConfigs,
+      }),
+    [isFilterEnabled, isResearchEnabled, operatorConfigs]
+  );
+
+  const needsReviewFilterConfig = useMemo(
+    () =>
+      getNeedsReviewFilterConfig<TWorkItemFilterProperty>("needs_review")({
+        isEnabled: isFilterEnabled("needs_review") && isResearchEnabled,
+        filterIcon: WarningTriangleOutline,
+        ...operatorConfigs,
+      }),
+    [isFilterEnabled, isResearchEnabled, operatorConfigs]
+  );
+
   // start date filter config
   const startDateFilterConfig = useMemo(
     () =>
@@ -356,7 +394,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
         isEnabled: isFilterEnabled("project_id") && projects !== undefined,
         filterIcon: ProjectsOutline,
         projects: projects,
-        getOptionIcon: (project) => <Logo logo={project.logo_props} size={12} />,
+        getOptionIcon: (item) => <Logo logo={item.logo_props} size={12} />,
         ...operatorConfigs,
       }),
     [isFilterEnabled, projects, operatorConfigs]
@@ -380,6 +418,9 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
       updatedAtFilterConfig,
       createdByFilterConfig,
       subscriberFilterConfig,
+      researchTypeFilterConfig,
+      researchStatusFilterConfig,
+      needsReviewFilterConfig,
     ],
     configMap: {
       project_id: projectFilterConfig,
@@ -397,6 +438,9 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
       target_date: targetDateFilterConfig,
       created_at: createdAtFilterConfig,
       updated_at: updatedAtFilterConfig,
+      research_type: researchTypeFilterConfig,
+      research_status: researchStatusFilterConfig,
+      needs_review: needsReviewFilterConfig,
     },
     isFilterEnabled,
     members: members ?? [],

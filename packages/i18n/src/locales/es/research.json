@@ -50,6 +50,51 @@
       "description": "Relacione preguntas de investigación, hipótesis, experimentos y evidencias, y verifique cada veredicto con la evidencia.",
       "toggle_title": "Activar el grafo de investigación",
       "toggle_description": "Mostrar el diseño de grafo de investigación y los campos de investigación en los elementos de trabajo de este proyecto."
+    },
+    "fields": {
+      "type": "Tipo de investigación",
+      "status": "Estado de investigación",
+      "none": "No es un elemento de investigación",
+      "statement": "Enunciado",
+      "success_criteria": "Criterios de éxito",
+      "conclusion": "Conclusión",
+      "confidence": "Confianza, %",
+      "repo_url": "Repositorio",
+      "branch": "Rama",
+      "commit_sha": "Commit",
+      "artifact_url": "Artefacto"
+    },
+    "placeholders": {
+      "statement": "Si …, entonces …",
+      "success_criteria": "¿Qué resultado la confirmaría o la refutaría?",
+      "conclusion": "¿Qué aprendimos?"
+    },
+    "verdict": {
+      "requires_supporting": "requiere evidencia válida que la respalde",
+      "requires_opposing": "requiere evidencia válida que la refute",
+      "computed": "se establece automáticamente",
+      "needs_review_hint": "La evidencia en la que se basa este veredicto ha cambiado. Revise el veredicto.",
+      "recorded": "Veredicto emitido el {date}"
+    },
+    "widget": {
+      "title": "Investigación"
+    },
+    "links": {
+      "title": "Vínculos de investigación",
+      "add": "Agregar vínculo",
+      "empty": "Aún no hay vínculos de investigación",
+      "weight": "Peso"
+    },
+    "reproducibility": {
+      "title": "Reproducibilidad",
+      "missing_commit": "Aún no hay un commit vinculado a este resultado"
+    },
+    "actions": {
+      "copy_branch_name": "Copiar nombre de rama"
+    },
+    "toasts": {
+      "branch_copied": "Nombre de rama copiado",
+      "update_failed": "No se pudo actualizar el elemento de investigación"
     }
   }
 }
