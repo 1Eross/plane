@@ -129,6 +129,22 @@
       "link_not_allowed": "Tieto prvky nie je možné prepojiť",
       "create": "Vytvoriť",
       "link": "Prepojiť"
+    },
+    "matrix": {
+      "open": "Porovnať hypotézy",
+      "title": "Konkurenčné hypotézy",
+      "description": "Hypotézy sú zoradené podľa váhy platných dôkazov proti nim: prvá je najmenej vyvrátená. Vylúčte dôkaz a uvidíte, aké stabilné je poradie.",
+      "evidence": "Dôkaz",
+      "against": "Proti",
+      "for": "Za",
+      "was": "predtým",
+      "not_diagnostic": "Hodnotí všetky hypotézy rovnako a nerozlišuje ich",
+      "what_if": "Čo ak je chybný",
+      "edit_cell": "Zmeniť väzbu",
+      "no_link": "Bez väzby",
+      "empty": "Pridajte hypotézy odpovedajúce na túto otázku, aby ste ich mohli porovnať.",
+      "no_evidence": "Prepojte dôkazy s hypotézami a vyplňte maticu.",
+      "include_all": "Zahrnúť všetky dôkazy"
     }
   }
 }

@@ -129,6 +129,22 @@
       "link_not_allowed": "Questi elementi non possono essere collegati",
       "create": "Crea",
       "link": "Collega"
+    },
+    "matrix": {
+      "open": "Confronta ipotesi",
+      "title": "Ipotesi concorrenti",
+      "description": "Le ipotesi sono ordinate in base al peso delle evidenze valide contrarie: prima la meno smentita. Escluda un’evidenza per vedere quanto è stabile la classifica.",
+      "evidence": "Evidenza",
+      "against": "Contro",
+      "for": "A favore",
+      "was": "prima",
+      "not_diagnostic": "Valuta tutte le ipotesi allo stesso modo: non le distingue",
+      "what_if": "E se fosse sbagliata",
+      "edit_cell": "Modifica il collegamento",
+      "no_link": "Nessun collegamento",
+      "empty": "Aggiunga ipotesi che rispondono a questa domanda per confrontarle.",
+      "no_evidence": "Colleghi le evidenze alle ipotesi per riempire la matrice.",
+      "include_all": "Includi tutte le evidenze"
     }
   }
 }

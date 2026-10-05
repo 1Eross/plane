@@ -14,6 +14,7 @@ import { useTranslation } from "@plane/i18n";
 import type { TIssueResearchDetailsPayload, TIssueServiceType, TResearchNodeType } from "@plane/types";
 import { renderFormattedDate } from "@plane/utils";
 // components
+import { AchMatrixDialog } from "@/components/issues/research/ach-matrix-dialog";
 import { useResearchData, useResearchErrorToast } from "@/components/issues/research/use-research";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -122,6 +123,7 @@ export const ResearchCollapsibleContent = observer(function ResearchCollapsibleC
     research: { getDetails, updateDetails },
   } = useIssueDetail(issueServiceType);
   const showError = useResearchErrorToast();
+  const [isMatrixOpen, setIsMatrixOpen] = useState(false);
   useResearchData(workspaceSlug, projectId, issueId, issueServiceType);
   // derived values
   const issue = getIssueById(issueId);
@@ -195,6 +197,25 @@ export const ResearchCollapsibleContent = observer(function ResearchCollapsibleC
           )}
           {reproducibilityFields.map(renderField)}
         </div>
+      )}
+
+      {researchType === "question" && (
+        <button
+          type="button"
+          className="self-start rounded-md border border-subtle px-2.5 py-1 text-13 text-secondary hover:bg-layer-1-hover"
+          onClick={() => setIsMatrixOpen(true)}
+        >
+          {t("research.matrix.open")}
+        </button>
+      )}
+      {isMatrixOpen && (
+        <AchMatrixDialog
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          questionId={issueId}
+          canEdit={!disabled}
+          onClose={() => setIsMatrixOpen(false)}
+        />
       )}
 
       <ResearchLinks

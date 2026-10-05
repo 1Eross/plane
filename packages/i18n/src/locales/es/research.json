@@ -129,6 +129,22 @@
       "link_not_allowed": "Estos elementos no se pueden vincular",
       "create": "Crear",
       "link": "Vincular"
+    },
+    "matrix": {
+      "open": "Comparar hipótesis",
+      "title": "Hipótesis en competencia",
+      "description": "Las hipótesis se ordenan según el peso de la evidencia válida en su contra: primero la menos refutada. Excluya evidencia para ver qué tan estable es el orden.",
+      "evidence": "Evidencia",
+      "against": "En contra",
+      "for": "A favor",
+      "was": "antes",
+      "not_diagnostic": "Evalúa todas las hipótesis por igual: no las distingue",
+      "what_if": "Qué pasaría si fuera falsa",
+      "edit_cell": "Cambiar el vínculo",
+      "no_link": "Sin vínculo",
+      "empty": "Agregue hipótesis que respondan a esta pregunta para compararlas.",
+      "no_evidence": "Vincule evidencia a las hipótesis para completar la matriz.",
+      "include_all": "Incluir toda la evidencia"
     }
   }
 }

@@ -25,6 +25,7 @@ import type {
 } from "@plane/types";
 import { buildResearchGraph, cn, computeResearchVisibility, getFlowEndpoints, isResearchRelation } from "@plane/utils";
 // components
+import { AchMatrixDialog } from "@/components/issues/research/ach-matrix-dialog";
 import { useResearchErrorToast } from "@/components/issues/research/use-research";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -77,6 +78,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
   const [dialog, setDialog] = useState<TDialogState | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
+  const [matrixQuestionId, setMatrixQuestionId] = useState<string | null>(null);
   // positions of nodes being dragged, until the drop is saved to the layout
   const [dragPositions, setDragPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [showAuxiliary, setShowAuxiliary] = useState(true);
@@ -212,6 +214,7 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
             onToggleCollapse: toggleCollapse,
             onOpen: openPeek,
             onAction: openAction,
+            onOpenMatrix: setMatrixQuestionId,
           },
         },
       ];
@@ -479,6 +482,8 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
           }}
           onPaneClick={() => setSelectedEdgeId(null)}
           fitView
+          // large research graphs: skip rendering what is off screen
+          onlyRenderVisibleElements={flowNodes.length > 300}
           minZoom={0.2}
           maxZoom={1.5}
         >
@@ -535,6 +540,18 @@ export const ResearchGraphRoot = observer(function ResearchGraphRoot(props: Prop
             </Panel>
           )}
         </ReactFlow>
+      )}
+      {matrixQuestionId && workspaceSlug && projectId && (
+        <AchMatrixDialog
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          questionId={matrixQuestionId}
+          canEdit={canEdit}
+          onClose={() => {
+            setMatrixQuestionId(null);
+            refresh();
+          }}
+        />
       )}
       {dialog && (
         <ResearchActionDialog

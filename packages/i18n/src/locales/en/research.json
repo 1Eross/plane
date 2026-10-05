@@ -129,6 +129,22 @@
       "link_not_allowed": "These work items cannot be linked",
       "create": "Create",
       "link": "Link"
+    },
+    "matrix": {
+      "open": "Compare hypotheses",
+      "title": "Competing hypotheses",
+      "description": "Hypotheses are ranked by the weight of valid evidence against them: the least contradicted comes first. Exclude evidence to see how sensitive the ranking is.",
+      "evidence": "Evidence",
+      "against": "Against",
+      "for": "For",
+      "was": "was",
+      "not_diagnostic": "Rates every hypothesis the same: does not tell them apart",
+      "what_if": "What if it were wrong",
+      "edit_cell": "Change the link",
+      "no_link": "No link",
+      "empty": "Add hypotheses that address this question to compare them.",
+      "no_evidence": "Link evidence to the hypotheses to fill the matrix.",
+      "include_all": "Include all evidence"
     }
   }
 }

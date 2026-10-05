@@ -36,6 +36,7 @@ export type TResearchNodeData = {
   onToggleCollapse: (issueId: string) => void;
   onOpen: (issueId: string) => void;
   onAction: (issueId: string, action: TNodeAction) => void;
+  onOpenMatrix: (issueId: string) => void;
 };
 
 export type TResearchFlowNode = Node<TResearchNodeData, "research">;
@@ -53,6 +54,7 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
     onToggleCollapse,
     onOpen,
     onAction,
+    onOpenMatrix,
   } = data;
   const { t } = useTranslation();
   const {
@@ -98,7 +100,7 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
           {issue.needs_review && (
             <WarningTriangleOutline className="size-3.5 text-warning-primary" aria-label={t("research.needs_review")} />
           )}
-          {canEdit && !isGhost && (
+          {!isGhost && (canEdit || issue.research_type === "question") && (
             <Menu>
               <MenuTrigger
                 aria-label={t("research.graph.add_node")}
@@ -113,7 +115,16 @@ const ResearchNodeComponent = observer(function ResearchNodeComponent({ data }: 
                 }
               />
               <MenuContent side="bottom" align="end">
-                {NODE_ACTIONS[issue.research_type].map((action) => (
+                {issue.research_type === "question" && (
+                  <MenuItem
+                    label={t("research.matrix.open")}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenMatrix(issueId);
+                    }}
+                  />
+                )}
+                {(canEdit ? NODE_ACTIONS[issue.research_type] : []).map((action) => (
                   <MenuItem
                     key={action.key}
                     label={t(`research.graph.actions.${action.key}`)}

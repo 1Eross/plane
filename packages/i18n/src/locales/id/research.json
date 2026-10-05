@@ -129,6 +129,22 @@
       "link_not_allowed": "Item ini tidak dapat ditautkan",
       "create": "Buat",
       "link": "Tautkan"
+    },
+    "matrix": {
+      "open": "Bandingkan hipotesis",
+      "title": "Hipotesis yang bersaing",
+      "description": "Hipotesis diurutkan berdasarkan bobot bukti valid yang menentangnya: yang paling sedikit dibantah berada di atas. Kecualikan bukti untuk melihat seberapa stabil peringkatnya.",
+      "evidence": "Bukti",
+      "against": "Menentang",
+      "for": "Mendukung",
+      "was": "sebelumnya",
+      "not_diagnostic": "Menilai semua hipotesis sama: tidak membedakannya",
+      "what_if": "Bagaimana jika salah",
+      "edit_cell": "Ubah tautan",
+      "no_link": "Tidak ada tautan",
+      "empty": "Tambahkan hipotesis yang menjawab pertanyaan ini untuk membandingkannya.",
+      "no_evidence": "Tautkan bukti ke hipotesis untuk mengisi matriks.",
+      "include_all": "Sertakan semua bukti"
     }
   }
 }

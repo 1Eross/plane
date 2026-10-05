@@ -129,6 +129,22 @@
       "link_not_allowed": "這些工作事項無法關聯",
       "create": "建立",
       "link": "關聯"
+    },
+    "matrix": {
+      "open": "比較假設",
+      "title": "競爭性假設",
+      "description": "假設依反駁它們的有效證據權重排序：被反駁最少的排在最前。排除某項證據可查看排序的穩定性。",
+      "evidence": "證據",
+      "against": "反對",
+      "for": "支持",
+      "was": "原為",
+      "not_diagnostic": "對所有假設的評價相同，無法區分它們",
+      "what_if": "如果它是錯的",
+      "edit_cell": "變更關聯",
+      "no_link": "無關聯",
+      "empty": "新增回答此問題的假設以進行比較。",
+      "no_evidence": "將證據關聯到假設以填入矩陣。",
+      "include_all": "納入所有證據"
     }
   }
 }

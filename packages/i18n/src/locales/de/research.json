@@ -129,6 +129,22 @@
       "link_not_allowed": "Diese Elemente können nicht verknüpft werden",
       "create": "Erstellen",
       "link": "Verknüpfen"
+    },
+    "matrix": {
+      "open": "Hypothesen vergleichen",
+      "title": "Konkurrierende Hypothesen",
+      "description": "Hypothesen werden nach dem Gewicht der gültigen Evidenz gegen sie sortiert: Die am wenigsten widerlegte steht vorn. Evidenz ausschließen, um die Stabilität der Rangfolge zu prüfen.",
+      "evidence": "Evidenz",
+      "against": "Dagegen",
+      "for": "Dafür",
+      "was": "zuvor",
+      "not_diagnostic": "Bewertet alle Hypothesen gleich und unterscheidet sie nicht",
+      "what_if": "Was, wenn sie falsch ist",
+      "edit_cell": "Verknüpfung ändern",
+      "no_link": "Keine Verknüpfung",
+      "empty": "Hypothesen zu dieser Frage hinzufügen, um sie zu vergleichen.",
+      "no_evidence": "Evidenz mit den Hypothesen verknüpfen, um die Matrix zu füllen.",
+      "include_all": "Alle Evidenz einbeziehen"
     }
   }
 }

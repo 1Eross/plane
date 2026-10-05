@@ -129,6 +129,22 @@
       "link_not_allowed": "Aceste elemente nu pot fi legate",
       "create": "Creați",
       "link": "Legați"
+    },
+    "matrix": {
+      "open": "Comparați ipotezele",
+      "title": "Ipoteze concurente",
+      "description": "Ipotezele sunt ordonate după ponderea dovezilor valide împotriva lor: prima este cea mai puțin contrazisă. Excludeți o dovadă pentru a vedea cât de stabil este clasamentul.",
+      "evidence": "Dovadă",
+      "against": "Împotrivă",
+      "for": "Pentru",
+      "was": "înainte",
+      "not_diagnostic": "Evaluează toate ipotezele la fel și nu le diferențiază",
+      "what_if": "Ce-ar fi dacă ar fi greșită",
+      "edit_cell": "Modificați legătura",
+      "no_link": "Nicio legătură",
+      "empty": "Adăugați ipoteze care răspund la această întrebare pentru a le compara.",
+      "no_evidence": "Legați dovezile de ipoteze pentru a completa matricea.",
+      "include_all": "Includeți toate dovezile"
     }
   }
 }

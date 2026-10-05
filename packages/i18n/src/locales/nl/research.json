@@ -129,6 +129,22 @@
       "link_not_allowed": "Deze items kunnen niet worden gekoppeld",
       "create": "Aanmaken",
       "link": "Koppelen"
+    },
+    "matrix": {
+      "open": "Hypothesen vergelijken",
+      "title": "Concurrerende hypothesen",
+      "description": "Hypothesen worden gerangschikt op het gewicht van geldig bewijs ertegen: de minst weerlegde staat bovenaan. Sluit bewijs uit om te zien hoe stabiel de rangorde is.",
+      "evidence": "Bewijs",
+      "against": "Tegen",
+      "for": "Voor",
+      "was": "eerder",
+      "not_diagnostic": "Beoordeelt alle hypothesen gelijk en onderscheidt ze niet",
+      "what_if": "Wat als het onjuist is",
+      "edit_cell": "Koppeling wijzigen",
+      "no_link": "Geen koppeling",
+      "empty": "Voeg hypothesen toe die deze vraag beantwoorden om ze te vergelijken.",
+      "no_evidence": "Koppel bewijs aan de hypothesen om de matrix te vullen.",
+      "include_all": "Alle bewijs meenemen"
     }
   }
 }

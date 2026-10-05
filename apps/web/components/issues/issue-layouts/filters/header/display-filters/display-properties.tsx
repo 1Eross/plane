@@ -10,6 +10,7 @@ import { observer } from "mobx-react";
 import { ISSUE_DISPLAY_PROPERTIES } from "@plane/constants";
 // plane i18n
 import { useTranslation } from "@plane/i18n";
+import { useProject } from "@/hooks/store/use-project";
 // types
 import type { IIssueDisplayProperties } from "@plane/types";
 // components
@@ -35,6 +36,7 @@ export const FilterDisplayProperties = observer(function FilterDisplayProperties
   } = props;
   // hooks
   const { t } = useTranslation();
+  const { currentProjectDetails } = useProject();
   // states
   const [previewEnabled, setPreviewEnabled] = React.useState(true);
 
@@ -47,12 +49,14 @@ export const FilterDisplayProperties = observer(function FilterDisplayProperties
         return !cycleViewDisabled;
       case "modules":
         return !moduleViewDisabled;
+      case "research":
+        return !!currentProjectDetails?.research_graph_view;
       default:
         return true;
     }
   }).map((property) => {
     if (isEpic && property.key === "sub_issue_count") {
-      return { ...property, titleTranslationKey: "issue.display.properties.work_item_count" };
+      return { key: property.key, titleTranslationKey: "issue.display.properties.work_item_count" };
     }
     return property;
   });
@@ -67,24 +71,22 @@ export const FilterDisplayProperties = observer(function FilterDisplayProperties
       {previewEnabled && (
         <div className="mt-1 flex flex-wrap items-center gap-2">
           {filteredDisplayProperties.map((displayProperty) => (
-            <>
-              <button
-                key={displayProperty.key}
-                type="button"
-                className={`rounded-sm border px-2 py-0.5 text-11 transition-all ${
-                  displayProperties?.[displayProperty.key]
-                    ? "border-accent-strong bg-accent-primary text-on-color"
-                    : "border-subtle hover:bg-layer-1"
-                }`}
-                onClick={() =>
-                  handleUpdate({
-                    [displayProperty.key]: !displayProperties?.[displayProperty.key],
-                  })
-                }
-              >
-                {t(displayProperty.titleTranslationKey)}
-              </button>
-            </>
+            <button
+              key={displayProperty.key}
+              type="button"
+              className={`rounded-sm border px-2 py-0.5 text-11 transition-all ${
+                displayProperties?.[displayProperty.key]
+                  ? "border-accent-strong bg-accent-primary text-on-color"
+                  : "border-subtle hover:bg-layer-1"
+              }`}
+              onClick={() =>
+                handleUpdate({
+                  [displayProperty.key]: !displayProperties?.[displayProperty.key],
+                })
+              }
+            >
+              {t(displayProperty.titleTranslationKey)}
+            </button>
           ))}
         </div>
       )}

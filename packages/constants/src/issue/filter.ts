@@ -257,7 +257,8 @@ export const ISSUE_DISPLAY_FILTERS_BY_PAGE: TIssueFiltersToDisplayByPageType = {
         },
       },
       spreadsheet: {
-        display_properties: ISSUE_DISPLAY_PROPERTIES_KEYS,
+        // the research column only exists in the table
+        display_properties: [...ISSUE_DISPLAY_PROPERTIES_KEYS, "research"],
         display_filters: {
           order_by: ["sort_order", "-created_at", "-updated_at", "start_date", "-priority"],
           type: ["active", "backlog"],

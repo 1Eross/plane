@@ -68,8 +68,9 @@ export const SpreadsheetView = observer(function SpreadsheetView(props: Props) {
   const isEstimateEnabled: boolean = currentProjectDetails?.estimate !== null;
 
   const spreadsheetColumnsList = isWorkspaceLevel
-    ? SPREADSHEET_PROPERTY_LIST
+    ? SPREADSHEET_PROPERTY_LIST.filter((property) => property !== "research")
     : SPREADSHEET_PROPERTY_LIST.filter((property) => {
+        if (property === "research" && !currentProjectDetails?.research_graph_view) return false;
         if (property === "cycle" && !currentProjectDetails?.cycle_view) return false;
         if (property === "modules" && !currentProjectDetails?.module_view) return false;
         return true;

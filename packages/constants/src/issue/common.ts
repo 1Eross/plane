@@ -33,6 +33,8 @@ export enum EIssueGroupByToServerOptions {
   "cycle" = "cycle_id",
   "module" = "issue_module__module_id",
   "target_date" = "target_date",
+  // "team_project" maps to the same server field on purpose
+  // oxlint-disable-next-line typescript-eslint/no-duplicate-enum-values
   "project" = "project_id",
   "created_by" = "created_by",
   // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
@@ -208,10 +210,12 @@ export const ISSUE_DISPLAY_PROPERTIES: {
   },
   { key: "modules", titleTranslationKey: "common.module" },
   { key: "cycle", titleTranslationKey: "common.cycle" },
+  { key: "research", titleTranslationKey: "research.widget.title" },
 ];
 
 export const SPREADSHEET_PROPERTY_LIST: (keyof IIssueDisplayProperties)[] = [
   "state",
+  "research",
   "priority",
   "assignee",
   "labels",
@@ -276,6 +280,14 @@ export const SPREADSHEET_PROPERTY_DETAILS: {
     descendingOrderKey: "-labels__name",
     descendingOrderTitle: "Z",
     icon: "LabelPropertyIcon",
+  },
+  research: {
+    i18n_title: "research.widget.title",
+    ascendingOrderKey: "research_type",
+    ascendingOrderTitle: "A",
+    descendingOrderKey: "-research_type",
+    descendingOrderTitle: "Z",
+    icon: "WorkgraphIcon",
   },
   modules: {
     i18n_title: "common.modules",

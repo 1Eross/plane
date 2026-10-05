@@ -24,6 +24,7 @@ import {
   StartDateOutline,
   StateOutline,
   WorkItemsOutline,
+  WorkgraphOutline,
 } from "@makeplane/propel/icons";
 // plane types
 import { Avatar } from "@makeplane/propel/components/avatar";
@@ -60,6 +61,7 @@ import { ISSUE_GROUP_BY_OPTIONS } from "@plane/constants";
 import {
   SpreadsheetAssigneeColumn,
   SpreadsheetAttachmentColumn,
+  SpreadsheetResearchColumn,
   SpreadsheetCreatedOnColumn,
   SpreadsheetDueDateColumn,
   SpreadsheetEstimateColumn,
@@ -760,10 +762,11 @@ export const getBlockViewDetails = (
  * @param iconKey
  */
 export function SpreadSheetPropertyIcon(props: ISvgIcons & { iconKey: string }) {
-  const { iconKey } = props;
+  // iconKey selects the icon; it must not reach the <svg>
+  const { iconKey, ...iconProps } = props;
   const Icon = SpreadSheetPropertyIconMap[iconKey];
   if (!Icon) return null;
-  return <Icon {...props} />;
+  return <Icon {...iconProps} />;
 }
 
 /**
@@ -853,6 +856,7 @@ export const SpreadSheetPropertyIconMap: Record<string, FC<ISvgIcons>> = {
   LabelsOutline: LabelsOutline,
   ModuleOutline: ModuleOutline,
   ContrastIcon: CyclesOutline,
+  WorkgraphIcon: WorkgraphOutline,
   PriorityOutline: PriorityOutline,
   StartDateOutline: StartDateOutline,
   StateOutline: StateOutline,
@@ -876,6 +880,7 @@ export const SPREADSHEET_COLUMNS: { [key in keyof IIssueDisplayProperties]: TSpr
   sub_issue_count: SpreadsheetSubIssueColumn,
   updated_on: SpreadsheetUpdatedOnColumn,
   attachment_count: SpreadsheetAttachmentColumn,
+  research: SpreadsheetResearchColumn,
 };
 
 export const useGroupByOptions = (

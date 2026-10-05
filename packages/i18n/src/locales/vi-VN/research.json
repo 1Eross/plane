@@ -129,6 +129,22 @@
       "link_not_allowed": "Không thể liên kết các mục này",
       "create": "Tạo",
       "link": "Liên kết"
+    },
+    "matrix": {
+      "open": "So sánh giả thuyết",
+      "title": "Các giả thuyết cạnh tranh",
+      "description": "Giả thuyết được xếp hạng theo trọng số bằng chứng hợp lệ chống lại chúng: giả thuyết ít bị bác bỏ nhất đứng đầu. Loại trừ bằng chứng để xem xếp hạng ổn định đến đâu.",
+      "evidence": "Bằng chứng",
+      "against": "Chống",
+      "for": "Ủng hộ",
+      "was": "trước đây",
+      "not_diagnostic": "Đánh giá mọi giả thuyết như nhau: không phân biệt được chúng",
+      "what_if": "Nếu nó sai thì sao",
+      "edit_cell": "Thay đổi liên kết",
+      "no_link": "Không có liên kết",
+      "empty": "Thêm các giả thuyết trả lời câu hỏi này để so sánh.",
+      "no_evidence": "Liên kết bằng chứng với giả thuyết để điền vào ma trận.",
+      "include_all": "Bao gồm mọi bằng chứng"
     }
   }
 }

@@ -129,6 +129,22 @@
       "link_not_allowed": "Estes itens não podem ser vinculados",
       "create": "Criar",
       "link": "Vincular"
+    },
+    "matrix": {
+      "open": "Comparar hipóteses",
+      "title": "Hipóteses concorrentes",
+      "description": "As hipóteses são ordenadas pelo peso das evidências válidas contra elas: a menos refutada vem primeiro. Exclua uma evidência para ver quão estável é a ordem.",
+      "evidence": "Evidência",
+      "against": "Contra",
+      "for": "A favor",
+      "was": "antes",
+      "not_diagnostic": "Avalia todas as hipóteses da mesma forma: não as diferencia",
+      "what_if": "E se estiver errada",
+      "edit_cell": "Alterar o vínculo",
+      "no_link": "Sem vínculo",
+      "empty": "Adicione hipóteses que respondam a esta pergunta para compará-las.",
+      "no_evidence": "Vincule evidências às hipóteses para preencher a matriz.",
+      "include_all": "Incluir todas as evidências"
     }
   }
 }

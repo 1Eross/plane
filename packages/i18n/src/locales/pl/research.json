@@ -129,6 +129,22 @@
       "link_not_allowed": "Tych elementów nie można powiązać",
       "create": "Utwórz",
       "link": "Powiąż"
+    },
+    "matrix": {
+      "open": "Porównaj hipotezy",
+      "title": "Konkurencyjne hipotezy",
+      "description": "Hipotezy są uszeregowane według wagi ważnych dowodów przeciwko nim: pierwsza jest najmniej podważona. Wyklucz dowód, aby sprawdzić stabilność rankingu.",
+      "evidence": "Dowód",
+      "against": "Przeciw",
+      "for": "Za",
+      "was": "wcześniej",
+      "not_diagnostic": "Ocenia wszystkie hipotezy jednakowo i ich nie rozróżnia",
+      "what_if": "Co, jeśli jest błędny",
+      "edit_cell": "Zmień powiązanie",
+      "no_link": "Brak powiązania",
+      "empty": "Dodaj hipotezy odpowiadające na to pytanie, aby je porównać.",
+      "no_evidence": "Powiąż dowody z hipotezami, aby wypełnić macierz.",
+      "include_all": "Uwzględnij wszystkie dowody"
     }
   }
 }

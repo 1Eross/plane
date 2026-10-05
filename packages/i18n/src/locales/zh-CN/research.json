@@ -129,6 +129,22 @@
       "link_not_allowed": "这些工作项无法关联",
       "create": "创建",
       "link": "关联"
+    },
+    "matrix": {
+      "open": "比较假设",
+      "title": "竞争性假设",
+      "description": "假设按反驳它们的有效证据权重排序：被反驳最少的排在最前。排除某项证据可查看排序的稳定性。",
+      "evidence": "证据",
+      "against": "反对",
+      "for": "支持",
+      "was": "原为",
+      "not_diagnostic": "对所有假设的评价相同，无法区分它们",
+      "what_if": "如果它是错的",
+      "edit_cell": "更改关联",
+      "no_link": "无关联",
+      "empty": "添加回答此问题的假设以进行比较。",
+      "no_evidence": "将证据关联到假设以填充矩阵。",
+      "include_all": "包含所有证据"
     }
   }
 }

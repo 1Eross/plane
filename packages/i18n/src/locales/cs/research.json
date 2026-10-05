@@ -129,6 +129,22 @@
       "link_not_allowed": "Tyto prvky nelze propojit",
       "create": "Vytvořit",
       "link": "Propojit"
+    },
+    "matrix": {
+      "open": "Porovnat hypotézy",
+      "title": "Konkurenční hypotézy",
+      "description": "Hypotézy jsou seřazeny podle váhy platných důkazů proti nim: první je nejméně vyvrácená. Vylučte důkaz a uvidíte, jak stabilní je pořadí.",
+      "evidence": "Důkaz",
+      "against": "Proti",
+      "for": "Pro",
+      "was": "dříve",
+      "not_diagnostic": "Hodnotí všechny hypotézy stejně a nerozlišuje je",
+      "what_if": "Co když je chybný",
+      "edit_cell": "Změnit vazbu",
+      "no_link": "Bez vazby",
+      "empty": "Přidejte hypotézy odpovídající na tuto otázku, abyste je mohli porovnat.",
+      "no_evidence": "Propojte důkazy s hypotézami a vyplňte matici.",
+      "include_all": "Zahrnout všechny důkazy"
     }
   }
 }

@@ -30,6 +30,7 @@ ISSUE_ORDER_BY_ALLOWLIST = frozenset({
     "assignees__first_name",
     "labels__name",
     "issue_module__module__name",
+    "research_type",
 })
 
 # IntakeIssue queryset — fields are prefixed with `issue__` for the join.

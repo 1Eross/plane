@@ -129,6 +129,22 @@
       "link_not_allowed": "Ces éléments ne peuvent pas être reliés",
       "create": "Créer",
       "link": "Relier"
+    },
+    "matrix": {
+      "open": "Comparer les hypothèses",
+      "title": "Hypothèses concurrentes",
+      "description": "Les hypothèses sont classées selon le poids des preuves valides qui les contredisent : la moins contredite vient en premier. Excluez une preuve pour voir la robustesse du classement.",
+      "evidence": "Preuve",
+      "against": "Contre",
+      "for": "Pour",
+      "was": "avant",
+      "not_diagnostic": "Évalue toutes les hypothèses de la même façon : ne les départage pas",
+      "what_if": "Et si elle était fausse",
+      "edit_cell": "Modifier le lien",
+      "no_link": "Aucun lien",
+      "empty": "Ajoutez des hypothèses qui répondent à cette question pour les comparer.",
+      "no_evidence": "Reliez des preuves aux hypothèses pour remplir la matrice.",
+      "include_all": "Inclure toutes les preuves"
     }
   }
 }

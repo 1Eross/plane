@@ -129,6 +129,22 @@
       "link_not_allowed": "Bu öğeler bağlanamaz",
       "create": "Oluştur",
       "link": "Bağla"
+    },
+    "matrix": {
+      "open": "Hipotezleri karşılaştır",
+      "title": "Rakip hipotezler",
+      "description": "Hipotezler aleyhlerindeki geçerli kanıtların ağırlığına göre sıralanır: en az çürütülen önce gelir. Sıralamanın ne kadar sağlam olduğunu görmek için kanıt hariç tutun.",
+      "evidence": "Kanıt",
+      "against": "Aleyhte",
+      "for": "Lehte",
+      "was": "önce",
+      "not_diagnostic": "Tüm hipotezleri aynı değerlendirir, onları ayırt etmez",
+      "what_if": "Ya yanlışsa",
+      "edit_cell": "Bağlantıyı değiştir",
+      "no_link": "Bağlantı yok",
+      "empty": "Karşılaştırmak için bu soruyu yanıtlayan hipotezler ekleyin.",
+      "no_evidence": "Matrisi doldurmak için kanıtları hipotezlere bağlayın.",
+      "include_all": "Tüm kanıtları dahil et"
     }
   }
 }

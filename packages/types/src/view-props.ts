@@ -39,6 +39,8 @@ export type TIssueOrderByOptions =
   | "-assignees__first_name"
   | "labels__name"
   | "-labels__name"
+  | "research_type"
+  | "-research_type"
   | "issue_module__module__name"
   | "-issue_module__module__name"
   | "issue_cycle__cycle__name"
@@ -178,6 +180,7 @@ export interface IIssueDisplayProperties {
   modules?: boolean;
   cycle?: boolean;
   issue_type?: boolean;
+  research?: boolean;
 }
 
 export type TIssueKanbanFilters = {
