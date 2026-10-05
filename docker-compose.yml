@@ -104,6 +104,12 @@ services:
       args:
         DOCKER_BUILDKIT: 1
     restart: always
+    # the live server needs the API address and the shared secret (LIVE_SERVER_SECRET_KEY, REDIS_*)
+    env_file:
+      - ./apps/api/.env
+    environment:
+      API_BASE_URL: ${LIVE_API_BASE_URL:-http://api:8000}
+      PORT: 3000
 
   plane-db:
     container_name: plane-db
@@ -142,7 +148,10 @@ services:
 
   plane-minio:
     container_name: plane-minio
-    image: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+    # quay.io/minio/minio and docker.io/minio/minio are no longer pullable anonymously
+    image: chainguard/minio:latest
+    # the image runs as non-root; the "uploads" volume is owned by root
+    user: "0"
     restart: always
     command: server /export --console-address ":9090"
     volumes:
@@ -164,6 +173,12 @@ services:
     environment:
       FILE_SIZE_LIMIT: ${FILE_SIZE_LIMIT:-5242880}
       BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
+      # Caddyfile.ce reads these; without SITE_ADDRESS the site block has no key and Caddy refuses to start
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-0.0.0.0/0}
+      CERT_EMAIL: ${CERT_EMAIL:-}
+      CERT_ACME_CA: ${CERT_ACME_CA:-https://acme-v02.api.letsencrypt.org/directory}
+      CERT_ACME_DNS: ${CERT_ACME_DNS:-}
     depends_on:
       - web
       - api
